@@ -1,8 +1,8 @@
-            - name: GitHub Pages action
+name: GitHub Pages action
   # You may pin to the exact commit or the version.
   # uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e
-  uses: peaceiris/actions-gh-pages@v4.0.0
-  with:
+uses: peaceiris/actions-gh-pages@v4.0.0
+    with:
     # Set a SSH private key from repository secret value for pushing to the remote branch.
     deploy_key: # optional
     # Set a generated GITHUB_TOKEN for pushing to the remote branch.
