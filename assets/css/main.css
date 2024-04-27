@@ -2132,6 +2132,8 @@ input, select, textarea {
 
 			.image.fit img {
 				width: 100%;
+				height: 300px;
+				object-fit: cover;
 			}
 
 		.image.avatar {
@@ -2594,10 +2596,10 @@ input, select, textarea {
 		justify-content: space-between;
 		background-color: #401f18;
 		background-attachment: scroll,								scroll;
-		background-image: url("images/overlay2.png"), url("../../images/bg-fit.png");
+		background-image: url("images/typeov.png"), url("../../images/connectwork.png");
 		background-position: top left,							top left;
-		background-repeat: repeat,								no-repeat;
-		background-size: auto,								150%;
+		background-repeat: repeat,								repeat;
+		background-size: auto,								75%;
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;
@@ -2971,7 +2973,7 @@ input, select, textarea {
 
 	body.is-touch #header {
 		background-attachment: scroll;
-		background-size: auto, cover;
+		background-size: auto, 75%;
 	}
 
 	body.is-touch .poptrox-popup .nav-next,
@@ -3057,7 +3059,7 @@ input, select, textarea {
 			#header {
 				background-attachment: scroll;
 				background-position: top left, center center;
-				background-size: auto,		cover;
+				background-size: auto,		75%;
 				left: auto;
 				padding: 6em 4em;
 				position: relative;
@@ -3221,3 +3223,106 @@ input, select, textarea {
 			}
 
 	}
+
+/* row article img containers */
+/*
+	@media screen and (max-width: 480px) {
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			max-height: 240px;
+			min-height: 240px;
+		}
+
+			.image.fit img {
+				width: 100%;
+				max-height: 240px;
+				min-height: 240px;
+				height: 240px;
+				object-fit: cover;
+			}
+
+	}
+
+	@media screen and (max-width: 736px) {
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			max-height: 300px;
+			min-height: 300px;
+		}
+
+			.image.fit img {
+				width: 100%;
+				max-height: 300px;
+				min-height: 300px;
+				height: 300px;
+				object-fit: cover;
+			}
+
+	}
+
+	@media screen and (max-width: 980px) {
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			max-height: 350px;
+			min-height: 350px;
+		}
+
+			.image.fit img {
+				width: 100%;
+				max-height: 350px;
+				min-height: 350px;
+				height: 350px;
+				object-fit: cover;
+			}
+
+	}
+
+	@media screen and (max-width: 1280px) {
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			max-height: 500px;
+			min-height: 500px;
+		}
+
+			.image.fit img {
+				width: 100%;
+				max-height: 500px;
+				min-height: 500px;
+				height: 500px;
+				object-fit: cover;
+			}
+
+	}
+
+	@media screen and (max-width: 1800px) {
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			max-height: 600px;
+			min-height: 600px;
+		}
+
+			.image.fit img {
+				width: 100%;
+				max-height: 600px;
+				min-height: 600px;
+				height: 600px;
+				object-fit: cover;
+			}
+
+	}
+*/
