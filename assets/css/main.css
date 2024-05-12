@@ -2387,23 +2387,25 @@ input, select, textarea {
 			}
 
 		table td {
-			padding: 0.75em 0.75em;
+			padding-left: 0.7em;
+			font-size: 0.8em;
 		}
 
 		table th {
-			color: #787878;
-			font-size: 0.9em;
-			font-weight: 400;
-			padding: 0 0.75em 0.75em 0.75em;
+			color: #2b2b2b;
+			font-size: 0.85em;
+			font-weight: 475;
+			padding-left: 0.7em;
 			text-align: left;
 		}
 
 		table thead {
-			border-bottom: solid 2px #efefef;
+			border-bottom: solid 2px #cacaca;
+			border-top: solid 2px #cacaca
 		}
 
 		table tfoot {
-			border-top: solid 2px #efefef;
+			border-top: solid 2px #cacaca;
 		}
 
 		table.alt {
