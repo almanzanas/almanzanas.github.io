@@ -428,6 +428,15 @@ input, select, textarea {
 			width: 100%;
 		}
 
+		.row > .iframe {
+			width: 100%;
+		}
+
+		.row > article.iframe iframe{
+			width: 100%;
+			height: 600PX;
+		}
+
 		.row > .off-12 {
 			margin-left: 100%;
 		}
@@ -669,6 +678,15 @@ input, select, textarea {
 
 				.row > .col-12-xlarge {
 					width: 100%;
+				}
+
+				.row > .iframe {
+					width: 100%;
+				}
+
+				.row > article.iframe iframe{
+					width: 100%;
+					height: 550px;
 				}
 
 				.row > .off-12-xlarge {
@@ -916,6 +934,15 @@ input, select, textarea {
 					width: 100%;
 				}
 
+				.row > .iframe {
+					width: 100%;
+				}
+
+				.row > article.iframe iframe{
+					width: 100%;
+					height: 450px;
+				}
+
 				.row > .off-12-large {
 					margin-left: 100%;
 				}
@@ -1159,6 +1186,15 @@ input, select, textarea {
 
 				.row > .col-12-medium {
 					width: 100%;
+				}
+
+				.row > .iframe {
+					width: 100%;
+				}
+
+				.row > article.iframe iframe{
+					width: 100%;
+					height: 400px;
 				}
 
 				.row > .off-12-medium {
@@ -1406,6 +1442,15 @@ input, select, textarea {
 					width: 100%;
 				}
 
+				.row > .iframe {
+					width: 100%;
+				}
+
+				.row > article.iframe iframe{
+					width: 100%;
+					height: 300px;
+				}
+
 				.row > .off-12-small {
 					margin-left: 100%;
 				}
@@ -1651,6 +1696,15 @@ input, select, textarea {
 					width: 100%;
 				}
 
+				.row > .iframe {
+					width: 100%;
+				}
+
+				.row > article.iframe iframe{
+					width: 100%;
+					height: 200px;
+				}
+
 				.row > .off-12-xsmall {
 					margin-left: 100%;
 				}
@@ -1763,6 +1817,24 @@ input, select, textarea {
 
 	section.special, article.special {
 		text-align: center;
+	}
+
+	article.plotly {
+		position: relative;
+		width: 100%;
+		height: 0;
+		display: inline-block;
+		margin: 0 0 2em 0;
+	}
+
+	article.plotly iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+		object-fit: cover;
 	}
 
 	header p {
