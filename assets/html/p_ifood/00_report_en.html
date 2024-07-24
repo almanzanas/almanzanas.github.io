@@ -1218,7 +1218,7 @@ margin-left: 0 !important;
 
       <!-- html_clean authors -->
          <h4 class="author"><em>Alvaro Manzanas</em></h4>
-            <h4 class="date"><em>23 julio, 2024</em></h4>
+            <h4 class="date"><em>24 julio, 2024</em></h4>
       
       
    
@@ -1278,9 +1278,9 @@ those whose type is ‘object’ in order to see their unique values.</p>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>      )</span></code></pre></div>
 <pre><code>
 &#39;Dt_Customer&#39; Column sample:
-1908    2013-03-19
-2219    2012-10-14
-2045    2013-11-30
+637     2013-01-08
+217     2013-11-15
+1090    2014-05-29
 Name: Dt_Customer, dtype: object
     </code></pre>
 <p>Once we know what these columns are made up of, the type of column is
@@ -1481,11 +1481,11 @@ Year_Old outliers:
 +-----+-------+------------+----------+--------------------+------------------+-----------------+
 |     |    ID |   Year_Old |   Income | CustomerFor        | Marital_Status   |   MntSpentTotal |
 +=====+=======+============+==========+====================+==================+=================+
-| 192 |  7829 |        124 |    36640 | 3953 days 00:00:00 | Divorced         |              65 |
+| 192 |  7829 |        124 |    36640 | 3954 days 00:00:00 | Divorced         |              65 |
 +-----+-------+------------+----------+--------------------+------------------+-----------------+
-| 239 | 11004 |        131 |    60182 | 3720 days 00:00:00 | Single           |              22 |
+| 239 | 11004 |        131 |    60182 | 3721 days 00:00:00 | Single           |              22 |
 +-----+-------+------------+----------+--------------------+------------------+-----------------+
-| 339 |  1150 |        125 |    83532 | 3953 days 00:00:00 | Together         |            1853 |
+| 339 |  1150 |        125 |    83532 | 3954 days 00:00:00 | Together         |            1853 |
 +-----+-------+------------+----------+--------------------+------------------+-----------------+</code></pre>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python foldable"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Extracting Outliers from the Dataset</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>data.drop(Year_Old_outliers.index, inplace<span class="op">=</span><span class="va">True</span>)</span>
@@ -1516,21 +1516,21 @@ Year_Old outliers:
 +------+-------+------------+----------+--------------------+------------------+-----------------+
 |      |    ID |   Year_Old |   Income | CustomerFor        | Marital_Status   |   MntSpentTotal |
 +======+=======+============+==========+====================+==================+=================+
-| 2233 |  9432 |         47 |   666666 | 4069 days 00:00:00 | Together         |              62 |
+| 2233 |  9432 |         47 |   666666 | 4070 days 00:00:00 | Together         |              62 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-|  617 |  1503 |         48 |   162397 | 4068 days 00:00:00 | Together         |             107 |
+|  617 |  1503 |         48 |   162397 | 4069 days 00:00:00 | Together         |             107 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-|  687 |  1501 |         42 |   160803 | 4371 days 00:00:00 | Married          |            1717 |
+|  687 |  1501 |         42 |   160803 | 4372 days 00:00:00 | Married          |            1717 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-| 1300 |  5336 |         53 |   157733 | 4067 days 00:00:00 | Together         |              59 |
+| 1300 |  5336 |         53 |   157733 | 4068 days 00:00:00 | Together         |              59 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-|  164 |  8475 |         51 |   157243 | 3797 days 00:00:00 | Married          |            1608 |
+|  164 |  8475 |         51 |   157243 | 3798 days 00:00:00 | Married          |            1608 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-| 1653 |  4931 |         47 |   157146 | 4103 days 00:00:00 | Together         |            1730 |
+| 1653 |  4931 |         47 |   157146 | 4104 days 00:00:00 | Together         |            1730 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-| 2132 | 11181 |         75 |   156924 | 3981 days 00:00:00 | Married          |               8 |
+| 2132 | 11181 |         75 |   156924 | 3982 days 00:00:00 | Married          |               8 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+
-|  655 |  5555 |         49 |   153924 | 3819 days 00:00:00 | Divorced         |               6 |
+|  655 |  5555 |         49 |   153924 | 3820 days 00:00:00 | Divorced         |               6 |
 +------+-------+------------+----------+--------------------+------------------+-----------------+</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python foldable"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a></span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
@@ -1562,7 +1562,8 @@ they are ever needed.</p>
 <span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a></span>
 <span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -2162,7 +2163,7 @@ YOLO
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <div id="creating-categorical-columns" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Creating categorical
@@ -2205,17 +2206,17 @@ Categories will be made for ‘Year_Old’, ‘Income’, ‘MntSpentTotal’ an
 <span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a>temp <span class="op">=</span> tabulate(temp, headers, tablefmt<span class="op">=</span><span class="st">&quot;grid&quot;</span>)</span>
 <span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a><span class="bu">print</span>(temp)</span></code></pre></div>
 <pre><code>+------+------------------+-----------+--------------+---------------+
-|      | MntTotal_cat     |   Age_cat | Income_cat   |   Recency_cat |
+|      | MntTotal_cat     | Age_cat   | Income_cat   |   Recency_cat |
 +======+==================+===========+==============+===============+
-| 1801 | [1685.0, 2105.0) |     45_54 | D5           |         75_99 |
+| 1208 | [2.0, 87.0)      | 65_74     | D3           |         50_74 |
 +------+------------------+-----------+--------------+---------------+
-|  759 | [87.0, 171.0)    |     65_74 | D3           |         75_99 |
+|  437 | [425.0, 845.0)   | 75_above  | D4           |          0_24 |
 +------+------------------+-----------+--------------+---------------+
-| 1894 | [425.0, 845.0)   |     45_54 | D5           |         75_99 |
+| 2109 | [1685.0, 2105.0) | 55_64     | D6           |         75_99 |
 +------+------------------+-----------+--------------+---------------+
-| 1461 | [425.0, 845.0)   |     65_74 | D4           |          0_24 |
+| 1463 | [2.0, 87.0)      | 45_54     | D1           |         25_49 |
 +------+------------------+-----------+--------------+---------------+
-| 2062 | [845.0, 1265.0)  |     35_44 | D5           |         50_74 |
+|  984 | [1265.0, 1685.0) | 65_74     | D5           |          0_24 |
 +------+------------------+-----------+--------------+---------------+</code></pre>
 <p>Finally, duplicate clients will be checked for their ‘ID’ and data
 types will be standardised to ‘Int64’ pandas.</p>
@@ -2310,7 +2311,8 @@ in the fourth campaign.</p>
 <span id="cb28-19"><a href="#cb28-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb28-20"><a href="#cb28-20" tabindex="-1"></a></span>
 <span id="cb28-21"><a href="#cb28-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -2535,7 +2537,7 @@ AcceptedCmp5
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The following table shows the frequencies of the age category
 ‘Age_cat’, showing that the majority of customers are aged 45 and over,
 with the category 45 to 55 having the highest number of customers,
@@ -2578,7 +2580,8 @@ with the category 45 to 55 having the highest number of customers,
 <span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a></span>
 <span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -2744,7 +2747,7 @@ frec_per_acc
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>To finish with the categorical variables, another one that might be
 of interest is the level of study, shown below as a stacked bar chart
 showing the percentage of clients with different studies. The bulk are
@@ -2814,7 +2817,8 @@ Kolgomorov-Smirnov test on all of them.</p>
 <span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a></span>
 <span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -3006,7 +3010,7 @@ ChildrenHome
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>To continue, it would be interesting to observe in the same table the
 descriptive statistics for each variable, for which several functions
 will be defined to obtain the range between the minimum and the maximum,
@@ -3131,7 +3135,8 @@ thanks to the values of skewness and kurtosis.</p>
 <span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a></span>
 <span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a>temp</span></code></pre></div>
-<div style="display:flex;justify-content:center;align-items:center;"><table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -3962,7 +3967,8 @@ have not accepted any (<code>_n</code>).</p>
 <span id="cb39-19"><a href="#cb39-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb39-20"><a href="#cb39-20" tabindex="-1"></a></span>
 <span id="cb39-21"><a href="#cb39-21" tabindex="-1"></a>temp</span></code></pre></div>
-<div style="display:flex;justify-content:center;align-items:center;"><table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -4298,7 +4304,8 @@ less dispersion in their data.</p>
 <span id="cb41-19"><a href="#cb41-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb41-20"><a href="#cb41-20" tabindex="-1"></a></span>
 <span id="cb41-21"><a href="#cb41-21" tabindex="-1"></a>temp</span></code></pre></div>
-<div style="display:flex;justify-content:center;align-items:center;"><table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -4690,7 +4697,8 @@ appropriate type of test to perform the between-group comparisons.</p>
 <span id="cb47-19"><a href="#cb47-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb47-20"><a href="#cb47-20" tabindex="-1"></a></span>
 <span id="cb47-21"><a href="#cb47-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -5086,7 +5094,7 @@ ChildrenHome
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div id="parametric-pairwise-comparison" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Parametric pairwise
 comparison</h3>
@@ -5559,7 +5567,8 @@ medium effect (rbis=0.298).</p>
 <span id="cb61-19"><a href="#cb61-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb61-20"><a href="#cb61-20" tabindex="-1"></a></span>
 <span id="cb61-21"><a href="#cb61-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -5634,7 +5643,7 @@ two-sided
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>In this last pairwise comparison, it can be seen that in the last
 campaign (sixth) the people who accepted the campaign are the ones who
 spend the most, results that are consistent with the previous
@@ -5651,8 +5660,8 @@ will perform all possible pairwise comparisons and we will obtain the
 strength of the effect of each comparison with Eta-square, with cut-off
 points at 0.04: minimum necessary, 0.25: moderate, 0.64: strong <span class="citation">(Ferguson 2009)</span>.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode python fold-show"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>data[<span class="st">&quot;cmp_accp&quot;</span>] <span class="op">=</span> np.where(data[<span class="st">&quot;AcceptedCmpTotal&quot;</span>] <span class="op">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
-<p>Comenzando por los grupos en los que no se ha visto que haya
-diferencias entre sus categorías, están ‘Recency’, ‘Recency_cat’ y
+<p>Starting with the groups where no differences between their
+categories have been found, there are ‘Recency’, ‘Recency_cat’ and
 ‘Marital_Status’.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode python fold-show"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a>result_kw1 <span class="op">=</span> pg.kruskal(data<span class="op">=</span>data, </span>
 <span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a>                       dv<span class="op">=</span><span class="st">&quot;MntSpentTotal&quot;</span>, </span>
@@ -5732,7 +5741,8 @@ have accepted, ranging from 0 to 4, on different variables.</p>
 <span id="cb68-19"><a href="#cb68-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb68-20"><a href="#cb68-20" tabindex="-1"></a></span>
 <span id="cb68-21"><a href="#cb68-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -6122,7 +6132,7 @@ eta-square
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>result_kw <span class="op">=</span> pg.kruskal(data<span class="op">=</span>data, </span>
 <span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>                       dv<span class="op">=</span><span class="st">&quot;NumWebPurchases&quot;</span>, </span>
 <span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>                       between<span class="op">=</span><span class="st">&quot;AcceptedCmpTotal&quot;</span>)</span>
@@ -6168,7 +6178,8 @@ eta-square
 <span id="cb72-19"><a href="#cb72-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb72-20"><a href="#cb72-20" tabindex="-1"></a></span>
 <span id="cb72-21"><a href="#cb72-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -6558,7 +6569,7 @@ eta-square
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a>result_kw <span class="op">=</span> pg.kruskal(data<span class="op">=</span>data, </span>
 <span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>                       dv<span class="op">=</span><span class="st">&quot;NumCatalogPurchases&quot;</span>, </span>
 <span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a>                       between<span class="op">=</span><span class="st">&quot;AcceptedCmpTotal&quot;</span>)</span>
@@ -6604,7 +6615,8 @@ eta-square
 <span id="cb76-19"><a href="#cb76-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb76-20"><a href="#cb76-20" tabindex="-1"></a></span>
 <span id="cb76-21"><a href="#cb76-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -6994,18 +7006,7 @@ eta-square
 </td>
 </tr>
 </tbody>
-</table>
-<p>Comparing in more detail the customers according to the number of
-campaigns accepted, it could be reiterated that among those who have
-accepted 1 to 4 campaigns the differences are either not significant, or
-if they are significant the strength of the effect is minimal. But the
-differences between those who accepted any campaign and those who did
-not take up any campaign are significant. The results are similar to the
-pairwise comparisons of the general group who accepted any campaign with
-those who did not, for more detail on all possible comparisons, the
-tables above may be helpful.</p>
-<p>And finally, comparing the number of campaigns accepted with the type
-of product on which they have spent the most.</p>
+</table></div>
 <div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>result_kw <span class="op">=</span> pg.kruskal(data<span class="op">=</span>data, </span>
 <span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>                       dv<span class="op">=</span><span class="st">&quot;MntSpentTotal&quot;</span>, </span>
 <span id="cb77-3"><a href="#cb77-3" tabindex="-1"></a>                       between<span class="op">=</span><span class="st">&quot;AcceptedCmpTotal&quot;</span>)</span>
@@ -7051,7 +7052,8 @@ of product on which they have spent the most.</p>
 <span id="cb80-19"><a href="#cb80-19" tabindex="-1"></a>                <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span>
 <span id="cb80-20"><a href="#cb80-20" tabindex="-1"></a></span>
 <span id="cb80-21"><a href="#cb80-21" tabindex="-1"></a>temp</span></code></pre></div>
-<table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
+<div style="display:flex;justify-content:center;align-items:center;">
+    <table class="table table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;font-weight: bold;color: rgba(255, 255, 255, 255) !important;background-color: rgba(35, 38, 41, 255) !important;">
@@ -7441,256 +7443,23 @@ eta-square
 </td>
 </tr>
 </tbody>
-</table>
-<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">&quot;MntWines&quot;</span>, <span class="st">&quot;MntFruits&quot;</span>, <span class="st">&quot;MntMeatProducts&quot;</span>, </span>
-<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a>        <span class="st">&quot;MntFishProducts&quot;</span>, <span class="st">&quot;MntSweetProducts&quot;</span>, <span class="st">&quot;MntGoldProds&quot;</span>]</span>
-<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a></span>
-<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> cols:</span>
-<span id="cb81-5"><a href="#cb81-5" tabindex="-1"></a>    result_kw <span class="op">=</span> pg.kruskal(data<span class="op">=</span>data, </span>
-<span id="cb81-6"><a href="#cb81-6" tabindex="-1"></a>                        dv<span class="op">=</span>col, </span>
-<span id="cb81-7"><a href="#cb81-7" tabindex="-1"></a>                        between<span class="op">=</span><span class="st">&quot;AcceptedCmpTotal&quot;</span>)</span>
-<span id="cb81-8"><a href="#cb81-8" tabindex="-1"></a></span>
-<span id="cb81-9"><a href="#cb81-9" tabindex="-1"></a>    result_pair <span class="op">=</span> pg.pairwise_gameshowell(data<span class="op">=</span>data, </span>
-<span id="cb81-10"><a href="#cb81-10" tabindex="-1"></a>                                        dv<span class="op">=</span><span class="st">&quot;NumCatalogPurchases&quot;</span>, </span>
-<span id="cb81-11"><a href="#cb81-11" tabindex="-1"></a>                                        between<span class="op">=</span><span class="st">&quot;AcceptedCmpTotal&quot;</span>,</span>
-<span id="cb81-12"><a href="#cb81-12" tabindex="-1"></a>                                        effsize<span class="op">=</span><span class="st">&quot;eta-square&quot;</span>)</span>
-<span id="cb81-13"><a href="#cb81-13" tabindex="-1"></a></span>
-<span id="cb81-14"><a href="#cb81-14" tabindex="-1"></a>    result_kw <span class="op">=</span> <span class="bu">round</span>(result_kw, <span class="dv">4</span>)</span>
-<span id="cb81-15"><a href="#cb81-15" tabindex="-1"></a>    result_pair <span class="op">=</span> <span class="bu">round</span>(result_pair, <span class="dv">4</span>)</span>
-<span id="cb81-16"><a href="#cb81-16" tabindex="-1"></a></span>
-<span id="cb81-17"><a href="#cb81-17" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Comparisons for &#39;AcceptedCmpTotal&#39; on </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">:&quot;</span>)</span>
-<span id="cb81-18"><a href="#cb81-18" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">H Kruskal Wallis:</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb81-19"><a href="#cb81-19" tabindex="-1"></a></span>
-<span id="cb81-20"><a href="#cb81-20" tabindex="-1"></a>    headers <span class="op">=</span> result_kw.columns</span>
-<span id="cb81-21"><a href="#cb81-21" tabindex="-1"></a>    result_kw <span class="op">=</span> tabulate(result_kw, headers, tablefmt<span class="op">=</span><span class="st">&quot;grid&quot;</span>)</span>
-<span id="cb81-22"><a href="#cb81-22" tabindex="-1"></a>    <span class="bu">print</span>(result_kw)</span>
-<span id="cb81-23"><a href="#cb81-23" tabindex="-1"></a></span>
-<span id="cb81-24"><a href="#cb81-24" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Games Howell Pair Comparisons:</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb81-25"><a href="#cb81-25" tabindex="-1"></a></span>
-<span id="cb81-26"><a href="#cb81-26" tabindex="-1"></a>    headers <span class="op">=</span> result_pair.columns</span>
-<span id="cb81-27"><a href="#cb81-27" tabindex="-1"></a>    result_pair <span class="op">=</span> tabulate(result_pair, headers, tablefmt<span class="op">=</span><span class="st">&quot;grid&quot;</span>)</span>
-<span id="cb81-28"><a href="#cb81-28" tabindex="-1"></a>    <span class="bu">print</span>(result_pair)</span></code></pre></div>
-<pre><code>
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntWines:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+---------+---------+
-|         | Source           |   ddof1 |       H |   p-unc |
-+=========+==================+=========+=========+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 389.468 |       0 |
-+---------+------------------+---------+---------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntFruits:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+---------+---------+
-|         | Source           |   ddof1 |       H |   p-unc |
-+=========+==================+=========+=========+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 62.9684 |       0 |
-+---------+------------------+---------+---------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntMeatProducts:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+---------+---------+
-|         | Source           |   ddof1 |       H |   p-unc |
-+=========+==================+=========+=========+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 200.496 |       0 |
-+---------+------------------+---------+---------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntFishProducts:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+---------+---------+
-|         | Source           |   ddof1 |       H |   p-unc |
-+=========+==================+=========+=========+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 50.0565 |       0 |
-+---------+------------------+---------+---------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntSweetProducts:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+-------+---------+
-|         | Source           |   ddof1 |     H |   p-unc |
-+=========+==================+=========+=======+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 68.83 |       0 |
-+---------+------------------+---------+-------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-
-Comparisons for &#39;AcceptedCmpTotal&#39; on MntGoldProds:
-
-H Kruskal Wallis:
-
-+---------+------------------+---------+---------+---------+
-|         | Source           |   ddof1 |       H |   p-unc |
-+=========+==================+=========+=========+=========+
-| Kruskal | AcceptedCmpTotal |       4 | 124.573 |       0 |
-+---------+------------------+---------+---------+---------+
-
-Games Howell Pair Comparisons:
-
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|    |   A |   B |   mean(A) |   mean(B) |    diff |     se |        T |       df |   pval |   eta-square |
-+====+=====+=====+===========+===========+=========+========+==========+==========+========+==============+
-|  0 |   0 |   1 |    2.2047 |    3.8754 | -1.6707 | 0.1684 |  -9.9183 | 443.964  | 0      |       0.0837 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  1 |   0 |   2 |    2.2047 |    5.4125 | -3.2078 | 0.2882 | -11.1306 |  87.9773 | 0      |       0.2538 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  2 |   0 |   3 |    2.2047 |    6.4318 | -4.2271 | 0.3671 | -11.5134 |  45.9193 | 0      |       0.3709 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  3 |   0 |   4 |    2.2047 |    6.9091 | -4.7044 | 0.8168 |  -5.7595 |  10.1319 | 0.0013 |       0.4207 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  4 |   1 |   2 |    3.8754 |    5.4125 | -1.5371 | 0.3205 |  -4.796  | 131.549  | 0      |       0.0736 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  5 |   1 |   3 |    3.8754 |    6.4318 | -2.5564 | 0.393  |  -6.5047 |  60.0186 | 0      |       0.1793 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  6 |   1 |   4 |    3.8754 |    6.9091 | -3.0337 | 0.8288 |  -3.6606 |  10.7374 | 0.0257 |       0.2301 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  7 |   2 |   3 |    5.4125 |    6.4318 | -1.0193 | 0.4573 |  -2.2289 |  92.2599 | 0.1784 |       0.0408 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  8 |   2 |   4 |    5.4125 |    6.9091 | -1.4966 | 0.8611 |  -1.738  |  12.4934 | 0.4474 |       0.0804 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+
-|  9 |   3 |   4 |    6.4318 |    6.9091 | -0.4773 | 0.8906 |  -0.5359 |  14.1955 | 0.982  |       0.0094 |
-+----+-----+-----+-----------+-----------+---------+--------+----------+----------+--------+--------------+</code></pre>
+</table></div>
+<p>Comparing in more detail the customers according to the number of
+campaigns accepted, it could be reiterated that among those who have
+accepted 1 to 4 campaigns the differences are either not significant, or
+if they are significant the strength of the effect is minimal. But the
+differences between those who accepted any campaign and those who did
+not take up any campaign are significant. The results are similar to the
+pairwise comparisons of the general group who accepted any campaign with
+those who did not, for more detail on all possible comparisons, the
+tables above may be helpful.</p>
 </div>
 </div>
 </div>
 <div id="conclusions" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Conclusions</h1>
+<div id="basics-1" class="section level4 unnumbered">
+<h4 class="unnumbered">Basics:</h4>
 <p>Starting with the relationships, it is generally observed that those
 with higher incomes spend the most. It can also be seen that customers
 spend the most on wine and meat products, in general buying through the
@@ -7706,6 +7475,7 @@ wine, there could be more loyal customers from previous campaigns who
 would be encouraged to repeat. It would be possible to attract the
 attention of people who do not usually accept campaigns if the campaign
 is oriented towards children or related products.</p>
+</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
