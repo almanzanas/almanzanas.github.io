@@ -1,0 +1,27 @@
+---
+title: "Alvaro Manzanas' Github projects"
+author: "Alvaro Manzanas"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: united
+    toc: false
+    toc_float: false
+    code_folding: hide
+    self_contained: true
+  github_document:
+    toc: false
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# GitHub Documents
+
+This is my personal Portfolio, where you can find my projects as well as some exercises I have done in order to keep learning and improving.
+You can access it by clicking on this link:
+<a href="https://almanzanas.github.io">almanzanas.github.io</a>
+
+<a href="portfolio/almanzanas.html">Portfolio</a>
