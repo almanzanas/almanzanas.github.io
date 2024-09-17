@@ -1,0 +1,42 @@
+project:
+  type: book
+
+book:
+  title: "Annotations"
+  author: "Alvaro Manzanas"
+  date: "17/9/2024"
+  chapters:
+    - index.qmd
+    - docs/11_transformations_tidyverse.qmd
+  navbar:
+    background: secondary
+    foreground: light
+    right:
+    - href: ../index.qmd
+      text: Home
+    - href: ../portfolio.qmd
+      text: Portfolio
+    - href: ../cv.qmd
+      text: CV
+    - href: personal_notes/_book/index.html
+      text: Annotations
+    tools:
+    - icon: github
+      href: http://github.com/almanzanas
+    - icon: mail
+      href: #
+    - icon: linkedin
+      href:
+    pinned: true
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: false
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

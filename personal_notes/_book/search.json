@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Annotations",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "docs/11_transformations_tidyverse.html",
+    "href": "docs/11_transformations_tidyverse.html",
+    "title": "1  Transformations with Tidyverse",
+    "section": "",
+    "text": "2 Slicing and filtering\nThe basic form of dplyr for slicing it to use a . to consider everything from the object that precedes it. The returned object will be a tibble.\ndf %&gt;% .[1:4, c(2:5)]\n\n# A tibble: 4 × 4\n  workclass        fnlwgt education education_num\n  &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;\n1 State-gov         77516 Bachelors            13\n2 Self-emp-not-inc  83311 Bachelors            13\n3 Private          215646 HS-grad               9\n4 Private          234721 11th                  7\ndf %&gt;% slice_min(age, prop = 0.15)\n\n# A tibble: 5,570 × 15\n     age workclass fnlwgt education education_num marital_status occupation     \n   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          \n 1    17 ?         304873 10th                  6 Never-married  ?              \n 2    17 Private    65368 11th                  7 Never-married  Sales          \n 3    17 Private   245918 11th                  7 Never-married  Other-service  \n 4    17 Private   191260 9th                   5 Never-married  Other-service  \n 5    17 Private   270942 5th-6th               3 Never-married  Other-service  \n 6    17 Private    89821 11th                  7 Never-married  Other-service  \n 7    17 Private   175024 11th                  7 Never-married  Handlers-clean…\n 8    17 ?         202521 11th                  7 Never-married  ?              \n 9    17 ?         258872 11th                  7 Never-married  ?              \n10    17 Private   211870 9th                   5 Never-married  Other-service  \n# ℹ 5,560 more rows\n# ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,\n#   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,\n#   native_country &lt;chr&gt;, target &lt;chr&gt;\ndf %&gt;% slice_sample(n=10, replace = FALSE) %&gt;% .[,1:4]\n\n# A tibble: 10 × 4\n     age workclass        fnlwgt education   \n   &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;       \n 1    44 Private          373050 HS-grad     \n 2    61 Private          107438 7th-8th     \n 3    59 Private          380357 Bachelors   \n 4    34 Local-gov         90934 Assoc-voc   \n 5    26 Private           43408 Bachelors   \n 6    53 Private          121618 7th-8th     \n 7    26 Private          172063 Some-college\n 8    17 Private          167658 12th        \n 9    22 Private          189203 Bachelors   \n10    54 Self-emp-not-inc 154785 Bachelors",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Transformations with Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "docs/11_transformations_tidyverse.html#filtering",
+    "href": "docs/11_transformations_tidyverse.html#filtering",
+    "title": "1  Transformations with Tidyverse",
+    "section": "2.1 Filtering",
+    "text": "2.1 Filtering\n\nfilter(): returns rows given a condition.\nselect(): to choose variable to show in the given order.\n\n\ndf %&gt;%\n  filter( age &lt; 30 ) %&gt;%\n  select( marital_status, age, education ) %&gt;%\n  slice_sample( n = 10)\n\n# A tibble: 10 × 3\n   marital_status          age education   \n   &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;       \n 1 Married-spouse-absent    22 12th        \n 2 Never-married            22 Assoc-acdm  \n 3 Never-married            26 HS-grad     \n 4 Never-married            25 Bachelors   \n 5 Married-civ-spouse       23 Assoc-acdm  \n 6 Never-married            21 Assoc-acdm  \n 7 Married-civ-spouse       23 1st-4th     \n 8 Never-married            26 Bachelors   \n 9 Married-civ-spouse       25 Some-college\n10 Never-married            29 HS-grad     \n\n\n\ndistinct(): to extract unique values.\n\n\ndf %&gt;% distinct(sex) \n\n# A tibble: 2 × 1\n  sex   \n  &lt;chr&gt; \n1 Male  \n2 Female",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Transformations with Tidyverse</span>"
+    ]
+  }
+]

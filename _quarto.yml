@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Alvaro Manzanas"
+  navbar:
+    background: secondary
+    foreground: light
+    right:
+    - href: portfolio.qmd
+      text: Portfolio
+    - href: cv.qmd
+      text: CV
+    - href: personal_notes/_book/index.html
+      text: Annotations
+    tools:
+    - icon: github
+      href: http://github.com/almanzanas
+      spacing: 20px
+    - icon: bi bi-envelope
+      href: "mailto:almanzanas@gmx.com"
+      spacing: 20px
+    - icon: linkedin
+      href: https://es.linkedin.com/in/alvaromanzanas 
+      spacing: 20px
+    pinned: true
+    spacing: 20px
+
+format:
+  html:
+    tabset: true
+    theme:
+      light: [cosmo, style/style.scss]
+      dark: [cosmo, style/dark.scss]
+    toc: true
+
+    
