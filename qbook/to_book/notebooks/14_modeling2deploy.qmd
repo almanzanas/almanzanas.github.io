@@ -1,0 +1,554 @@
+---
+title: "Modeling to Deploy"
+---
+
+# Building a Model
+
+#### Dataset {.unnumbered}
+
+Hopkins, M., Reeber, E., Forman, G., & Suermondt, J. (1999). Spambase [Dataset]. UCI Machine Learning Repository. <https://doi.org/10.24432/C53G6X> .
+
+#### Libraries {.unnumbered}
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(patchwork)
+library(skimr)
+library(randomForest)
+library(caret)
+library(ROCR)
+```
+
+## Machine Learning concepts
+
+Modeling data involves finding patterns that can help us explain a response (most probable outcome). One of the most important things is that the input data is clean and representative of the reality we are trying to model.
+
+-   **Classification models**: Used for categorical output. We transform the input data into patterns that will be separated into groups. Thus, each observation will be classified into a group, according to its patterns.
+    -   KNN, decision tree, random forest, logistic regression, and support vector machine.
+-   **Regression models**: Used for numerical output. It will find patterns in number and return a continuous output. As summary, it will captures the relationship between the input variables and calculate an estimate of the output.
+    -   Linear regression, polynomial regression, and regression tree.
+
+Algorithm types:
+
+-   **Supervised**: algorithm which receives data containing variables that can explain an outcome, the content and the answers to learn. Once it learn the patterns, with new data it will generalize the solution. Can be used classification and regression models.
+-   **Unsupervised**: algorithm which do not receive labeled variable, instead read the dataset looking for patterns that can help explain the data. Clustering models use this algorithm.
+-   **Reinforcement**: algorithm which learn by trial and error. It will perform an actions and check how its going. Positive is rewarded, negative is penalized. It tries to reduce the penalties to the minimum possible. Useful for video games.
+
+## Understanding the project
+
+>When starting a project, we need a purpose which is the goal we want to reach at the end.
+
+### The dataset
+
+```{r message=FALSE, warning=FALSE}
+url.data <- "https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data" 
+
+url.names <- "https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.names"
+
+names <- read_table(url.names, col_names = FALSE) %>% suppressWarnings()
+names <- names %>% filter(X2 == "continuous.") %>% select(X1)
+names <- names %>% mutate(X1 = gsub(pattern = "\\:", replacement = "", x = X1) )
+
+df <- read_csv(url.data, 
+               col_names = c(names[["X1"]], "spam_cat"), 
+               trim_ws = TRUE) %>% suppressWarnings()
+
+glimpse(df)
+```
+
+There are 58 column, the last column 'spam_cat' is the target, which is a label classification of spam (1) or not spam (0).
+
+```{r}
+dim(df)
+```
+
+Each variable represents specific words associated with spam and their percentage present in the message.
+
+### The project
+
+Objective: Create a spam detector using AI models. Create a tool that can get any text as input and estimates the probability of that message being classified as spam or not.
+
+
+Case: Company which send a lot of commercial email wants to reduce their emails to be spam. The dataset provided by the company contain some words with percentages and if were classified as spam or not.
+
+### The algorithm
+
+This is a classification problem, then It has to be used a model which classifies. Random Forest will be it.
+
+## Preparing data for modeling
+
+We know our objective, then we have to wrangle the data to get there.
+
+-   `tidyverse`: data wrangling and visualization.
+-   `skimr`: create descriptive statistics summary.
+-   `patchwork`: to put graphics side by side.
+-   `randomForest`: to create the model.
+-   `caret`: to create the confusion matrix.
+-   `ROCR`: to plot ROC curve.
+
+```{r}
+dim(df)   # Dataset previously loaded
+```
+```{r}
+glimpse(df)
+```
+
+Variables representing frequencies will maintain the double class, capital* variable will be set to Integer and spam_cat to factor.
+
+```{r}
+vars.int <- c("capital_run_length_average", 
+              "capital_run_length_longest", 
+              "capital_run_length_total")
+df <- df %>%
+  mutate_at("spam_cat", as.factor) %>%
+  mutate_at(vars.int, as.integer)
+
+anyNA(df)
+```
+
+There are no missing values NA, then we can proceed with descriptive statistics using skim().
+
+```{r}
+# Disable scientific notion
+options( scipen = 999, digits = 4 )
+
+skim(df)
+```
+
+-   Most of the p50 and p75 values are close to 0, meanwhile the mean is higher. Suggests a high right tail on the data.
+-   There are 1813 spam emails (39.4%)
+-   High Standard deviation suggests outliers and spread data.
+
+## Exploring the data with visuals
+
+
+```{r}
+for (var in colnames(select_if(df[,1:47], is.numeric) ) ) {
+    hist( unlist( df[,var]), col = "blue",
+          main = paste("Histogram of", var),
+          xlab = var)
+}
+```
+
+To use ggplot2 we need that dataset in tidy format, to do that we must convert this wide format to long format with the columns *spam* for 'spam_cat', *word* for every column name, and *freq* for the values.
+
+```{r}
+df.long <- df %>%
+    pivot_longer( cols = 1:57, names_to = "words", values_to = "pct")
+head(df.long, 9)
+```
+
+Now its ready for plotting with ggplot2, then we can create boxplots. Boxplot are useful to see the outliers that can distort our classifier (Random Forest), also which words appear more frequently which impact the classification. We can filter only the 'word_' from words column and `spam==1`.
+
+```{r fig.height=14, fig.width=7}
+df.long %>%
+    filter( str_detect(words, "word_") & spam_cat == 1) %>%
+    ggplot() +
+        geom_boxplot( aes( y = reorder(words, pct), x = pct, fill = spam_cat ) ) +
+        labs( title = "Percentages of words and their association with spam emails",
+              subtitle = "The frequency of appearance of some words in emails is more associated with spam",
+              x = "Percentage",
+              y = "Word" ) +
+        theme_classic() +
+        theme( plot.subtitle = element_text( color = "darkgray", size = 10 ),
+               legend.position = "none")
+```
+
+After the 24th record all the boxplots have their medians too close to zero, so they do not impact the spam classification too much. Then we know that the top 23 words can have more impact so we have to compare spam and not spam in this words to see how they impact the entire data.
+
+```{r}
+temp <- df.long %>% 
+    filter( str_detect(words, "word_") & spam_cat == 1) %>%
+    group_by(words) %>% 
+    summarise( pct_sum = sum(pct) ) %>%
+    arrange( desc(pct_sum) )
+
+top.words <- c(temp$words[1:23], "spam_cat")
+remove(temp)
+```
+
+In this next code we generate a boxplot comparing spam and not spam only on the selected top words. It can be seen as a focus to see more easily the differences.
+
+```{r}
+df.top <- df %>%
+    select( all_of(top.words) ) %>%
+    mutate( top_words_pct = rowSums( across( where(is.numeric) ) ) )
+
+g1 <- ggplot(df.top) + 
+    geom_boxplot( aes( y = factor(spam_cat), x = top_words_pct),
+                  fill = c("turquoise", "coral") ) +
+    labs( title = "How the presence of words associated with spam emails 
+          impacts the classification (TOP23)",
+          subtitle = "The spam emails(1) have a ghigher percentage of those words.") +
+    theme_classic()
+```
+
+In the same way with this second boxplot we compare spam and not spam but with all the words.
+
+```{r}
+df.2 <- df %>%
+    mutate(word_pct = rowSums( across( where(is.numeric) ) ) )
+
+g2 <- ggplot(df.2) +
+    geom_boxplot( aes( y = factor(spam_cat), x = word_pct ),
+                  fill = c("turquoise", "coral") ) +
+    labs( title = "How spam associated words impacts the classification",
+          subtitle = "The spam emails(1) have a ghigher percentage of those words.") +
+    theme_classic()
+```
+
+```{r fig.width=10}
+# Patchwork library, putting the objects into a parenthesis with a pipe
+
+(g1 | g2)
+```
+
+It can be seen a large median of those words dissociated with spam emails. To be sure that difference is statistically significant we can perform Kolmogorov-Smirnov test which compare distributions, or U-Mann Whitney which compare medians.
+
+```{r}
+pos.spam <- df.top[df.top["spam_cat"] == 1,][["top_words_pct"]]
+neg.spam <- df.top[df.top["spam_cat"] == 0,][["top_words_pct"]]
+
+ks.test(pos.spam, neg.spam)
+wilx <- wilcox.test(pos.spam, neg.spam)
+wilx
+# Size effect formula by Wendt
+rbis <- sum(-1, (2 * wilx$statistic) / (length(pos.spam) * length(neg.spam)) )
+cat("U Mann Whitney effect size r = ", rbis)
+
+```
+
+Both test show p < 0.05 thus both groups have different distribution and median according to KS-test and U Mann Whitney test respectively. Also, the size effect Biserial-Rank correlation of U Mann-Whitney is big meaning there are a significance difference between the groups. The spam group values tend to be considerably bigger than no-spam group. Then, the variable spam have a high impact in the difference of the groups.
+
+Since we know the words impact now we can test the characters in a similar way:
+
+```{r}
+df.long %>%
+    filter( str_detect(words, "char_") & spam_cat == 1) %>%
+    ggplot() +
+        geom_boxplot( aes( y = reorder(words, pct), x = pct, fill = spam_cat ) ) +
+        labs( title = "Percentages of special characters and their association with spam emails",
+              subtitle = "The frequency of appearance of some characters in emails is more associated with spam",
+              x = "Percentage",
+              y = "Character" ) +
+        theme_classic() +
+        theme( plot.subtitle = element_text( color = "darkgray", size = 10 ),
+               legend.position = "none")
+```
+
+```{r}
+df.char <- df %>%
+    select_if(str_detect(colnames(df), pattern = "char_|^spam_cat")) %>%
+    mutate( char_pct = rowSums( across( where(is.numeric) ) ) )
+
+g3 <- ggplot(df.char) + 
+    geom_boxplot( aes( y = factor(spam_cat), x = char_pct),
+                  fill = c("turquoise", "coral") ) +
+    labs( title = "How the presence of characters associated with spam emails 
+          impacts the classification",
+          subtitle = "The spam emails(1) have a ghigher percentage of those characters.") +
+    theme_classic()
+
+g3
+```
+
+```{r}
+df.char.zero <- df.char %>% filter(spam_cat == 0)
+df.char.one <- df.char %>% filter(spam_cat == 1)
+
+for (var in colnames(df.char.zero[,1:6])) {
+    wilx <- wilcox.test(df.char.zero[[var]], df.char.one[[var]])
+    rbis <- abs(sum(-1, (2 * wilx$statistic) / (length(pos.spam) * length(neg.spam)) ))
+    cat("\nMann-Whitney U between spam and not spam on:", var, 
+        "\np-value:", sprintf("%6.4f", wilx$p.value),
+        "\nr:", rbis)
+}
+```
+
+```{r fig.height=6, fig.width=8}
+g4 <- df.char.zero %>% 
+    pivot_longer(cols = 1:6, names_to = "chars", values_to = "pct") %>%
+    ggplot() +
+    geom_boxplot( aes( y = chars, x = pct) ) +
+    labs( y = "Characters in not spam emails",
+          x = "") +
+    theme_classic()
+
+g5 <- df.char.one %>% 
+    pivot_longer(cols = 1:6, names_to = "chars", values_to = "pct") %>%
+    ggplot() +
+    geom_boxplot( aes( y = chars, x = pct) ) +
+    labs( x = "Frequencies",
+          y = "Characters in spam emails") +
+    theme_classic()
+
+(g4 / g5)
+```
+
+
+At this point we know that the number of symbols, and words are statistically different for each group in our classification.
+
+## Selecting the best variables
+
+When we checked the variables with boxplots and test comparisons we show how them impact the classifications the most. We should use those variables that have the highest difference between both groups so that it's easier for the algorithm to find a clearer separations between the two groups. The conclusion we show is that 23 words maximize the difference as well as uppercase and the presence of too many symbols.
+
+We are prepare to create a dataset for modeling. Taking the original dataframe, binding top_words_pct, the target variable, the character and uppercase variables:
+
+```{r}
+df.model <- df %>%
+    bind_cols( top_words_pct = df.top$top_words_pct ) %>%
+    select( spam_cat, top_words_pct, 
+            `char_freq_!`, `char_freq_(`, `char_freq_$`,
+            capital_run_length_total, capital_run_length_longest ) %>%
+    mutate(spam_cat = ifelse(spam_cat == 1, "is_spam", "no_spam")) %>%
+    mutate_at(vars(spam_cat), as.factor)
+
+
+colnames(df.model)[3:5] <- c("char_freq_exclam", "char_freq_paren", "char_freq_dollar")
+slice_sample(df.model, n = 9)
+```
+
+## Modeling
+
+### Training
+
+In the last code we just replace 1 with 'is_spam' and 0 with 'no_spam'. This is necessary for random forest in this case to classify.
+
+```r
+# Alternative code to replace values:
+df.model <- df.model %>%
+    mutate( spam_cat = recode(spam_cat, '1'="is_spam", '0'="no_spam") )
+```
+
+-   train: subset used to present the model with the patterns and the labels associated with it so that it can study how to classify each observation according to the patterns that occur.
+-   test: subset where new data is presented to the trained model so that we can measure how accurate it is or how much it has learned.
+
+The dataset have aprox 60-40 as not-spam and spam respectively. In this case, we won't apply any category balancing technique, this imbalance will not affect the result.
+
+**In R there is no function for splitting the dataset into train and test**
+
+We are going to use 80% for training and 20% for testing.
+
+```{r}
+n.rows <- nrow(df.model)
+idx <- sample(1:n.rows, size = 0.8 * n.rows)
+
+train.80 <- df.model[idx,]
+test.20 <- df.model[-idx,]
+```
+
+Now we can check if the proportions are similar to the original dataset:
+
+```{r}
+writeLines("Original set:")
+prop.table( table(df$spam_cat) )
+writeLines("==================")
+writeLines("Train set:")
+prop.table( table(train.80$spam_cat) )
+writeLines("==================")
+writeLines("Test set:")
+prop.table( table(test.20$spam_cat) )
+```
+
+-   `randomForest()` It must be passed the target variable with `~ .` meaning the target will be explained by the rest of the data represented with '`.`'
+    -   `data=` the data set to use, will be the training set.
+    -   `importance=` if TRUE it will calculate the importance of the variables.
+    -   `ntree=` the number of decision trees to create with this model.
+    
+```{r}
+model.rf <- randomForest( spam_cat ~ ., data = train.80,
+                          importance = TRUE,
+                          ntree = 250)
+```
+```{r}
+plot(model.rf)
+```
+
+This plot shows the performance of the model. After the 50th tree, the error stabilizes.
+
+-   `varImpPlot()`: to plot the feature's importance or which variables are more importance to the model.
+
+```{r fig.width=8}
+varImpPlot(model.rf)
+```
+
+This plot shows the importance of each variable.
+
+-   Mean Decrease Accuracy: it calculates how much the model's accuracy decreases when the values of a particular feature are randomly shuffled. A higher value indicates that a feature is more important for the model's accuracy. Then the model relies heavily on that features to make accurate predictions.
+-   Mean Decrease Gini: A higher value indicates that a feature is more important for the model's ability to separate the classes. Features with high MeanDecreaseGini values are those that are useful for creating decision boundaries in the model.
+
+For the library `randomForest` the default for classification models is the Gini index.
+
+### Testing and evaluating the model
+
+The most used metrics to evaluate a classification model are *accuracy, confusion matrix, and ROC curve*. 
+-   `predict()`: to generate a prediction given as arguments the model and the test set. The object assigned can be used to extract information.
+
+-   `confusionMatrix()`: given a prediction and the target column from the test set shows the information of that prediction.
+
+```{r}
+# Prediction:
+model.preds <- predict(model.rf, test.20)
+
+confusionMatrix(model.preds, test.20$spam_cat, positive = "no_spam")
+```
+
+The confusion matrix show how were the prediction. For 'is_spam' predicted value are 315 'is_spam' as reference, then this 315 are True Positive. The next value is for the predicted 'is_spam' and 'no_spam' as reference with 38 matches, corresponding False Positive known as Type 1 Error. The next two values are False Negative (Type 2 Error) and True Negative with 52 and 516 matches respectively.
+
+The accuracy is 0.9 aprox, then out of the 100 predictions, there will be around 10 errors with a confidence interval about 12 to 8 errors.
+
+-   **Accuracy**: How many of the total number of classifications the model predicted correctly. Is an overall sense of the model's performance.
+-   **Sensitivity** and **Specificity**: provide insights into the model's performance on the positive and negative classes, respectively. In many cases, depending on the problem, one metric or the other will be more important. (e.g. Medicine, the true positive rate might be more critical then we'll look sensitivity.)
+-   **Kappa**: by accounting for chance agreement helps us to understand the model's performance. A high kappa indicates a strong agreement between the predicted and actual labels.
+-   **Balanced Accuracy**: useful when the labels are unbalanced. It provides a balanced measure of the model's performance.
+
+The relatively high accuracy (0.902) and a strong kappa value (0.795), it suggests that the model is performing well overall. The sensitivity (0.858) and specificity (0.931) values indicate that the model detect both positive and negative instances quite well.
+
+Now it's time to look at ROC curve to check the performance based on the rate of true positive and false positives (Sensitivity and Specificity).
+
+-   `prediction()` given the data frame with probability predictions with the positive class ('no_spam' according to confusionMatrix) and the real labels which is the test set selecting the target.
+-   `performance()` given the object with `prediction()` and the labels for the axes which are 'tpr' and 'fpr' for true positive rate and false positive rate.
+-   `abline()` for the visualization will draw a diagonal that separates the graphic 50/50
+
+```{r}
+model.df.preds <- data.frame( predict(model.rf, test.20, type='prob') )
+
+model.roc <- prediction(model.df.preds$no_spam, test.20$spam_cat)
+
+roc <- performance(model.roc, 'tpr', 'fpr')
+auc <- performance(model.roc, "auc")
+plot(roc, colorize = T, lwd = 2,
+     main = "ROC curve. 'no_spam' as positive class.",
+     sub = paste( "AUC =", auc@y.values[[1]]) )
+abline(0.0, 1.0)
+```
+
+At the bottom we can see the Area Under the Receiver Operating Characteristic Curve (AUC-ROC). If `AUC=1` represents a perfect classifier meanwhile `AUC=0.5` is a random classifier. In this case is a pretty good classier, this value indicates the performance of the classifier.
+
+### Predicting
+
+After evaluating, it's time to test the model. 
+
+The input to predict must to be in the very same format as the data frame used in the Random Forest. Then, if we did any transformations this have to be repeated before we can input the new data.
+
+To do that, we can create a custom function with the steps of preparation and modeling that we took until create 'df.model'. To that custom function we pass whatever we want to predict depending the objective (spam in this case, then we pass a mail) and the function will perform every step to model the data.
+
+The next function called `prepare_input()` is from this book's code, which takes a string of text and the spam_words vector as input. Then, it reads the text and it will count the selected columns we modeled before, such as !, $, (), uppercase letters, the longest sequence of uppercase, and words in the spam list. Finally, returning a data frame for input in the model we create.
+
+```{r echo=FALSE}
+# Creating a function to prepare any text for input in the model
+prepare_input <- function (text, spam_words){
+  "This function takes a string text as input, counts the quantities of !, $, (), uppercase letters, longest sequence of uppercase, words in the spam list.
+  * Input: string
+  * Returns: data frame for input in the RF model"
+  
+  # Counts of the punctuation
+  exclamation <- str_count(text, pattern="[!]")
+  parenthesis <-  str_count(text, pattern="[()]")
+  dollar_sign <-  str_count(text, pattern="[$]")
+  
+  # Counts of UPPERCASE
+  total_uppercase <- str_count(text, "[A-Z]")
+  
+  # Remove punctuation for total words count
+  text_no_puncuation <- str_remove_all(text, pattern="[:punct:]|[$]*")
+  
+  #longest_uppercase
+  all_words <- str_split(text_no_puncuation, " ")
+  all_words <- all_words[[1]]
+  
+  # Create a vector with all the uppercase counts
+  char_counts <- c()
+  for (word in all_words) {
+    if (word == toupper(word)) {
+      char_counts <- c(char_counts, nchar(word))
+    } #enf if
+  }#end for
+  
+  # Get only the longest uppercase word size
+  if (max(char_counts) < 0) {
+    longest_upper <- 0} else {longest_upper <- max(char_counts)}
+  
+  
+  # Count how many spam words are in the text
+  # Create a counter of spam words
+  top_w <- 0
+  # For each word
+  for (word in all_words) {
+    # if word is in the spam list, count +1
+    if (tolower(word) %in% spam_words) {
+      top_w <- top_w + 1
+    } #enf if
+  }#end for
+  
+  # Determine length of the text
+  text_length <- length(all_words)
+  
+  # Create a data frame with all counts in percentages (divided by the text length)
+  input <- data.frame(top_words_pct= 100*top_w / text_length,
+                      char_freq_exclam= 100*exclamation / text_length,
+                      char_freq_paren= 100*parenthesis / text_length,
+                      char_freq_dollar= 100*dollar_sign / text_length,
+                      capital_run_length_total= total_uppercase,
+                      capital_run_length_longest= longest_upper )
+  
+return(input)
+} #end function
+
+```
+
+The next objects will be the emails to check and the spam_words to use:
+
+```{r}
+
+text1 <- 'SALE!! SALE!! SALE!! SUPER SALEEEE!! This is one of the best sales of the year! More than #3000# products with discounts up to $500 off!! Visit our page and Save $$$ now! Order your product NOW (here) and get one for free !'
+
+text2 <- 'DEAR MR. JOHN, You will find enclosed the file we talked about during your meeting earlier today. The attachment received here is also available in our web site at this address: www.DUMMYSITE.com. Sale.'
+
+spam.words <- c('you', 'your', 'will', 'free', 'our', 'all', 'mail', 'email', 'business', 'remove', '000', 'font', 'money', 'internet', 'credit', 'over', 'order', '3d', 'address', 'make', 'people', 're', 'receive', 'sale')
+```
+
+It is time to predict: 
+
+```{r}
+input <- prepare_input(text1, spam.words)
+
+data.frame( predict(model.rf, input, type = "prob") )
+```
+```{r}
+input <- prepare_input(text2, spam.words)
+
+data.frame( predict(model.rf, input, type = "prob") )
+```
+
+We can see in this case that spam email (text1) is with 70% probability spam, although text2 which is no spam the model tell us is with 0.51% no spam. Looking the text2 there are some uppercase letters which can fool the model a little bit.
+
+The next step is save this model and be ready for deployment. To save the model we can use `saveRDS()` function and input the model's name and the name of the output filename. Later with Shiny application we can deploy the model to do it's job (receiving emails from a user or whatever).
+
+```{r}
+saveRDS(model.rf, "../scripts/model_rf_spam.rds")
+```
+
+## Useful Links
+
+-   Mode deep in Supervised and Unsupervised learning, with evaluation measures: https://www.geeksforgeeks.org/supervised-unsupervised-learning/
+
+
+
+# Build an Application with Shiny
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

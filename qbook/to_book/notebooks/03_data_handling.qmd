@@ -1,0 +1,176 @@
+---
+title: "Data Handling"
+---
+
+Data cleaning project have four parts:
+
+1.  Acquiring and reading the data
+2.  Cleaning the data
+3.  Combining the data
+4.  Preparing the data for analysis
+
+# Acquiring and Reading Data
+
+We can receive data from different sources and formats such as text, XML, JSON, spreadsheet... And our provider can send us the data trying to be helpful by summarized data, deleting or filling records.
+
+To be sure, get as much data as possible, at as detailed a level as possible.
+
+Once we have the data, we have to read it into R as a data frame. Here starts the cleaning process, identifying missing values, column classes and names. Also to create a *key* field as unique identifier.
+
+# Cleaning Data
+
+Before any changes, how the data looks like:
+
+1.  Tabulate the keys looking for duplicates. 
+    -   If there are duplicate keys, we can search for duplicated records. We may delete them and record what we did.
+    -   If only the key is duplicated, we have to evaluate the observation.
+2.  Check column type and missing values per column. Could be useful create an histogram or summary statistics on the missing values.
+    -   When some columns have the same number of missing values on the same observations could be because those observations failed to match the data source when was constructed.
+    -   Numeric columns: the mean and range will be important.
+    -   Columns supposed to be integer or character we can check unique values to check if its what we expected.
+    -   Date columns: min and max could be important. Also tabulate dates by month or quarter looking for anomalous conditions (months without observations).
+3.  We found missing values or errors.
+    -   It is possible to return the data to the provider, point the issues to verify whether or not is the correct data.
+    -   For missing values, we could delete the observation but should be a rare tactic. If we have a large amount of missing values we can *impute* this values (replace NA with other valid value).
+    -   If we have two data sets of the same data we can confront the data on one column to check the quality of the data. Also, before merging, we will need to have the adequate values in some columns such as sex (0 or 1, F or M, True or False) being consistent.
+
+# Combining Data
+
+## Combining by Row
+
+Sometimes we need to combine datasets with the same type of observations from diferent sources. They have to have:
+
+-   Same column names. Exactly.
+-   Same column classes.
+-   Match categorical values.
+-   Examine the key column to ensure that will be unique after combine. If not, construct a new one.
+-   Create a new column specifying the source (original dataset).
+
+As an example, lets compare three datasets. First, the number of columns. And second, the names ordered.
+
+```r
+# Number of columns, we expect only one number:
+length ( unique( c(ncol(MAD), ncol(BCN), ncol(BIL)) ) )
+
+# Compare pairs of datasets on column names, we expect TRUE:
+all ( sort(names(MAD)) ) == all ( sort(names(BCN)) )
+all ( sort(names(MAD)) ) == all ( sort(names(BIL)) )
+```
+
+Next, we compare the column classes with `all.equal()` which is necessary for lists.
+
+```r
+# Compare pair of classes expecting TRUE
+all.equal ( sapply(MAD, class),
+            sapply(BCN, class)[names(MAD)] )
+all.equal ( sapply(MAD, class),
+            sapply(BIL, class)[names(MAD)] )
+
+# If class returns a vector length 2 (like POSIX date objects)
+# we have to use a custom function:
+all.equal ( sapply(MAD, function(x) class(x)[1])
+            sapply(BCN, function(x) class(x)[1])[names(MAD)] )
+```
+
+To verify the categorical (factor) variables we are going to convert the factor class into characters for compare their values.
+
+```r
+# Getting column names for columns with character or factor class
+cats <- names(MAD)[ sapply (MAD, class) == "character" ||
+                    sapply (MAD, class) == "factor" ]
+
+# Extracting the unique values for these columns on each dataset
+levs.mad <- lapply ( MAD[,cats],
+                     function(x) unique (sort (as.character (x))) )
+levs.bcn <- lapply ( BCN[,cats],
+                     function(x) unique (sort (as.character (x))) )                  
+levs.bil <- lapply ( BIL[,cats],
+                     function(x) unique (sort (as.character (x))) )
+
+# Compare the extracted values expecting TRUE
+all.equal ( levs.mad, levs.bcn ) && all.equal ( levs.mad, levs.bil )
+```
+
+The last thing to do it is create a column with the source before combining:
+
+```r
+MAD$Source <- "MAD"
+BCN$Source <- "BCN"
+BIL$Source <- "BIL"
+cities <- rbind (MAD, BCN, BIL, stringsAsFactors=FALSE)
+```
+
+## Combining by Column
+
+For data frames with the same number of rows using `data.frame()` function we can combine them and the function will distinct the column names to be unique.
+
+## Merging by key
+
+When the observations of both data frames have different orders we will use `merge()` function.
+
+-   The return of `merge()` is sorted according to *key* column.
+-   With duplicated name columns it will change to a unique name (col.x and col.y). It is better before merging to rename that columns in both data frames.
+
+# Transactional Data
+
+Tabular data is one row per key, but transactional data may have multiple rows for each key, one row per transaction. 
+
+```{r}
+survey <- data.frame(
+  ID = c("AA", "AA", "CC", "CC", "CC", "DD", "EE"),
+  Date = as.Date(c("2012-09-26", "2014-01-16", "2013-03-13", "2014-04-30",
+                   "2015-03-31", "2013-06-03", "2013-12-02")),
+  Response = c(3, 4, 3, 5, 4, 2, 4)
+)
+survey
+```
+
+The previous data frame could be considered tabular if our interest is in each transaction but it is considered transactional data because our interest is in each unique ID.
+
+Easily we can get the mean of 'Response' by each ID:
+
+```{r}
+with (survey, tapply(Response, ID, mean))
+```
+
+But it is more interesting to get other data frame with one ID per row. Also we can add how many entries have each ID, the first date, and other variables of interest.
+
+```{r}
+rle.survey <- rle ( sort(survey$ID) )
+rle.survey
+```
+
+# Preparing Data
+
+Here we can create new columns for make modeling easier. For example, binning columns which is create a column from numeric to vector. Also creating a new and small set of categorical levels from an existing one which will be helpful to have a cross-reference table that connects both. 
+
+# Documentation
+
+The 'data dictionary' is the documentation provided to you with the data. Should contain the files, names of each column and possible values.
+
+Other documentation will be generated by us describing what we did in the process of data cleaning. The minimum is to write comments into the R scripts explaining what it do. More often we will write a report for the handling task with the steps and decisions over the observations. 
+
+It is recommended to have a master table with every key and its disposition. It is useful to identify quickly the outcome associated with every record. Could contain "no payment information", "illegal RCODE"...
+
+The most important goal of the documentation is to do our work 'reproducible'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

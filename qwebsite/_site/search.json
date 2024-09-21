@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Let me introduce myself, my name is Álvaro Manzanas, I am a Junior Data Analysis, Scientist, Psychologist with a background in Computer Systems Administration and Virtualization. Eager to learn and improve professionally in the world of data analysis, with curiosity and interest to know the knowledge they hide. I am characterized as an analytical person with logical thinking, as well as being creative and curious, which combines well with the organization and meticulousness with which I excel.\nI hope you’ll take a look at what I’ve been working on, you might find it interesting. And if you like to connect with me, do not hesitate to do so, here I provide some buttons where you will find how to do it.\n\n\n\n\nLinkedIn\nGitHub\nemail"
+  },
+  {
+    "objectID": "portfolio.html#productivity-prediction",
+    "href": "portfolio.html#productivity-prediction",
+    "title": "Portfolio",
+    "section": "Productivity Prediction",
+    "text": "Productivity Prediction\n\nOverview"
+  },
+  {
+    "objectID": "portfolio.html#campaign-acceptance-prediction-ifood",
+    "href": "portfolio.html#campaign-acceptance-prediction-ifood",
+    "title": "Portfolio",
+    "section": "Campaign Acceptance Prediction (iFood)",
+    "text": "Campaign Acceptance Prediction (iFood)\nThis project focuses on a company in the food retail sector that aims to maximize their next marketing campaign and to do so, they are handing over their pilot study data. This will involve cleaning the data, analyzing it and proposing an approach to the marketing team to achieve this improvement for the next campaign. The second part focuses on getting a model that predicts customer behavior and thus selecting the most suitable customers for the next campaign.\n\nRepository\n\n\nOverview\n\nDescriptive StatisticsBar chart for categorical variableCorrelation MatrixLearning CurveFeature Importance\n\n\n\n\n\nDescriptive Statistics\n\n\nTable showing descriptive statistics for each selected quantitative variable. Several of these statistics have been calculated with custom functions such as ‘Winsorised Mean’, ‘Coefficient of Variation Centered on the Mean’ or ‘Trimmed Mean’.\n\n\n\n\n\nBar Char\n\n\nThis graph, composed of six vertical bar charts with confidence interval, shows the mean values of amount of money spent by product type for the Marital Status categories.\n\n\n\n\n\nCorrelation Matrix\n\n\nThe visualization represents a heat map with the correlations between the selected quantitative variables in order to observe the relationships between these variables and to guide further analysis.\n\n\n\n\n\nDecision Tree Learning Curve\n\n\nThe learning curve shows how the error decreases as we increase the size of the training set. It also helps us to identify whether our model is under-fitting or over-fitting the data. It is a useful tool for evaluating the performance of a model.\n\n\n\n\n\nFeature Importance in Random Forest model\n\n\nThis bar chart represents the importance of the features for the first decision tree in the Random Forest prediction model. It provides information about the relative importance of each feature (or variable) in the decision tree, useful for understanding which features most influence the model’s predictions."
+  },
+  {
+    "objectID": "portfolio.html#data-analyst-journey",
+    "href": "portfolio.html#data-analyst-journey",
+    "title": "Portfolio",
+    "section": "Data Analyst Journey",
+    "text": "Data Analyst Journey\nIn this GitHub repository I progressively update my learning progress as a Data Analyst. I take care to maintain a scientific basis for the whole process, be it data cleaning, descriptive, inferential and predictive analysis. To learn the basics of different tools and languages, I have used, among others, the following books:\n\nMatthes, E. (2023). Python Crash Course, 3rd Edition. No Starch Press.\nMcKinney, W. (2022). Python for Data Analysis: Data Wrangling with Pandas, NumPy, and Jupyter. O’Reilly Media.\nArnold, J. (2023). Learning Microsoft Power Bi: Transforming Data Into Insights. O’Reilly Media.\n\nBelow I highlight some image with a small description so you can get the idea, but I encourage you to explore the repository, there is all the content I have gone through.\n\nRepository\n\n\nOverview\n\nDashboard sociodemographicDashboard Grade History\n\n\n\n\n\nSociodemographic data of university degree\n\n\nThe image shows a dashboard developed with Power BI in which you can see different graphs and data on how students are distributed throughout a course. From the number of students in the classroom, to a map showing the average scores depending on the state of residence in the USA.\n\n\n\n\n\nGrades data of university degree\n\n\nThis is also a Power BI dashboard in which the same data has been used, but this time it focuses on the grades obtained by the students. We can see what kind of test they had, how they describe their own level in Excel, as well as the average grade and what grade it corresponds to."
+  },
+  {
+    "objectID": "portfolio.html#final-degree-project",
+    "href": "portfolio.html#final-degree-project",
+    "title": "Portfolio",
+    "section": "Final Degree Project",
+    "text": "Final Degree Project\nDevelopment of a scale to measure the use of video games as coping strategies for the user. Descriptive statistics and their graphical representation, psychometric tests, as well as Structural Equation Modelling (SEM) and Factor Analysis among other tests were used.\n\nOverview\n\nDescriptive VisualizationsHypothesis TestingConfirmatory Factor Analysis (SEM)\n\n\n\n\n\nDescriptive Graphs\n\n\nIt can be seen in the graphs how the sample of participants is distributed in the test scores for both depression and anxiety. A histogram can be seen as well as a stem-and-leaf chart which gives extra information such as mean, median, mode and range of scores.\n\n\n\n\n\nStatistical Inference\n\n\nThe table shows the test of two hypotheses comparing two groups. The first one refers to online gaming and who has a preference for it. The second one refers to the amount and variety of games they play. In addition to the contrast, the effect sizes for both are shown.\n\n\n\n\n\nStructural Equation Modelling\n\n\nThe graph shows the different factors for the CFA as well as their standardised factorial values, with those closest to 1 and -1 being the most relevant. In the table you can find the model fit data.\n\n\n\nChi-square\nRMSEA\nTLI\nCFI\n\n\n\n\n0.154\n0.03\n0.963\n0.968\n\n\n\n\nChi-square: adequate &gt; 0.05\nRMSEA: adequate &lt; 0.04 and good between 0.05 - 0.08\nTLI: adequate &gt; 0.94\nCFI: adequate &lt; 0.94"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Alvaro Manzanas",
+    "section": "",
+    "text": "CV"
+  }
+]

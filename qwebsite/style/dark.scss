@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+
+// Base document colors
+$body-bg: #181818;
+$body-color: white;
+$link-color: #FF1493;
+
+$light: #F0FFFF;
+
+// Navigation element colors
+$footer-bg: #181818;
+$navbar-bg: #303030;
+$sidebar-bg: #303030;
+
+// Code blocks
+$code-block-bg-alpha: -.9;
+
+// Bootstrap popovers
+$popover-bg: #242424;
+
+// Bootstrap inputs
+$input-bg: #242424;
+
+/*-- scss:rules --*/
+
+pre code {
+  color: #F5FFFA;
+}
+
+.navbar-tools {
+  margin-right: 12px;
+}
+.nav-item {
+  margin-right: 12px;
+}
+.quarto-navigation-tool {
+  margin-right: 12px;
+}
