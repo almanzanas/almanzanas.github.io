@@ -1,8 +1,7 @@
 markdown: kramdown
 permalink: /:title/
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       index: portfolio.html
