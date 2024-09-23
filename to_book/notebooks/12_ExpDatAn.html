@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Alvaro Manzanas - 8&nbsp; Exploratory Data Analysis</title>
+<title>Alvaro Manzanas - 9&nbsp; Exploratory Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="../../prefacio.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/12_ExpDatAn.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/12_ExpDatAn.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -197,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -209,31 +215,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/00_basics_ndata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R: The very basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R: The very basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/01_functions_scripts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions, scripts and performance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions, scripts and performance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/02_data_into_r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data into R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/03_data_handling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Handling</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Handling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/99_summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span></a>
   </div>
 </li>
       </ul>
@@ -250,25 +256,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/11_transformations_tidyverse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/12_ExpDatAn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/13_enchanced_visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/14_modeling2deploy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeling to Deploy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeling to Deploy</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,16 +289,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#loading-the-dataset" id="toc-loading-the-dataset" class="nav-link active" data-scroll-target="#loading-the-dataset"><span class="header-section-number">9</span> Loading the dataset</a></li>
-  <li><a href="#understanding-the-data" id="toc-understanding-the-data" class="nav-link" data-scroll-target="#understanding-the-data"><span class="header-section-number">10</span> Understanding the data</a></li>
-  <li><a href="#treating-missing-data" id="toc-treating-missing-data" class="nav-link" data-scroll-target="#treating-missing-data"><span class="header-section-number">11</span> Treating missing data</a></li>
-  <li><a href="#exploring-and-visualizing-the-data" id="toc-exploring-and-visualizing-the-data" class="nav-link" data-scroll-target="#exploring-and-visualizing-the-data"><span class="header-section-number">12</span> Exploring and visualizing the data</a>
+  <li><a href="#loading-the-dataset" id="toc-loading-the-dataset" class="nav-link active" data-scroll-target="#loading-the-dataset"><span class="header-section-number">10</span> Loading the dataset</a></li>
+  <li><a href="#understanding-the-data" id="toc-understanding-the-data" class="nav-link" data-scroll-target="#understanding-the-data"><span class="header-section-number">11</span> Understanding the data</a></li>
+  <li><a href="#treating-missing-data" id="toc-treating-missing-data" class="nav-link" data-scroll-target="#treating-missing-data"><span class="header-section-number">12</span> Treating missing data</a></li>
+  <li><a href="#exploring-and-visualizing-the-data" id="toc-exploring-and-visualizing-the-data" class="nav-link" data-scroll-target="#exploring-and-visualizing-the-data"><span class="header-section-number">13</span> Exploring and visualizing the data</a>
   <ul class="collapse">
-  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis"><span class="header-section-number">12.1</span> Univariate Analysis</a></li>
-  <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis"><span class="header-section-number">12.2</span> Multivariate Analysis</a></li>
-  <li><a href="#exploring" id="toc-exploring" class="nav-link" data-scroll-target="#exploring"><span class="header-section-number">12.3</span> Exploring</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis"><span class="header-section-number">13.1</span> Univariate Analysis</a></li>
+  <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis"><span class="header-section-number">13.2</span> Multivariate Analysis</a></li>
+  <li><a href="#exploring" id="toc-exploring" class="nav-link" data-scroll-target="#exploring"><span class="header-section-number">13.3</span> Exploring</a></li>
   </ul></li>
-  <li><a href="#analysis-report" id="toc-analysis-report" class="nav-link" data-scroll-target="#analysis-report"><span class="header-section-number">13</span> Analysis Report</a>
+  <li><a href="#analysis-report" id="toc-analysis-report" class="nav-link" data-scroll-target="#analysis-report"><span class="header-section-number">14</span> Analysis Report</a>
   <ul class="collapse">
   <li><a href="#report" id="toc-report" class="nav-link" data-scroll-target="#report">Report</a></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
@@ -303,9 +309,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/12_ExpDatAn.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/12_ExpDatAn.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
 </div>
 
 
@@ -432,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>The intent of this section is to go over a practical project, following the steps: loading the dataset, understanding the data, treating missing values, exploring and visualizing, and the analysis report.</p>
 </section>
-<section id="loading-the-dataset" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Loading the dataset</h1>
+<section id="loading-the-dataset" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Loading the dataset</h1>
 <p>To continue we need the libraries mentioned before:</p>
 <ul>
 <li><code>tidyverse</code> : eight libraries included, to work with data</li>
@@ -461,8 +467,8 @@ dbl (19): Rank, Major_code, Total, Men, Women, ShareWomen, Sample_size, Empl...
 </div>
 <p>We’ll keep a copy of the original data frame just in case we need to recover some columns or for comparison reasons.</p>
 </section>
-<section id="understanding-the-data" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Understanding the data</h1>
+<section id="understanding-the-data" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Understanding the data</h1>
 <p>Let’s check the firsts observations:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
@@ -909,8 +915,8 @@ $ Low_wage_jobs        &lt;dbl&gt; 193, 50, 0, 0, 972, 244, 259, 220, 3253, 3170
 </div>
 <p>We can see the is a missing value in four variables, we need to know if it is the same observation. Also, there are more women than men and more people employed than unemployed. The jobs requiring a college degree are balanced with the jobs which no require a degree. Looking the Coefficient of Variation, almost every variable have a high value, greater than 1, which suggest high dispersion; and a very few variables have 0.3 or less which suggest the data is around the mean on this variables.</p>
 </section>
-<section id="treating-missing-data" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Treating missing data</h1>
+<section id="treating-missing-data" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Treating missing data</h1>
 <p>The missing values also have meaning, could be a human mistake or an omitted response of the user.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">which</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>Total)),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -935,11 +941,11 @@ $ Low_wage_jobs        &lt;dbl&gt; 193, 50, 0, 0, 972, 244, 259, 220, 3253, 3170
 </div>
 </div>
 </section>
-<section id="exploring-and-visualizing-the-data" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Exploring and visualizing the data</h1>
+<section id="exploring-and-visualizing-the-data" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Exploring and visualizing the data</h1>
 <p>Here we are going to create some questions to lead the exploration.</p>
-<section id="univariate-analysis" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="univariate-analysis"><span class="header-section-number">12.1</span> Univariate Analysis</h2>
+<section id="univariate-analysis" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="univariate-analysis"><span class="header-section-number">13.1</span> Univariate Analysis</h2>
 <p>It is to look one variable at a time. Let’s graph some histograms of the numeric variables with a <em>for</em> loop.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">colnames</span>(<span class="fu">select_if</span>(df.clean, is.numeric)) ) {</span>
@@ -1412,8 +1418,8 @@ Low_wage_jobs        0.00000      0.00000</code></pre>
 </div>
 </div>
 </section>
-<section id="multivariate-analysis" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="multivariate-analysis"><span class="header-section-number">12.2</span> Multivariate Analysis</h2>
+<section id="multivariate-analysis" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="multivariate-analysis"><span class="header-section-number">13.2</span> Multivariate Analysis</h2>
 <blockquote class="blockquote">
 <p>In a project, the idea is to explore how the explanatory variables (X) affect the response variable (y).</p>
 </blockquote>
@@ -1450,8 +1456,8 @@ Low_wage_jobs        0.00000      0.00000</code></pre>
 <p>Looking into ‘Unemployment_rate’ the correlations are so lightly, in this case a linear regression would not be the best approach.</p>
 <p>When two explanatory variables have high correlations means both variables can explain the same variance in the target variable, creating redundancy and making it more difficult to determine the effect of each individual explanatory feature. Then, it must be eliminated before modeling.</p>
 </section>
-<section id="exploring" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="exploring"><span class="header-section-number">12.3</span> Exploring</h2>
+<section id="exploring" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="exploring"><span class="header-section-number">13.3</span> Exploring</h2>
 <p>When we want to explore more deeply the dataset we can start doing questions and looking for answers:</p>
 <ul>
 <li>What are the top 10 majors with the lower unemployment rate?</li>
@@ -2020,7 +2026,7 @@ mean of x mean of y
     Shapiro-Wilk normality test
 
 data:  df.lower.samp$mu_Median
-W = 0.99, p-value = 0.5</code></pre>
+W = 0.99, p-value = 0.3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df.higher.samp<span class="sc">$</span>mu_Median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2028,7 +2034,7 @@ W = 0.99, p-value = 0.5</code></pre>
     Shapiro-Wilk normality test
 
 data:  df.higher.samp$mu_Median
-W = 0.99, p-value = 0.7</code></pre>
+W = 0.99, p-value = 0.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df.lower.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2036,7 +2042,7 @@ W = 0.99, p-value = 0.7</code></pre>
     Shapiro-Wilk normality test
 
 data:  df.lower.samp$mu_Low_wage
-W = 0.99, p-value = 0.7</code></pre>
+W = 0.99, p-value = 0.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df.higher.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2054,13 +2060,13 @@ W = 0.99, p-value = 0.6</code></pre>
     Welch Two Sample t-test
 
 data:  df.higher.samp$mu_Median and df.lower.samp$mu_Median
-t = -426, df = 291, p-value &lt;0.0000000000000002
+t = -393, df = 274, p-value &lt;0.0000000000000002
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -12416 -12302
+ -12435 -12311
 sample estimates:
 mean of x mean of y 
-    34601     46960 </code></pre>
+    34599     46972 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df.higher.samp<span class="sc">$</span>mu_Low_wage, df.lower.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2068,13 +2074,13 @@ mean of x mean of y
     Welch Two Sample t-test
 
 data:  df.higher.samp$mu_Low_wage and df.lower.samp$mu_Low_wage
-t = 91, df = 373, p-value &lt;0.0000000000000002
+t = 86, df = 385, p-value &lt;0.0000000000000002
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1870 1952
+ 1844 1931
 sample estimates:
 mean of x mean of y 
-     4747      2836 </code></pre>
+     4712      2824 </code></pre>
 </div>
 </div>
 <p>Both p-value are close to zero, thus we can reject the null hypothesis of t-test. Then we can say the groups mean are different with this sample.</p>
@@ -2114,8 +2120,8 @@ mean of x mean of y
 </section>
 </section>
 </section>
-<section id="analysis-report" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Analysis Report</h1>
+<section id="analysis-report" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Analysis Report</h1>
 <p>This Data Science project is about the EDA, composed of data wrangling and exploration to answer business questions and extract insights to support the decision-making process. When we write a Analysis Report we have to highlight the findings:</p>
 <hr>
 <p>Dataset: College Majors (<a href="https://github.com/fivethirtyeight/data/tree/master/college-majors" class="uri">https://github.com/fivethirtyeight/data/tree/master/college-majors</a>)</p>
@@ -2817,12 +2823,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../to_book/notebooks/11_transformations_tidyverse.html" class="pagination-link" aria-label="Transformations with Tidyverse">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../to_book/notebooks/13_enchanced_visualizations.html" class="pagination-link" aria-label="Enchanced Visualizations">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

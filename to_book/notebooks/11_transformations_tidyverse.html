@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Alvaro Manzanas - 7&nbsp; Transformations with Tidyverse</title>
+<title>Alvaro Manzanas - 8&nbsp; Transformations with Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="../../prefacio.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -197,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -209,31 +215,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/00_basics_ndata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R: The very basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R: The very basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/01_functions_scripts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions, scripts and performance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions, scripts and performance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/02_data_into_r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data into R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/03_data_handling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Handling</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Handling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/99_summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span></a>
   </div>
 </li>
       </ul>
@@ -250,25 +256,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/11_transformations_tidyverse.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/12_ExpDatAn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/13_enchanced_visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enchanced Visualizations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../to_book/notebooks/14_modeling2deploy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeling to Deploy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeling to Deploy</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,22 +289,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#slicing-and-filtering" id="toc-slicing-and-filtering" class="nav-link active" data-scroll-target="#slicing-and-filtering"><span class="header-section-number">8</span> Slicing and filtering</a>
+  <li><a href="#slicing-and-filtering" id="toc-slicing-and-filtering" class="nav-link active" data-scroll-target="#slicing-and-filtering"><span class="header-section-number">9</span> Slicing and filtering</a>
   <ul class="collapse">
-  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="header-section-number">8.1</span> Filtering</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="header-section-number">9.1</span> Filtering</a></li>
   </ul></li>
-  <li><a href="#grouping-and-summarizing-data" id="toc-grouping-and-summarizing-data" class="nav-link" data-scroll-target="#grouping-and-summarizing-data"><span class="header-section-number">9</span> Grouping and summarizing data</a></li>
-  <li><a href="#replacing-and-filling-data" id="toc-replacing-and-filling-data" class="nav-link" data-scroll-target="#replacing-and-filling-data"><span class="header-section-number">10</span> Replacing and Filling Data</a></li>
-  <li><a href="#arranging-data" id="toc-arranging-data" class="nav-link" data-scroll-target="#arranging-data"><span class="header-section-number">11</span> Arranging data</a></li>
-  <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables"><span class="header-section-number">12</span> Creating new variables</a>
+  <li><a href="#grouping-and-summarizing-data" id="toc-grouping-and-summarizing-data" class="nav-link" data-scroll-target="#grouping-and-summarizing-data"><span class="header-section-number">10</span> Grouping and summarizing data</a></li>
+  <li><a href="#replacing-and-filling-data" id="toc-replacing-and-filling-data" class="nav-link" data-scroll-target="#replacing-and-filling-data"><span class="header-section-number">11</span> Replacing and Filling Data</a></li>
+  <li><a href="#arranging-data" id="toc-arranging-data" class="nav-link" data-scroll-target="#arranging-data"><span class="header-section-number">12</span> Arranging data</a></li>
+  <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables"><span class="header-section-number">13</span> Creating new variables</a>
   <ul class="collapse">
-  <li><a href="#the-mutate-function" id="toc-the-mutate-function" class="nav-link" data-scroll-target="#the-mutate-function"><span class="header-section-number">12.1</span> The <code>mutate()</code> function</a></li>
+  <li><a href="#the-mutate-function" id="toc-the-mutate-function" class="nav-link" data-scroll-target="#the-mutate-function"><span class="header-section-number">13.1</span> The <code>mutate()</code> function</a></li>
   </ul></li>
-  <li><a href="#joining-datasets" id="toc-joining-datasets" class="nav-link" data-scroll-target="#joining-datasets"><span class="header-section-number">13</span> Joining datasets</a></li>
-  <li><a href="#reshaping-a-table" id="toc-reshaping-a-table" class="nav-link" data-scroll-target="#reshaping-a-table"><span class="header-section-number">14</span> Reshaping a table</a></li>
-  <li><a href="#interesting-tidyverse-functions" id="toc-interesting-tidyverse-functions" class="nav-link" data-scroll-target="#interesting-tidyverse-functions"><span class="header-section-number">15</span> Interesting Tidyverse functions</a>
+  <li><a href="#joining-datasets" id="toc-joining-datasets" class="nav-link" data-scroll-target="#joining-datasets"><span class="header-section-number">14</span> Joining datasets</a></li>
+  <li><a href="#reshaping-a-table" id="toc-reshaping-a-table" class="nav-link" data-scroll-target="#reshaping-a-table"><span class="header-section-number">15</span> Reshaping a table</a></li>
+  <li><a href="#interesting-tidyverse-functions" id="toc-interesting-tidyverse-functions" class="nav-link" data-scroll-target="#interesting-tidyverse-functions"><span class="header-section-number">16</span> Interesting Tidyverse functions</a>
   <ul class="collapse">
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">15.1</span> <code>ggplot2</code></a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">16.1</span> <code>ggplot2</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -306,9 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></h1>
 </div>
 
 
@@ -376,8 +382,8 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
 </div>
 </div>
-<section id="slicing-and-filtering" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Slicing and filtering</h1>
+<section id="slicing-and-filtering" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Slicing and filtering</h1>
 <p>The basic form of dplyr for slicing it to use a <code>.</code> to consider everything from the object that precedes it. The returned object will be a tibble.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> .[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -423,20 +429,20 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <pre><code># A tibble: 10 × 4
      age workclass        fnlwgt education   
    &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;       
- 1    34 Local-gov        205704 Masters     
- 2    36 ?                176458 HS-grad     
- 3    43 Private          233851 Bachelors   
- 4    79 Self-emp-not-inc 103684 HS-grad     
- 5    48 Private           70209 Some-college
- 6    36 Private           93225 Bachelors   
- 7    31 Private          212235 Some-college
- 8    39 Private          325374 Some-college
- 9    36 Private          110998 Masters     
-10    44 Private          151294 Some-college</code></pre>
+ 1    55 Private          129762 HS-grad     
+ 2    42 Private          155469 Assoc-acdm  
+ 3    41 Private          327723 HS-grad     
+ 4    41 Self-emp-inc     114967 Assoc-voc   
+ 5    61 Self-emp-inc     139391 Some-college
+ 6    68 Self-emp-inc     140852 HS-grad     
+ 7    56 Self-emp-inc     205601 Doctorate   
+ 8    76 Self-emp-not-inc  33213 Masters     
+ 9    72 Private          157913 Bachelors   
+10    30 Private           87469 HS-grad     </code></pre>
 </div>
 </div>
-<section id="filtering" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="filtering"><span class="header-section-number">8.1</span> Filtering</h2>
+<section id="filtering" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="filtering"><span class="header-section-number">9.1</span> Filtering</h2>
 <ul>
 <li><code>filter()</code>: returns rows given a condition.</li>
 <li><code>select()</code>: to choose variable to show in the given order.</li>
@@ -448,18 +454,18 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>( <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
-   marital_status       age education   
-   &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;       
- 1 Married-civ-spouse    26 HS-grad     
- 2 Never-married         19 HS-grad     
- 3 Never-married         21 HS-grad     
- 4 Married-civ-spouse    29 HS-grad     
- 5 Never-married         26 Some-college
- 6 Never-married         25 Bachelors   
- 7 Married-civ-spouse    27 Bachelors   
- 8 Never-married         27 HS-grad     
- 9 Never-married         21 HS-grad     
-10 Never-married         29 HS-grad     </code></pre>
+   marital_status       age education  
+   &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;      
+ 1 Never-married         26 Bachelors  
+ 2 Never-married         23 Assoc-acdm 
+ 3 Never-married         28 Prof-school
+ 4 Never-married         24 Assoc-acdm 
+ 5 Married-civ-spouse    28 HS-grad    
+ 6 Never-married         24 HS-grad    
+ 7 Never-married         25 Bachelors  
+ 8 Never-married         27 11th       
+ 9 Married-civ-spouse    25 Assoc-voc  
+10 Never-married         17 10th       </code></pre>
 </div>
 </div>
 <ul>
@@ -477,8 +483,8 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 </div>
 </section>
 </section>
-<section id="grouping-and-summarizing-data" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Grouping and summarizing data</h1>
+<section id="grouping-and-summarizing-data" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Grouping and summarizing data</h1>
 <p>The next functions are complementary, usually used together.</p>
 <ul>
 <li><code>group_by()</code>: to group a variable by its values</li>
@@ -606,8 +612,8 @@ the `.groups` argument.</code></pre>
 </div>
 </div>
 </section>
-<section id="replacing-and-filling-data" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Replacing and Filling Data</h1>
+<section id="replacing-and-filling-data" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Replacing and Filling Data</h1>
 <p>A dataset will be imperfect, in this case we have ‘?’ instead of NA. First, the character ‘?’ has to be replaced with NA and then we can replace NA with other character.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">colnames</span>(df) ) {</span>
@@ -646,16 +652,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    40 &lt;NA&gt;      351161 Masters                 14 Married-civ-spo… &lt;NA&gt;      
- 2    49 &lt;NA&gt;      481987 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
- 3    77 &lt;NA&gt;      147284 HS-grad                  9 Widowed          &lt;NA&gt;      
- 4    55 &lt;NA&gt;      487411 Masters                 14 Married-civ-spo… &lt;NA&gt;      
- 5    22 &lt;NA&gt;      224238 Some-college            10 Never-married    &lt;NA&gt;      
- 6    63 &lt;NA&gt;      170529 Bachelors               13 Married-civ-spo… &lt;NA&gt;      
- 7    28 &lt;NA&gt;      198393 HS-grad                  9 Never-married    &lt;NA&gt;      
- 8    65 &lt;NA&gt;       37170 7th-8th                  4 Married-civ-spo… &lt;NA&gt;      
- 9    74 &lt;NA&gt;       33114 10th                     6 Married-civ-spo… &lt;NA&gt;      
-10    60 &lt;NA&gt;      174073 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
+ 1    18 &lt;NA&gt;      256179 Some-college            10 Never-married    &lt;NA&gt;      
+ 2    25 &lt;NA&gt;      214925 10th                     6 Never-married    &lt;NA&gt;      
+ 3    19 &lt;NA&gt;      117444 HS-grad                  9 Never-married    &lt;NA&gt;      
+ 4    18 &lt;NA&gt;      264924 Some-college            10 Never-married    &lt;NA&gt;      
+ 5    21 &lt;NA&gt;       40052 Some-college            10 Never-married    &lt;NA&gt;      
+ 6    50 &lt;NA&gt;      281504 Some-college            10 Married-civ-spo… &lt;NA&gt;      
+ 7    70 &lt;NA&gt;      173736 Bachelors               13 Married-civ-spo… &lt;NA&gt;      
+ 8    23 &lt;NA&gt;      343553 11th                     7 Never-married    &lt;NA&gt;      
+ 9    27 &lt;NA&gt;      130856 Bachelors               13 Never-married    &lt;NA&gt;      
+10    20 &lt;NA&gt;       37932 HS-grad                  9 Never-married    &lt;NA&gt;      
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -705,16 +711,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass      fnlwgt education education_num marital_status occupation
    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;     
- 1    49 Private        261059 10th                  6 Separated      Handlers-…
- 2    38 Private        155676 HS-grad               9 Divorced       Prof-spec…
- 3    33 Private        335625 Some-col…            10 Divorced       Adm-cleri…
- 4    50 Private        222381 Some-col…            10 Divorced       Craft-rep…
- 5    30 Self-emp-not-… 164940 HS-grad               9 Separated      Craft-rep…
- 6    65 Private         79272 Some-col…            10 Widowed        Craft-rep…
- 7    35 Federal-gov     35854 Some-col…            10 Never-married  Exec-mana…
- 8    63 Private         54851 HS-grad               9 Married-civ-s… Farming-f…
- 9    33 Private        160776 Assoc-voc            11 Divorced       Other-ser…
-10    23 Private         32897 Assoc-ac…            12 Married-civ-s… Sales     
+ 1    69 Private        111238 9th                   5 Married-civ-s… Tech-supp…
+ 2    64 Private        146272 Some-col…            10 Married-civ-s… Exec-mana…
+ 3    22 Private        306031 Some-col…            10 Never-married  Sales     
+ 4    66 Self-emp-not-… 210750 Some-col…            10 Married-civ-s… Prof-spec…
+ 5    20 Private        202994 Some-col…            10 Never-married  Exec-mana…
+ 6    19 Self-emp-inc   242001 Some-col…            10 Never-married  Sales     
+ 7    65 Private        137354 Some-col…            10 Married-civ-s… Transport…
+ 8    90 Self-emp-not-… 225063 Some-col…            10 Never-married  Farming-f…
+ 9    78 Private        165694 Masters              14 Widowed        Exec-mana…
+10    35 Private        374716 9th                   5 Married-civ-s… Sales     
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -739,16 +745,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    71 Private   178295 Assoc-acdm              12 Married-civ-spo… Prof-spec…
- 2    64 Private   108082 Some-college            10 Married-civ-spo… Prof-spec…
- 3    22 Private    42004 Some-college            10 Never-married    Prof-spec…
- 4    19 Private    57329 Some-college            10 Never-married    Prof-spec…
- 5    71 Private   176986 HS-grad                  9 Widowed          Prof-spec…
- 6    18 Private   379768 HS-grad                  9 Never-married    Prof-spec…
- 7    20 Private   163911 Some-college            10 Never-married    Prof-spec…
- 8    26 Private   188343 HS-grad                  9 Never-married    Prof-spec…
- 9    20 Private   287681 Some-college            10 Never-married    Prof-spec…
-10    67 Private   274451 7th-8th                  4 Married-civ-spo… Prof-spec…
+ 1    56 Private   656036 HS-grad                  9 Married-civ-spo… Prof-spec…
+ 2    66 Private   170617 Masters                 14 Widowed          Prof-spec…
+ 3    49 Private    52590 HS-grad                  9 Never-married    Prof-spec…
+ 4    18 Private   271935 11th                     7 Never-married    Prof-spec…
+ 5    33 Private   193172 Assoc-voc               11 Married-civ-spo… Prof-spec…
+ 6    46 Private   280030 5th-6th                  3 Married-civ-spo… Prof-spec…
+ 7    55 Private   123382 HS-grad                  9 Separated        Prof-spec…
+ 8    21 Private   170272 Some-college            10 Never-married    Prof-spec…
+ 9    69 Private   163595 HS-grad                  9 Widowed          Prof-spec…
+10    19 Private   211553 Some-college            10 Never-married    Prof-spec…
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -782,8 +788,8 @@ the `.groups` argument.</code></pre>
 </div>
 </div>
 </section>
-<section id="arranging-data" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Arranging data</h1>
+<section id="arranging-data" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Arranging data</h1>
 <ul>
 <li><code>arrange()</code>: to order a data frame by a column to ascending order
 <ul>
@@ -829,8 +835,8 @@ the `.groups` argument.</code></pre>
 </div>
 </div>
 </section>
-<section id="creating-new-variables" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Creating new variables</h1>
+<section id="creating-new-variables" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Creating new variables</h1>
 <p>We can create new variables such as splitting a column, creating a calculation, encoding text, applying a custom function…</p>
 <ul>
 <li><code>separate()</code>: to split a column into two column, by default remove the original column.
@@ -852,18 +858,18 @@ the `.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-     age workclass sign  amount
-   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; 
- 1    45 Private   &gt;     50K   
- 2    71 Private   &gt;     50K   
- 3    35 Private   &lt;=    50K   
- 4    37 Private   &gt;     50K   
- 5    59 Private   &gt;     50K   
- 6    25 Private   &gt;     50K   
- 7    29 Private   &gt;     50K   
- 8    19 Private   &lt;=    50K   
- 9    59 Local-gov &lt;=    50K   
-10    40 Local-gov &lt;=    50K   </code></pre>
+     age workclass        sign  amount
+   &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; 
+ 1    22 Private          &lt;=    50K   
+ 2    58 Self-emp-not-inc &lt;=    50K   
+ 3    25 Private          &lt;=    50K   
+ 4    20 Private          &lt;=    50K   
+ 5    19 Private          &lt;=    50K   
+ 6    65 Private          &lt;=    50K   
+ 7    39 Private          &gt;     50K   
+ 8    33 Private          &lt;=    50K   
+ 9    44 Private          &gt;     50K   
+10    72 Without-pay      &lt;=    50K   </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -873,22 +879,22 @@ the `.groups` argument.</code></pre>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
-   sex    race    age description     marital_status    
-   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;             
- 1 Male   White    46 Male_White_46   Married-civ-spouse
- 2 Male   White    26 Male_White_26   Married-civ-spouse
- 3 Male   White    42 Male_White_42   Married-civ-spouse
- 4 Male   White    37 Male_White_37   Married-civ-spouse
- 5 Male   White    33 Male_White_33   Married-civ-spouse
- 6 Female White    20 Female_White_20 Never-married     
- 7 Male   White    46 Male_White_46   Married-civ-spouse
- 8 Female White    22 Female_White_22 Never-married     
- 9 Female Black    33 Female_Black_33 Separated         
-10 Female White    43 Female_White_43 Divorced          </code></pre>
+   sex    race    age description     marital_status       
+   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                
+ 1 Male   Black    23 Male_Black_23   Never-married        
+ 2 Male   White    32 Male_White_32   Married-civ-spouse   
+ 3 Male   White    56 Male_White_56   Married-civ-spouse   
+ 4 Female White    29 Female_White_29 Never-married        
+ 5 Male   White    18 Male_White_18   Never-married        
+ 6 Female Black    33 Female_Black_33 Married-spouse-absent
+ 7 Female White    21 Female_White_21 Never-married        
+ 8 Female White    36 Female_White_36 Married-civ-spouse   
+ 9 Male   White    30 Male_White_30   Married-civ-spouse   
+10 Female White    19 Female_White_19 Never-married        </code></pre>
 </div>
 </div>
-<section id="the-mutate-function" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="the-mutate-function"><span class="header-section-number">12.1</span> The <code>mutate()</code> function</h2>
+<section id="the-mutate-function" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="the-mutate-function"><span class="header-section-number">13.1</span> The <code>mutate()</code> function</h2>
 <ul>
 <li><code>mutate()</code>: designed to create new variables. Also can be used to modified existing variables using the same column name. Given a data frame, then the new variable name equal to the values.</li>
 <li><code>recode()</code>: working as a mapping to transform variables</li>
@@ -904,18 +910,18 @@ the `.groups` argument.</code></pre>
 <span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span> ( <span class="fu">desc</span>(tax) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-   total_gain   tax occupation        age
-        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
- 1          0     0 Farming-fishing    24
- 2          0     0 Adm-clerical       61
- 3          0     0 Sales              27
- 4          0     0 Craft-repair       29
- 5          0     0 Craft-repair       40
- 6          0     0 Sales              32
- 7          0     0 Prof-specialty     52
- 8          0     0 Craft-repair       50
- 9          0     0 Prof-specialty     21
-10          0     0 Other-service      18</code></pre>
+   total_gain   tax occupation         age
+        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1       7298  730. Adm-clerical        30
+ 2       2228  223. Prof-specialty      78
+ 3          0    0  Transport-moving    43
+ 4          0    0  Tech-support        34
+ 5          0    0  Tech-support        43
+ 6          0    0  Other-service       36
+ 7          0    0  Other-service       18
+ 8          0    0  Prof-specialty      65
+ 9          0    0  Adm-clerical        52
+10          0    0  Craft-repair        41</code></pre>
 </div>
 </div>
 <p>Combining <code>mutate()</code> and <code>recode()</code> to transform values, useful for categories:</p>
@@ -934,7 +940,7 @@ the `.groups` argument.</code></pre>
  4 &lt;=50K  &lt;=50K     
  5 &lt;=50K  &lt;=50K     
  6 &lt;=50K  &lt;=50K     
- 7 &lt;=50K  &lt;=50K     
+ 7 &gt;50K   &gt;50K      
  8 &lt;=50K  &lt;=50K     
  9 &lt;=50K  &lt;=50K     
 10 &gt;50K   &gt;50K      </code></pre>
@@ -953,22 +959,22 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 3
      age age_avg over_under_age_avg
    &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;             
- 1    54    38.6 Above the avg     
- 2    25    38.6 Lower than avg    
- 3    29    38.6 Lower than avg    
- 4    64    38.6 Above the avg     
- 5    41    38.6 Above the avg     
- 6    36    38.6 Lower than avg    
- 7    24    38.6 Lower than avg    
- 8    47    38.6 Above the avg     
- 9    59    38.6 Above the avg     
-10    30    38.6 Lower than avg    </code></pre>
+ 1    49    38.6 Above the avg     
+ 2    43    38.6 Above the avg     
+ 3    58    38.6 Above the avg     
+ 4    50    38.6 Above the avg     
+ 5    32    38.6 Lower than avg    
+ 6    53    38.6 Above the avg     
+ 7    17    38.6 Lower than avg    
+ 8    22    38.6 Lower than avg    
+ 9    37    38.6 Lower than avg    
+10    26    38.6 Lower than avg    </code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="joining-datasets" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Joining datasets</h1>
+<section id="joining-datasets" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Joining datasets</h1>
 <ul>
 <li><code>left_join()</code></li>
 <li><code>right_join()</code>
@@ -1004,8 +1010,8 @@ the `.groups` argument.</code></pre>
 <span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit_measure=</span> <span class="fu">c</span>(<span class="st">'each'</span>, <span class="st">'each'</span>, <span class="st">'kg'</span>, <span class="st">'each'</span>, <span class="st">'kg'</span>)</span>
 <span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="left-join" class="level4" data-number="13.0.0.1">
-<h4 data-number="13.0.0.1" class="anchored" data-anchor-id="left-join"><span class="header-section-number">13.0.0.1</span> Left Join</h4>
+<section id="left-join" class="level4" data-number="14.0.0.1">
+<h4 data-number="14.0.0.1" class="anchored" data-anchor-id="left-join"><span class="header-section-number">14.0.0.1</span> Left Join</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">%&gt;%</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span> (products[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">by=</span><span class="st">'product_cd'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1019,8 +1025,8 @@ the `.groups` argument.</code></pre>
 </div>
 </div>
 </section>
-<section id="right-join" class="level4" data-number="13.0.0.2">
-<h4 data-number="13.0.0.2" class="anchored" data-anchor-id="right-join"><span class="header-section-number">13.0.0.2</span> Right Join</h4>
+<section id="right-join" class="level4" data-number="14.0.0.2">
+<h4 data-number="14.0.0.2" class="anchored" data-anchor-id="right-join"><span class="header-section-number">14.0.0.2</span> Right Join</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">%&gt;%</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(store_cd, sales) <span class="sc">%&gt;%</span></span>
@@ -1035,8 +1041,8 @@ the `.groups` argument.</code></pre>
 </div>
 </div>
 </section>
-<section id="full-join" class="level4" data-number="13.0.0.3">
-<h4 data-number="13.0.0.3" class="anchored" data-anchor-id="full-join"><span class="header-section-number">13.0.0.3</span> Full Join</h4>
+<section id="full-join" class="level4" data-number="14.0.0.3">
+<h4 data-number="14.0.0.3" class="anchored" data-anchor-id="full-join"><span class="header-section-number">14.0.0.3</span> Full Join</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(stores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -1054,8 +1060,8 @@ the `.groups` argument.</code></pre>
 </div>
 </section>
 </section>
-<section id="reshaping-a-table" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Reshaping a table</h1>
+<section id="reshaping-a-table" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Reshaping a table</h1>
 <p>A data frame in a wide shape is not suitable for machine learning algorithms and for most of the plotting functions. A wide format is when the variable are spread along the rows instead of columns.</p>
 <ul>
 <li><code>pivot_longer()</code>: given a wide data frame, it will shape it to long format.
@@ -1071,8 +1077,8 @@ the `.groups` argument.</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="interesting-tidyverse-functions" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Interesting Tidyverse functions</h1>
+<section id="interesting-tidyverse-functions" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Interesting Tidyverse functions</h1>
 <p>Using <code>data('mtcars')</code> dataset.</p>
 <p>The <code>purrr</code> library contain functions similar to <code>apply()</code> family.</p>
 <ul>
@@ -1095,17 +1101,17 @@ the `.groups` argument.</code></pre>
 <span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(cumpct_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                    wt cumsum_weight cumpct_weight cummean_weight
-Toyota Corolla   1.835        67.969       0.09375       3.398450
-Fiat X1-9        1.935        87.009       0.12500       3.346500
-Datsun 710       2.320         7.815       0.21875       2.605000
-Mazda RX4        2.620         2.620       0.28125       2.620000
-Ferrari Dino     2.770        96.602       0.31250       3.220067
-Merc 280C        3.440        34.720       0.62500       3.156364
-Dodge Challenger 3.520        73.954       0.68750       3.361545
-Maserati Bora    3.570       100.172       0.75000       3.231355
-Duster 360       3.570        21.500       0.75000       3.071429
-Merc 450SLC      3.780        46.300       0.81250       3.307143</code></pre>
+<pre><code>                     wt cumsum_weight cumpct_weight cummean_weight
+Porsche 914-2     2.140        89.149       0.15625       3.301815
+Datsun 710        2.320         7.815       0.21875       2.605000
+Ford Pantera L    3.170        93.832       0.43750       3.235586
+Merc 240D         3.190        24.690       0.46875       3.086250
+AMC Javelin       3.435        77.389       0.53125       3.364739
+Maserati Bora     3.570       100.172       0.75000       3.231355
+Merc 450SLC       3.780        46.300       0.81250       3.307143
+Camaro Z28        3.840        81.229       0.84375       3.384542
+Pontiac Firebird  3.845        85.074       0.87500       3.402960
+Chrysler Imperial 5.345        62.319       0.96875       3.665824</code></pre>
 </div>
 </div>
 <ul>
@@ -1121,21 +1127,21 @@ Merc 450SLC      3.780        46.300       0.81250       3.307143</code></pre>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cyl, mpg, am, transmission_type) <span class="sc">%&gt;%</span></span>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   cyl  mpg am transmission_type
-Mazda RX4 Wag        6 21.0  1            manual
-Maserati Bora        8 15.0  1            manual
-Cadillac Fleetwood   8 10.4  0         automatic
-Volvo 142E           4 21.4  1            manual
-Hornet 4 Drive       6 21.4  0         automatic
-AMC Javelin          8 15.2  0         automatic
-Merc 280C            6 17.8  0         automatic
-Ford Pantera L       8 15.8  1            manual
-Fiat 128             4 32.4  1            manual
-Pontiac Firebird     8 19.2  0         automatic</code></pre>
+<pre><code>                 cyl  mpg am transmission_type
+Dodge Challenger   8 15.5  0         automatic
+Maserati Bora      8 15.0  1            manual
+Merc 450SLC        8 15.2  0         automatic
+Merc 280           6 19.2  0         automatic
+Ferrari Dino       6 19.7  1            manual
+Fiat 128           4 32.4  1            manual
+Ford Pantera L     8 15.8  1            manual
+Valiant            6 18.1  0         automatic
+Porsche 914-2      4 26.0  1            manual
+Camaro Z28         8 13.3  0         automatic</code></pre>
 </div>
 </div>
-<section id="ggplot2" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">15.1</span> <code>ggplot2</code></h2>
+<section id="ggplot2" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">16.1</span> <code>ggplot2</code></h2>
 <p>As a briefly introduction to ggplot2, it is maybe considered one of the best tools for data visualization.</p>
 <p>The syntax is: first, the <code>ggplot()</code> functions receives the data. Going forward we must link the layers using ‘<code>+</code>’. Then we choose the geometry corresponding the graphic type. In geometry we pass <code>aes()</code> with the axis inside like <code>aes(x, y, fill)</code>, and the color, size points and other arguments.</p>
 <p>Let’s try a scatterplot with mtcars dataset to view the relationship between ‘miles per gallon’ and ‘horsepower’:</p>
@@ -1714,12 +1720,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../to_book/notebooks/99_summary.html" class="pagination-link" aria-label="Base-R Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Base-R Summary</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../to_book/notebooks/12_ExpDatAn.html" class="pagination-link" aria-label="Exploratory Data Analysis">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
