@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Alvaro Manzanas’ Portfolio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -427,18 +427,18 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> .[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-     age workclass        fnlwgt education   
-   &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;       
- 1    55 Private          129762 HS-grad     
- 2    42 Private          155469 Assoc-acdm  
- 3    41 Private          327723 HS-grad     
- 4    41 Self-emp-inc     114967 Assoc-voc   
- 5    61 Self-emp-inc     139391 Some-college
- 6    68 Self-emp-inc     140852 HS-grad     
- 7    56 Self-emp-inc     205601 Doctorate   
- 8    76 Self-emp-not-inc  33213 Masters     
- 9    72 Private          157913 Bachelors   
-10    30 Private           87469 HS-grad     </code></pre>
+     age workclass    fnlwgt education   
+   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       
+ 1    44 Federal-gov  280362 Assoc-acdm  
+ 2    27 Private      172009 Bachelors   
+ 3    59 Private      157932 10th        
+ 4    51 Federal-gov  217647 Some-college
+ 5    32 Private      185027 Some-college
+ 6    50 Private      237868 Masters     
+ 7    33 Private      121488 Bachelors   
+ 8    36 Private      127306 Bachelors   
+ 9    19 Private      298891 11th        
+10    51 Self-emp-inc 100029 Doctorate   </code></pre>
 </div>
 </div>
 <section id="filtering" class="level2" data-number="9.1">
@@ -454,18 +454,18 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>( <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
-   marital_status       age education  
-   &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;      
- 1 Never-married         26 Bachelors  
- 2 Never-married         23 Assoc-acdm 
- 3 Never-married         28 Prof-school
- 4 Never-married         24 Assoc-acdm 
- 5 Married-civ-spouse    28 HS-grad    
- 6 Never-married         24 HS-grad    
- 7 Never-married         25 Bachelors  
- 8 Never-married         27 11th       
- 9 Married-civ-spouse    25 Assoc-voc  
-10 Never-married         17 10th       </code></pre>
+   marital_status       age education   
+   &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;       
+ 1 Never-married         29 HS-grad     
+ 2 Never-married         25 HS-grad     
+ 3 Never-married         21 9th         
+ 4 Never-married         23 Bachelors   
+ 5 Never-married         20 Some-college
+ 6 Married-civ-spouse    28 HS-grad     
+ 7 Never-married         19 HS-grad     
+ 8 Never-married         21 Some-college
+ 9 Divorced              29 HS-grad     
+10 Never-married         19 Some-college</code></pre>
 </div>
 </div>
 <ul>
@@ -652,16 +652,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    18 &lt;NA&gt;      256179 Some-college            10 Never-married    &lt;NA&gt;      
- 2    25 &lt;NA&gt;      214925 10th                     6 Never-married    &lt;NA&gt;      
- 3    19 &lt;NA&gt;      117444 HS-grad                  9 Never-married    &lt;NA&gt;      
- 4    18 &lt;NA&gt;      264924 Some-college            10 Never-married    &lt;NA&gt;      
- 5    21 &lt;NA&gt;       40052 Some-college            10 Never-married    &lt;NA&gt;      
- 6    50 &lt;NA&gt;      281504 Some-college            10 Married-civ-spo… &lt;NA&gt;      
- 7    70 &lt;NA&gt;      173736 Bachelors               13 Married-civ-spo… &lt;NA&gt;      
- 8    23 &lt;NA&gt;      343553 11th                     7 Never-married    &lt;NA&gt;      
- 9    27 &lt;NA&gt;      130856 Bachelors               13 Never-married    &lt;NA&gt;      
-10    20 &lt;NA&gt;       37932 HS-grad                  9 Never-married    &lt;NA&gt;      
+ 1    80 &lt;NA&gt;       91901 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
+ 2    77 &lt;NA&gt;      152900 5th-6th                  3 Married-civ-spo… &lt;NA&gt;      
+ 3    22 &lt;NA&gt;      306031 Some-college            10 Never-married    &lt;NA&gt;      
+ 4    29 &lt;NA&gt;      168873 Some-college            10 Divorced         &lt;NA&gt;      
+ 5    20 &lt;NA&gt;      114813 10th                     6 Separated        &lt;NA&gt;      
+ 6    18 &lt;NA&gt;       30246 Some-college            10 Never-married    &lt;NA&gt;      
+ 7    20 &lt;NA&gt;      149478 Some-college            10 Never-married    &lt;NA&gt;      
+ 8    19 &lt;NA&gt;      220517 Some-college            10 Never-married    &lt;NA&gt;      
+ 9    55 &lt;NA&gt;      106707 Assoc-acdm              12 Married-civ-spo… &lt;NA&gt;      
+10    35 &lt;NA&gt;      124836 Some-college            10 Divorced         &lt;NA&gt;      
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -711,16 +711,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass      fnlwgt education education_num marital_status occupation
    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;     
- 1    69 Private        111238 9th                   5 Married-civ-s… Tech-supp…
- 2    64 Private        146272 Some-col…            10 Married-civ-s… Exec-mana…
- 3    22 Private        306031 Some-col…            10 Never-married  Sales     
- 4    66 Self-emp-not-… 210750 Some-col…            10 Married-civ-s… Prof-spec…
- 5    20 Private        202994 Some-col…            10 Never-married  Exec-mana…
- 6    19 Self-emp-inc   242001 Some-col…            10 Never-married  Sales     
- 7    65 Private        137354 Some-col…            10 Married-civ-s… Transport…
- 8    90 Self-emp-not-… 225063 Some-col…            10 Never-married  Farming-f…
- 9    78 Private        165694 Masters              14 Widowed        Exec-mana…
-10    35 Private        374716 9th                   5 Married-civ-s… Sales     
+ 1    22 Private        263970 Some-col…            10 Never-married  Other-ser…
+ 2    82 Private        403910 HS-grad               9 Never-married  Machine-o…
+ 3    19 Private        117201 HS-grad               9 Never-married  Craft-rep…
+ 4    61 Private        116230 Bachelors            13 Married-civ-s… Craft-rep…
+ 5    21 Self-emp-not-… 207988 HS-grad               9 Married-civ-s… Craft-rep…
+ 6    79 Federal-gov    142171 7th-8th               4 Married-civ-s… Adm-cleri…
+ 7    63 Local-gov      447079 HS-grad               9 Never-married  Prof-spec…
+ 8    22 Private         88126 Some-col…            10 Never-married  Prof-spec…
+ 9    71 Private        229424 HS-grad               9 Widowed        Handlers-…
+10    64 Self-emp-inc   338355 Assoc-voc            11 Married-civ-s… Sales     
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -745,16 +745,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    56 Private   656036 HS-grad                  9 Married-civ-spo… Prof-spec…
- 2    66 Private   170617 Masters                 14 Widowed          Prof-spec…
- 3    49 Private    52590 HS-grad                  9 Never-married    Prof-spec…
- 4    18 Private   271935 11th                     7 Never-married    Prof-spec…
- 5    33 Private   193172 Assoc-voc               11 Married-civ-spo… Prof-spec…
- 6    46 Private   280030 5th-6th                  3 Married-civ-spo… Prof-spec…
- 7    55 Private   123382 HS-grad                  9 Separated        Prof-spec…
- 8    21 Private   170272 Some-college            10 Never-married    Prof-spec…
- 9    69 Private   163595 HS-grad                  9 Widowed          Prof-spec…
-10    19 Private   211553 Some-college            10 Never-married    Prof-spec…
+ 1    76 Private    84755 Some-college            10 Widowed          Prof-spec…
+ 2    58 Private   158506 11th                     7 Married-civ-spo… Prof-spec…
+ 3    66 Private   182378 7th-8th                  4 Married-civ-spo… Prof-spec…
+ 4    82 Private    42435 10th                     6 Widowed          Prof-spec…
+ 5    62 Private   113234 Masters                 14 Married-civ-spo… Prof-spec…
+ 6    60 Private    88675 HS-grad                  9 Married-civ-spo… Prof-spec…
+ 7    19 Private   230874 Some-college            10 Never-married    Prof-spec…
+ 8    69 Private   163595 HS-grad                  9 Widowed          Prof-spec…
+ 9    33 Private   202498 7th-8th                  4 Separated        Prof-spec…
+10    60 Private    56248 HS-grad                  9 Married-civ-spo… Prof-spec…
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -860,16 +860,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 4
      age workclass        sign  amount
    &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; 
- 1    22 Private          &lt;=    50K   
- 2    58 Self-emp-not-inc &lt;=    50K   
- 3    25 Private          &lt;=    50K   
- 4    20 Private          &lt;=    50K   
- 5    19 Private          &lt;=    50K   
- 6    65 Private          &lt;=    50K   
- 7    39 Private          &gt;     50K   
- 8    33 Private          &lt;=    50K   
- 9    44 Private          &gt;     50K   
-10    72 Without-pay      &lt;=    50K   </code></pre>
+ 1    21 Private          &lt;=    50K   
+ 2    25 Private          &lt;=    50K   
+ 3    27 Private          &lt;=    50K   
+ 4    34 Federal-gov      &gt;     50K   
+ 5    39 Private          &lt;=    50K   
+ 6    39 Private          &gt;     50K   
+ 7    32 Local-gov        &lt;=    50K   
+ 8    19 Private          &lt;=    50K   
+ 9    24 Private          &lt;=    50K   
+10    39 Self-emp-not-inc &lt;=    50K   </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -879,18 +879,18 @@ the `.groups` argument.</code></pre>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
-   sex    race    age description     marital_status       
-   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                
- 1 Male   Black    23 Male_Black_23   Never-married        
- 2 Male   White    32 Male_White_32   Married-civ-spouse   
- 3 Male   White    56 Male_White_56   Married-civ-spouse   
- 4 Female White    29 Female_White_29 Never-married        
- 5 Male   White    18 Male_White_18   Never-married        
- 6 Female Black    33 Female_Black_33 Married-spouse-absent
- 7 Female White    21 Female_White_21 Never-married        
- 8 Female White    36 Female_White_36 Married-civ-spouse   
- 9 Male   White    30 Male_White_30   Married-civ-spouse   
-10 Female White    19 Female_White_19 Never-married        </code></pre>
+   sex    race    age description     marital_status    
+   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;             
+ 1 Female White    38 Female_White_38 Divorced          
+ 2 Female White    26 Female_White_26 Never-married     
+ 3 Male   White    20 Male_White_20   Never-married     
+ 4 Male   Black    56 Male_Black_56   Married-civ-spouse
+ 5 Male   White    39 Male_White_39   Divorced          
+ 6 Female White    23 Female_White_23 Never-married     
+ 7 Male   White    47 Male_White_47   Married-civ-spouse
+ 8 Male   White    46 Male_White_46   Married-civ-spouse
+ 9 Male   White    55 Male_White_55   Married-civ-spouse
+10 Male   White    47 Male_White_47   Married-civ-spouse</code></pre>
 </div>
 </div>
 <section id="the-mutate-function" class="level2" data-number="13.1">
@@ -910,18 +910,18 @@ the `.groups` argument.</code></pre>
 <span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span> ( <span class="fu">desc</span>(tax) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-   total_gain   tax occupation         age
-        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1       7298  730. Adm-clerical        30
- 2       2228  223. Prof-specialty      78
- 3          0    0  Transport-moving    43
- 4          0    0  Tech-support        34
- 5          0    0  Tech-support        43
- 6          0    0  Other-service       36
- 7          0    0  Other-service       18
- 8          0    0  Prof-specialty      65
- 9          0    0  Adm-clerical        52
-10          0    0  Craft-repair        41</code></pre>
+   total_gain   tax occupation          age
+        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
+ 1       7688  769. Sales                37
+ 2          0    0  Machine-op-inspct    45
+ 3          0    0  Prof-specialty       37
+ 4          0    0  Other-service        51
+ 5          0    0  Machine-op-inspct    33
+ 6          0    0  Sales                25
+ 7          0    0  Prof-specialty       51
+ 8          0    0  Other-service        28
+ 9          0    0  Prof-specialty       39
+10          0    0  Prof-specialty       22</code></pre>
 </div>
 </div>
 <p>Combining <code>mutate()</code> and <code>recode()</code> to transform values, useful for categories:</p>
@@ -936,14 +936,14 @@ the `.groups` argument.</code></pre>
    &lt;chr&gt;  &lt;chr&gt;     
  1 &lt;=50K  &lt;=50K     
  2 &lt;=50K  &lt;=50K     
- 3 &lt;=50K  &lt;=50K     
+ 3 &gt;50K   &gt;50K      
  4 &lt;=50K  &lt;=50K     
  5 &lt;=50K  &lt;=50K     
  6 &lt;=50K  &lt;=50K     
- 7 &gt;50K   &gt;50K      
+ 7 &lt;=50K  &lt;=50K     
  8 &lt;=50K  &lt;=50K     
- 9 &lt;=50K  &lt;=50K     
-10 &gt;50K   &gt;50K      </code></pre>
+ 9 &gt;50K   &gt;50K      
+10 &lt;=50K  &lt;=50K     </code></pre>
 </div>
 </div>
 <p>For binning a new variable using <code>mutate()</code> in combination with <code>cut()</code>. To <code>cut()</code> will pass the column, a vector with the intervals, and a vector with the name of that intervals.</p>
@@ -959,16 +959,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 3
      age age_avg over_under_age_avg
    &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;             
- 1    49    38.6 Above the avg     
- 2    43    38.6 Above the avg     
- 3    58    38.6 Above the avg     
- 4    50    38.6 Above the avg     
- 5    32    38.6 Lower than avg    
- 6    53    38.6 Above the avg     
- 7    17    38.6 Lower than avg    
- 8    22    38.6 Lower than avg    
- 9    37    38.6 Lower than avg    
-10    26    38.6 Lower than avg    </code></pre>
+ 1    51    38.6 Above the avg     
+ 2    33    38.6 Lower than avg    
+ 3    28    38.6 Lower than avg    
+ 4    21    38.6 Lower than avg    
+ 5    49    38.6 Above the avg     
+ 6    28    38.6 Lower than avg    
+ 7    31    38.6 Lower than avg    
+ 8    26    38.6 Lower than avg    
+ 9    23    38.6 Lower than avg    
+10    59    38.6 Above the avg     </code></pre>
 </div>
 </div>
 </section>
@@ -1101,17 +1101,17 @@ the `.groups` argument.</code></pre>
 <span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(cumpct_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                     wt cumsum_weight cumpct_weight cummean_weight
-Porsche 914-2     2.140        89.149       0.15625       3.301815
-Datsun 710        2.320         7.815       0.21875       2.605000
-Ford Pantera L    3.170        93.832       0.43750       3.235586
-Merc 240D         3.190        24.690       0.46875       3.086250
-AMC Javelin       3.435        77.389       0.53125       3.364739
-Maserati Bora     3.570       100.172       0.75000       3.231355
-Merc 450SLC       3.780        46.300       0.81250       3.307143
-Camaro Z28        3.840        81.229       0.84375       3.384542
-Pontiac Firebird  3.845        85.074       0.87500       3.402960
-Chrysler Imperial 5.345        62.319       0.96875       3.665824</code></pre>
+<pre><code>                    wt cumsum_weight cumpct_weight cummean_weight
+Fiat X1-9        1.935        87.009       0.12500       3.346500
+Datsun 710       2.320         7.815       0.21875       2.605000
+Volvo 142E       2.780       102.952       0.34375       3.217250
+Mazda RX4 Wag    2.875         5.495       0.37500       2.747500
+Hornet 4 Drive   3.215        11.030       0.50000       2.757500
+AMC Javelin      3.435        77.389       0.53125       3.364739
+Dodge Challenger 3.520        73.954       0.68750       3.361545
+Duster 360       3.570        21.500       0.75000       3.071429
+Merc 450SLC      3.780        46.300       0.81250       3.307143
+Camaro Z28       3.840        81.229       0.84375       3.384542</code></pre>
 </div>
 </div>
 <ul>
@@ -1127,17 +1127,17 @@ Chrysler Imperial 5.345        62.319       0.96875       3.665824</code></pre>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cyl, mpg, am, transmission_type) <span class="sc">%&gt;%</span></span>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 cyl  mpg am transmission_type
-Dodge Challenger   8 15.5  0         automatic
-Maserati Bora      8 15.0  1            manual
-Merc 450SLC        8 15.2  0         automatic
-Merc 280           6 19.2  0         automatic
-Ferrari Dino       6 19.7  1            manual
-Fiat 128           4 32.4  1            manual
-Ford Pantera L     8 15.8  1            manual
-Valiant            6 18.1  0         automatic
-Porsche 914-2      4 26.0  1            manual
-Camaro Z28         8 13.3  0         automatic</code></pre>
+<pre><code>                   cyl  mpg am transmission_type
+Chrysler Imperial    8 14.7  0         automatic
+Merc 450SLC          8 15.2  0         automatic
+Fiat X1-9            4 27.3  1            manual
+Merc 280C            6 17.8  0         automatic
+Cadillac Fleetwood   8 10.4  0         automatic
+Valiant              6 18.1  0         automatic
+Datsun 710           4 22.8  1            manual
+Hornet Sportabout    8 18.7  0         automatic
+Honda Civic          4 30.4  1            manual
+Merc 450SL           8 17.3  0         automatic</code></pre>
 </div>
 </div>
 <section id="ggplot2" class="level2" data-number="16.1">

@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Alvaro Manzanas’ Portfolio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -2019,15 +2019,15 @@ r: 0.2027</code></pre>
 <pre><code># A tibble: 9 × 7
   spam_cat top_words_pct char_freq_exclam char_freq_paren char_freq_dollar
   &lt;fct&gt;            &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-1 no_spam           0               0               0                 0   
-2 no_spam           9.62            7.71            0                 0   
-3 no_spam           0               0               0                 0   
-4 is_spam           9.08            5.83            0.037             1.31
-5 no_spam           6.24            0.467           0                 0   
-6 is_spam          11.6             0.496           0.165             0   
-7 no_spam           5.8             0               0                 0   
-8 is_spam           9.7             0.193           0.29              0   
-9 is_spam          11.3             0.121           0.121             0   
+1 no_spam           2.32            0.314           0                0    
+2 is_spam          13.0             0.659           0.085            0.114
+3 is_spam          12.0             0.487           0.081            0    
+4 no_spam           3.96            0               0.146            0    
+5 no_spam           3.2             0.072           0.108            0    
+6 no_spam           5.14            0               0.237            0    
+7 no_spam           4.18            0               0.371            0    
+8 is_spam          10.9             0.407           0                0    
+9 is_spam           3.78            0.926           0.411            0    
 # ℹ 2 more variables: capital_run_length_total &lt;int&gt;,
 #   capital_run_length_longest &lt;int&gt;</code></pre>
 </div>
@@ -2079,7 +2079,7 @@ r: 0.2027</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.3932  0.6068 </code></pre>
+ 0.3894  0.6106 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"=================="</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2093,7 +2093,7 @@ is_spam no_spam
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.3974  0.6026 </code></pre>
+ 0.4126  0.5874 </code></pre>
 </div>
 </div>
 <ul>
@@ -2156,29 +2156,29 @@ is_spam no_spam
 
           Reference
 Prediction is_spam no_spam
-   is_spam     317      26
-   no_spam      49     529
-                                             
-               Accuracy : 0.919              
-                 95% CI : (0.899, 0.935)     
-    No Information Rate : 0.603              
-    P-Value [Acc &gt; NIR] : &lt;0.0000000000000002
-                                             
-                  Kappa : 0.828              
-                                             
- Mcnemar's Test P-Value : 0.0111             
-                                             
-            Sensitivity : 0.953              
-            Specificity : 0.866              
-         Pos Pred Value : 0.915              
-         Neg Pred Value : 0.924              
-             Prevalence : 0.603              
-         Detection Rate : 0.574              
-   Detection Prevalence : 0.628              
-      Balanced Accuracy : 0.910              
-                                             
-       'Positive' Class : no_spam            
-                                             </code></pre>
+   is_spam     328      27
+   no_spam      52     514
+                                              
+               Accuracy : 0.914               
+                 95% CI : (0.894, 0.932)      
+    No Information Rate : 0.587               
+    P-Value [Acc &gt; NIR] : &lt; 0.0000000000000002
+                                              
+                  Kappa : 0.821               
+                                              
+ Mcnemar's Test P-Value : 0.00693             
+                                              
+            Sensitivity : 0.950               
+            Specificity : 0.863               
+         Pos Pred Value : 0.908               
+         Neg Pred Value : 0.924               
+             Prevalence : 0.587               
+         Detection Rate : 0.558               
+   Detection Prevalence : 0.615               
+      Balanced Accuracy : 0.907               
+                                              
+       'Positive' Class : no_spam             
+                                              </code></pre>
 </div>
 </div>
 <p>The confusion matrix show how were the prediction. For ‘is_spam’ predicted value are 315 ‘is_spam’ as reference, then this 315 are True Positive. The next value is for the predicted ‘is_spam’ and ‘no_spam’ as reference with 38 matches, corresponding False Positive known as Type 1 Error. The next two values are False Negative (Type 2 Error) and True Negative with 52 and 516 matches respectively.</p>
@@ -2238,7 +2238,7 @@ Prediction is_spam no_spam
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.756   0.244</code></pre>
+1   0.668   0.332</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2247,7 +2247,7 @@ Prediction is_spam no_spam
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.444   0.556</code></pre>
+1   0.512   0.488</code></pre>
 </div>
 </div>
 <p>We can see in this case that spam email (text1) is with 70% probability spam, although text2 which is no spam the model tell us is with 0.51% no spam. Looking the text2 there are some uppercase letters which can fool the model a little bit.</p>

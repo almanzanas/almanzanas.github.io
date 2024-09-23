@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Alvaro Manzanas’ Portfolio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -536,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (<span class="fu">what</span> (<span class="fl">6e9</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  40.41    0.03   43.05 </code></pre>
+  39.48    0.01   43.06 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compiling and testing again: </span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(compiler)</span>
@@ -544,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (<span class="fu">what.cmp</span> (<span class="fl">6e9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  39.11    0.04   43.05 </code></pre>
+  40.44    0.02   43.10 </code></pre>
 </div>
 </div>
 <p>The previous result with <code>system.time()</code> will depends on how fast the computer is. Another approach is <code>enableJIT()</code> (or ‘just-in-time’ compilation) which given a number to specify how the compilation should work. For example, <code>enableJIT(3)</code> performs as much compilation as possible. Once we make this call, functions are compiled before their first use and will remain compiled. To ‘uncompile’ a function we can edit it with <code>fix()</code>, also it is possible to convert it into text like <code>what.cmp &lt;- eval(parse(text=deparse(what.cmp, control="useSource")))</code>.</p>
@@ -567,14 +567,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.00    0.00    5.16 </code></pre>
+      0       0       5 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">parSapply</span>(clust, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span> (i) <span class="fu">what.cmp</span> (<span class="fl">6e9</span><span class="sc">/</span><span class="dv">10</span>))</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.00    0.00    5.03 </code></pre>
+   0.00    0.00    5.39 </code></pre>
 </div>
 </div>
 <p>Function inside <code>parSapply()</code> are not compiled when <code>enableJIT()</code> is enabled, have to been compiled explicitly (or run the function first and then export it).</p>
