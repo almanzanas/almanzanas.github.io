@@ -1,0 +1,78 @@
+project:
+  type: book
+  output-dir: _book
+  lib-dir: _book-lib-dir
+
+book: 
+  title: "Alvaro Manzanas"
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - prefacio.qmd
+    - part: "Base R"
+      chapters:
+        - to_book/notebooks/00_basics_ndata.qmd
+        - to_book/notebooks/01_functions_scripts.qmd
+        - to_book/notebooks/02_data_into_r.qmd
+        - to_book/notebooks/03_data_handling.qmd
+        - to_book/notebooks/99_summary.qmd
+    - part: "Data Wrangling and Model"
+      chapters:
+        - to_book/notebooks/11_transformations_tidyverse.qmd
+        - to_book/notebooks/12_ExpDatAn.qmd
+        - to_book/notebooks/13_enchanced_visualizations.qmd
+        - to_book/notebooks/14_modeling2deploy.qmd
+  navbar:
+    background: secondary
+    foreground: light
+    right:
+    - href: portfolio.html
+      text: Portfolio
+    - href: prefacio.qmd
+      text: Annotations
+    - text: CV
+      menu:
+      - text: Spanish
+        href: "docs/Alvaro Manzanas-CV_es.pdf"
+        target: _blank
+      - text: English
+        href: "docs/Alvaro Manzanas-CV_en.pdf"
+        target: _blank
+    - icon: github
+      href: http://github.com/almanzanas
+      target: _blank
+      aria-label: GitHub
+    - icon: bi bi-envelope
+      href: "mailto:almanzanas@gmx.com"
+      aria-label: e-mail
+    - icon: linkedin
+      href: https://es.linkedin.com/in/alvaromanzanas 
+      target: _blank
+      aria-label: Linkedin
+    pinned: true
+  sidebar:
+    tools:
+      - icon: github
+        href: http://github.com/almanzanas
+      - icon: bi bi-envelope
+        href: "mailto:almanzanas@gmx.com"
+      - icon: linkedin
+        href: https://es.linkedin.com/in/alvaromanzanas 
+        
+bibliography: references.bib
+
+format:
+  html:
+    tabset: true
+    theme:
+      light: [cosmo, style/style.scss]
+      dark: [cosmo, style/dark.scss]
+    toc: true
+
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+
+

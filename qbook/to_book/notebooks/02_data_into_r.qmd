@@ -1,0 +1,402 @@
+---
+title: "Data into R"
+---
+
+# Getting Data into and out of R
+
+When we gather data for analysis, we have to track it's history meaning where was acquired, from what source and on what date; this is known as *data's provenance*. A place to keep this information can be in the scripts.
+
+## Tabular Data
+
+One of the most common data we use come in the form of rectangular or tabular data, which is observations in rows and measurements (variables) in columns. Lent's read tabular data files (ASCII text) into R data frames and to try some approaches when is not working.
+
+### Files with Delimiters
+
+Commonly a observation is represented by a single row which fields are separated by a delimiter such a comma, tab, semicolon, pipe, or exclamation point; and the end of each observation is marked with a end-of-line character which can vary across platforms.
+
+-   `read.table(), read.csv(), read.delim()` : returns a data frame. Each function differs on it's default settings. Arguments for read.table():
+    -   `header=` if `TRUE` will use the first row of the file as column headers.
+    -   `sep=` the separator character. The default value is `" "`.
+    -   `quote=` character to be used to surround quotes. By default is set for `"` and `'` .
+    -   `comment.char=` character which introduce a comment line
+    -   `stringAsFactors=` if `FALSE` will left the character columns as character and `TRUE` for Factor class.
+    -   `colClasses=` expect a vector with the class of each column.
+    -   `na.strings=` expect a vector with the indicators of missing value in the input data.
+-   `read.csv2()` : for European style comma. Use semi-colon as delimiter.
+-   `read.delim2()` : for European style comma.
+
+Usually, the quote argument is set to `"\""` to recognize the double quotation marks because `'` can be used as apostrophe or turned off with `""`. Also the comment argument is turned off with `""` because it is not usual found `#` in data files and sometimes in fields there are '#1' or similar characters.
+
+### Column Classes
+
+We almost always pass `stringAsFactor=FALSE` when we are reading data, maybe except when we know the data is numeric and pre-cleaned and using `colClasses`. 
+
+The `colClasses` argument allows to specify the column type for each for the columns. To get an idea what are in the columns we can pass `nrow=` argument to read a dozen of rows with read.table() and inspect the resulting data frame. It can be specified numeric, character, logical, Date, POSIXct, and also can convert classes as well (see help(read.table)). `colClasses` recycle it's elements, to start you can pass "character" and watch what is inside.
+
+### Common Problems
+
+#### Embedded Delimiters {.unnumbered}
+
+Problems can arise with simple quote mark, # characters and also a comma as part of some text. This kind of difficulties come often from spreadsheets. If the text with comma is between double quotation marks we can use `quote="\""`.
+
+#### Unknown Missing Value Indicator {.unnumbered}
+
+By default R expects missing values as NA. A spreadsheet from Excel can have `#NULL!, #N/A, #VALUE!`, this three could be included in `na.strings=` argument.
+
+#### Empy or Nearly Empy Filds {.unnumbered}
+
+Empty fields will be NA values in numeric fields. But in character fields are difficult to perceive. 
+
+One of the firsts tasks is to extract the column classes and compare that with what we see:
+
+```r 
+table ( sapply(df, function(x) class(x)) )
+```
+
+If we know that a column should be numeric (NumID) but it is not, we can tabulate the elements that R is unable to convert:
+
+```r
+table ( df$NumID[is.na(as.numeric(df$NumID))] )
+```
+
+Examining the set of missing value indicators in the data can be helpful to include that values to `na.stings` argument in another call to `read.table()`.
+
+#### Blank Lines {.unnumbered}
+
+When there are blank rows by default `read.table()` will skip it. If wee need that the lines from two different files correspond we can pass `skip.blank.lines=FALSE` argument which will set NA in numeric columns and `""` in character ones.
+
+#### Row Names {.unnumbered}
+
+By default `read.table()` will create a row names starting from 1 and up, unless the header has one fewer filed than the rows, in which case R uses the first column as row names. Row names must be unique, if in the data set the first column of row names are not unique we can pass `row.names=NULL` to create an integer type row names. To specify a column to be the row names (or a vector) we can use `row.names=` argument.
+
+### When `read.table()` go wrong
+
+If we check the file 'data/addresses.csv' we can see is a comma delimited file with headers, then we can specified some arguments:
+
+```r
+read.table ("../data/addresses.csv", header = TRUE, sep = ",", quote = "",
+            comment.char = "", stringsAsFactors = FALSE)
+```
+
+We can check the first line to be sure that are headers:
+
+```{r}
+read.table ("../data/addresses.csv", header = F, sep = ",", quote = "",
+            comment.char = "", stringsAsFactors = FALSE, nrows = 1)
+```
+
+-   `count.fields()` : returns the fields per row.
+
+```{r}
+count.fields ("../data/addresses.csv", sep = ",", quote = "", comment.char = "")
+```
+
+OK, something is wrong in the third and fifth row, let's see what it is:
+
+```{r}
+read.table ("../data/addresses.csv", header = F, sep = ",", quote = "",
+            comment.char = "", stringsAsFactors = FALSE, 
+            nrows = 1, skip = 2)
+```
+
+Now we could conclude that in this 3rd row there are embedded commas in V3 corresponding to Address column.
+
+We can force when creating the data frame using the largest number of columns possible by passing `fill=TRUE` argument. The rows with the last column filled tell us that there are problems in the input data:
+
+```{r}
+(
+add <- read.table ("../data/addresses.csv", header = T, sep = ",", quote = "",
+                   comment.char = "", stringsAsFactors = FALSE, fill = T)
+)
+```
+
+The IDs have become row names because there are a less field in headers. In the case the ID was duplicated we have to pass `row.names=NULL` argument. 
+
+To continue, we are going to identify the bad formatted rows, then we're going to `paste()` the columns 2 and 3 from that rows which had embedded comma, and to finish changing the positions of columns 4-5 to 3-4.
+
+```{r}
+# Vector with logical values:
+fixc <- add$State != ""
+# Paste column 2 and 3 from that rows
+add[fixc, 2] <- paste (add[fixc, 2], add[fixc, 3])
+# Changing the order
+add[fixc, 3:4] <- add[fixc, 4:5]
+add
+```
+
+Our last step will be to delete the last column after saving the column names. And remove the variables that we won't need any more.
+
+```{r}
+# Saving column names and deleting State column
+mycols <- colnames (add)
+add$State <- NULL
+# ID column will take the values of the previus rownames, then assing colnames
+add <- data.frame (ID = rownames (add), add)
+colnames (add) <- mycols
+# Replace old rownames:
+rownames (add) <- NULL
+# Removing objects:
+rm (fixc, mycols)
+add
+```
+
+#### Using Scan {.unnumbered}
+
+Given the previous data set, let's explore the content of that file with `scan()`, a general-purpose data input tool.
+
+-   `sep="\"` : to read entire lines
+-   `what=character()` or `what=""` : by default scan() expect numbers, so we specify that it will encounter characters.
+
+```{r}
+(
+add.scan <- scan ("../data/addresses.csv", what = character(), sep = "\n",
+                  quote = "", comment.char = "")
+)
+```
+
+We can fix it replacing the third comma:
+
+```{r}
+# locating all the commas:
+commas <- gregexpr (",", add.scan)
+# Extracting long rows:
+comma.5 <- lengths (commas) == 5
+# Locating the third comma:
+comma.gone <- sapply (commas[comma.5], function(x) x[3])
+# Replacing comma for semi-colon:
+substring (add.scan[comma.5], comma.gone, comma.gone) <- ";"
+add.scan
+```
+
+The next step will be `read.table()` from text, also we can save our progress with `write.table()` in case we will use it again o for other users.
+
+```{r}
+read.table (text = add.scan, header = TRUE, sep = ",", quote = "",
+            comment = "", stringsAsFactors = FALSE,
+            colClasses = c(ID = "character") )
+```
+
+### Writing Delimited Files
+
+To perform this task we use `write.table(), write.csv(), write.csv2()` and it's analogs. Also with `write.table()` can be passed a matrix. Saving a file with `write.table()` generally it be passed `sep=` argument specifying the delimiter, `quote=FALSE` to not save the quotes in character fields but sometimes it is necessary for numbers with leading zeros or embedded commas. Rarely we want to save the row names, then with row.names=FALSE we omit them.
+
+#### Fixed width Files {.unnumbered}
+
+A fixed-width file have a specific number of character for each field, for example, ID have 4 characters, name 15, account 12... For this files we use `read.fwf()` that has many of the same arguments as `read.table()`, and the most important is `widths=` which expect an integer vector with the lengths of the fields.
+
+### End-of-Line Characters:
+
+Windows has `\r` and `\n`. OS X and Linux only `\n`. Depending the platform and application we should be aware, but R is flexible with `read.table()` and `scan()` functions which permits some flexibility.
+
+## Non-Tabular Data
+
+Sometimes files are too big to fit into the main memory, then we will need some techniques to work with that files. If we need a subset of records, we can filter the data set without reading it all into memory. On the other hand, there are files not suitable for `read.table()` like JSON and XML, or binary data.
+
+-   `file()` and relatives : return a connection object that stores all the information that R needs. 
+    -   `open=` whether the file is to be read, written or append to ("r", "w", "a"). It can be passed with '+' to read and write, and adding t or b for text or binary modes. `open="a+b"` opens a binary file for reading and appending.
+-   `close()` : to close a connection. Is a good practice to close the connection when we are finish with it.
+
+The function `readLines()` opens the file, reads as many lines we want and closes the file. The argument `n=` mean number of lines and `n=-1` for all lines. We can use `readLines()` over a connection to consecutively read lines from that connected file because will remain open. The analogous function is `writeLines()` and `writeChar()` which adds a null character after it's end-of-line character but using `eos=NULL` argument the string is written without terminator.
+
+```{r}
+readLines ("../data/addresses.csv", n = 1)
+con.add <- file ("../data/addresses.csv", open = "r")
+readLines (con.add, n = 2)
+readLines (con.add, n = 2)
+close (con.add)
+```
+
+When a file is open R maintains a 'pointer' that describes the location, one for read and one for write. With `seek()` function we can get the current location of the file, and passing where= argument we can choose a position which is useful to jump to a prespecified position. But help tell us that `seek()` on windows is discouraged. Finally, `flush()` function can be used after a file output to ensure the write on disk operation.
+
+### Different encodings
+
+For most of the previous functions (read.table or scan) we can pass `fileEncoding=` argument to specify the encoding in the file we are going to work with, and `encoding=` argument specifies the encoding of the R object that contains the data.
+
+To write on file we have to be certain what encoding have and pass to `file()` the `encoding=` argument and read using `readLines()` and again `enconding="UTF-8"`. In the same way to write we use file to open a connection selecting the encoding and passing `useBytes=TRUE` argument which prevent R to convert encoded strings back to the native encoding before writing.
+
+### Null Character and Binary Data
+
+In hexadecimal are represented as `00` or `0x00` by R, that's not R's NULL value. By default with `scan()` and `read.table()` will stop reading a NULL character and it will continue with the next field. The argument `skipNul=TRUE` allows to skip over NULL which is a safe choice for delimited data. For intended NULL in text we have to read the file as binary.
+
+-   `readBin()` : to read binary data. Requires the number of bytes to read because it won't recognize the end-of-line characters. It will return a vector with class `raw`.
+
+Once read the file, we can write it back with `writeBin()` or convert it into data.
+
+-   `rawToChar()` : when we know that the raw data represents text, unless there are embedded nulls.
+
+With a raw vector we can look for NULLs and replace it with space or other character that we want:
+
+```r
+vec[vec == 0x00] <- as.raw(0x20)
+```
+
+If all the previous steps has gone well, after write the data back or converted to text we can use `read.fwf()` or `readLines()`.
+
+## Reading data from Relational Databases
+
+It is not necessary to load all the data into R, if the data tables are small, it doesn't matter but with large amount of data it is better using the database as much as possible. We will need the package `RODBC` to be installed into R.
+
+To use `odbcConnect()` we need to have installed ODBC drivers from Microsoft, and then open de application and configure a new DSN which will be the first argument. This DSN contain the database, language and additional configurations. It will create a handle to be used with other commands. The alternative is `odbcDiverConnect()` which provide us more flexibility; the first argument is a connection string with ODBC configuration.
+
+```r
+connection <- odbcConnect("SQL2022", uid="rstats", pwd="P@ssw0rd")
+adv.tab <- sqlTables(connection, tableType = "TABLE")
+adv.tab[4:8,]
+```
+```r
+sqlColumns(connection, "Employee")[3:10,4:ncol(sqlColumns(connection, "Employee"))]
+```
+
+Once we are done with the connection (handle) it is recommended to close it with `close(connection)` or `odbcClose(connection)`
+
+### SQL Commands
+
+We are going to interact with the database using ODBC functions such as `sqlQuery()` passing a character string.
+
+```r
+emp <- sqlQuery (connection, "
+                 SELECT * FROM HumanResources.Employee
+                 ")
+s10 <- sample(nrow(emp), 10)
+emp[s10,]
+```
+
+```r
+emp.mal <- sqlQuery (connection, "
+                    SELECT BusinessEntityID, LoginID, VacationHours, SickLeaveHours
+                    FROM HumanResources.Employee
+                    WHERE Gender = 'M'
+                    ", stringsAsFactors = FALSE)
+s10 <- sample(nrow(emp.mal), 10)
+emp.mal[s10,]
+```
+
+The `sqlQuery()` function supports simple arithmetic operations such as count, max or min, combine columns arithmetically, logarithms, aggregate data into groups...
+
+#### Joining Tables {.unnumbered}
+
+Join in SQL is like `merge()` function in R. It is to match up two tables according to the value of a column in each one.
+
+```r
+emp.sales <- sqlQuery (connection, "
+                    SELECT *
+                    FROM Sales.SalesPerson
+                    LEFT JOIN HumanResources.Employee 
+                    ON Sales.SalesPerson.BusinessEntityID = HumanResources.Employee.BusinessEntityID
+                    ", stringsAsFactors = FALSE)
+# s10 <- sample(nrow(emp.sales), 10)
+emp.sales
+```
+
+#### Results in Pieces {.unnumbered}
+
+When we call to `sqlQuery()` performs two tasks, first it sends the query and then fetch the results. If we are going to work with very large tables we can do this tasks separately. 
+
+-   `sqlFetch()` : get the first batch with a given number of rows. Subsequent calls should be made to `sqlFetchMore()` with `max=` argument.
+
+Also, calling `sqlQuery()` passing `max=` for complicated queries, we can follow it with `sqlGetResults()` and `rows_at_time=` argument with an integer between 1 and 1024 (number of rows to fetch at a time).
+
+```r
+sqlFetch(connection, "Sales.Customer", max = 10)
+```
+```r
+sqlFetchMore(connection, max = 10)
+```
+
+#### SQLite {.unnumbered}
+
+SQLite is a 'serverless' database which data is stored in one large file well suited to smaller applications. The `RSQLite` package connects R to SQLite databases. Some useful function are:
+
+-   `dbConnect()` : passing as first argument `SQLite()` and the second `dbname=` argument is the name of the file containing the data. Returns a handle for other functions.
+-   `dbListTables()` : list the tables. The first argument can be the handle.
+-   `dbListFields()` : return the fields (columns) in a table.
+-   `dbGetQuery()` : analogous to `sqlQuery()`, executes a query and returns the data.
+-   `dbSendQuery()` and `dbFetch()` : create a query and receive the data. `dbSendQuery()` does not returns data, it prepares the database to return data with `dbFetch()`.
+
+## Large Numbers of Input Files
+
+As Data Scientists will have to perform tasks in directories and files which sometimes there are thousands of them. For example, unzipping files and using its content.
+
+-   `list.files()` : list files matching a pattern (regular expression).
+-   `unzip()` : to unzip zipped files.
+-   Other file. family functions such as `file.copy(), file.remove(), file.rename()`...
+
+The datasets used for this example are from: https://github.com/wesm/pydata-book/tree/3rd-edition/datasets/babynames
+
+To continue we are going to unzip the babynames files from 1950s to 2000s and load the comma separated data. First we need to know what are their names and the names of the files inside each file.
+
+```{r}
+# listing files corresponding with babynames data
+list.files(path = "../" , 
+           pattern = "^babynames.*\\.zip$",
+           recursive = TRUE, full.names = F)
+```
+```{r}
+# Exploring one .zip file
+unzip("../data/babynames/babynames-1950.zip", list = TRUE)
+```
+
+```{r}
+# Listing .zip files
+zipfiles <- list.files(path = "../" , 
+                       pattern = "^babynames.*\\.zip$",
+                       recursive = TRUE, full.names = T)
+
+# Unzip every file
+for (f in 1:length(zipfiles)) {
+    unzip (zipfiles[f])
+}
+
+# Listing .txt files 
+txtfiles <- list.files(path = "../",
+                       pattern = "^yob.*\\.txt$",
+                       recursive = TRUE, full.names = TRUE)
+# Extracting names and years
+txtnames <- sub ("../notebooks/", "", txtfiles)
+yr <- substring (txtnames, 4, 7)
+
+# creating a data frame with every file using year as a column
+result <- NULL
+for (i in 1:length (txtfiles) ) {
+    dat <- data.frame (Year = yr[i], read.csv (txtfiles[i], 
+                                               header = FALSE, 
+                                               stringsAsFactor=FALSE))
+    result <- rbind (result, dat)
+}
+
+s10 <- sample (nrow(result), 10)
+result[s10,]
+```
+
+```{r}
+colnames(result) <- c("Year", "Name", "Sex", "Count")
+# cleaning exported files
+rem <- file.remove(txtfiles)
+remove(rem)
+result[s10,]
+```
+
+## Other Formats
+
+The **clipboard** can be used for moving text between programs. R sees the clipboard as a file named "clipboard" which can be used with `read.table("clipboard")` or `write.table(df, "clipboard")` and then paste it into a spreadsheet. For MAC and Linux there are different approaches.
+
+From **spreadsheets** like Microsoft Excel with format .xls or .xlsx we can use `read.xls()` or `read.xlsx()` functions from `gdata` package. The spreadsheets have to be rectangular as a data frame must be. 
+
+Also we can acquire a **web** page with `getURI()` function of the `RCurl` package which will return a character vector of length 1. For HTML tables `readHTMLTable()` function from `XML` package will be our usual tool. 
+
+Working with **XML** using functions provided by `XML` package we can use `xmlTreeParse()` for read in a file and returns a tree-like object of class `XMLDocument`. This object acts like an R list where we can use its names to extract fields. The `xmlValue()` function converts the list element into text.
+Other approach is to use `xmlParse()` function and then `xpathSApply()` to search with RE or basic search resulting a list of object of class `xmlNode.`
+
+For **JSON** can be used `rjson`, `RJSONIO` and `jsonlite` packages which read and write JSON objects. If we have a file containing a whole set of JSON messages, one per line we can use `scan(..., sep="\n", what="")` and apply a conversion `fromJSON()` to each message.
+
+To finish, to extract data using a **REST API** can be used `RCurl` and `httr` packages. For other statistical packages such as SAS, SPSS or Minitab the recommended package is `foreign.`
+
+## R Data
+
+-   `save()` : the output is a file with the objects stored in.
+-   `load()` : restore all the objects stored on disk by `save()` (can overwrite objects)
+-   `saveRSD()` : take an object and process a disk file with its data and attributes.
+-   `readRDS()` : returns the object just like was saved.
+-   `save.image()` : to save objects into the workspace, and by default creates a `.RData` file.
+-   `attach()` : to add an R data file to the search path (where R look for objects)
+

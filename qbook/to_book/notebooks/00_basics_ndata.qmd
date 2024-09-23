@@ -1,0 +1,2257 @@
+---
+title: "R: The very basics"
+---
+
+# The very basics
+
+## Getting Help
+
+At the command line we can look for help through the commands:
+
+-   `help()`: gets information on a particular R function, e.g. `help(matrix)`
+
+-   `?`: works the same as the previous one, e.g. `?"matrix"`
+
+-   `help.search()`: It's useful if we know the subject rather than the name.
+
+-   `apropos()`: returns a vector of names of objects containing that string, e.g. `apropos("matrix")` returns every object with 'matrix' in its name.
+
+-   `args()`: displays the set of arguments expected by a given function.
+
+```{r}
+args(matrix)
+```
+
+# R Data: Vectors
+
+A vector is the basic unit of computation in R. The atomic class which we can see with `help(vector)` are:
+
+-   logical: TRUE or FALSE (T or F as synonyms)
+-   integer
+-   numeric or double
+-   character: is the text
+-   raw: can hold binary data
+-   complex
+
+To combines items into a vector we use `c()` function. Cal also be used to combine vector, as long as all the vectors are of the same sort.
+
+```{r}
+c(2, 25)
+```
+
+```{r}
+# R has formatted the numbers in a consistent way
+c(-2, pi, 25)
+```
+
+```{r}
+c(c(2, 3), c(pi, 16.7, 5), c(-12, -16))
+```
+
+To set consecutive integers:
+
+```{r}
+1:7
+```
+
+```{r}
+# Sequence in reverse
+9:-2
+```
+
+```{r}
+# It's 3 plus the sequence
+3 + 2:5
+```
+
+Using `help(Syntax)` It can be seen a list of operators and their precedences, and precedence can always be over-ridden with parentheses.
+
+Also with `seq()` we can create sequences, with better control of starting points, ending points, lengths, and step sizes. With help we can see:
+
+``` r
+seq(...)
+
+## Default S3 method:
+seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
+    length.out = NULL, along.with = NULL, ...)
+
+# Examples:
+seq(17)
+seq(0, 1, length.out = 11)
+seq(1, 9, by = 2)
+```
+
+Logical vectors ofen are constructed by R in response to an operation:
+
+```{r}
+35:41 >= 37
+```
+
+To calculate the number or proportions of elements in a vector we use `sum()` for count and `mean()` for proportions:
+
+```{r}
+# like we saw, five out of seven elements in this vector are greater or equal to 37
+sum(35:41 >= 37)
+```
+
+```{r}
+# 5 out of 7 are aprox. 71.4%
+mean(35:41 >= 37)
+```
+
+## Vector Operations
+
+Arithmetic operations on vectors produce vectors.
+
+```{r}
+5:10
+```
+
+```{r}
+(5:10)^2
+```
+
+There are functions which returns a single number (that is also a vector), such as: `length(), sum(), mean(), sd(), min(), max()`. The function `range()` returns the smallest and largest values, and `summary()` returns a vector of summary statistics.
+
+```{r}
+# An assigment with parentheses case print this assigment
+(th1 <- c(20, 15, 10, 5, 0)^2)
+```
+
+```{r}
+th2 <- 105:101
+th2 + th1
+```
+
+```{r}
+th2 / th1
+```
+
+It's Computed element by element, that's why print 'Inf', because 101/0 refer to an infinite value.
+
+```{r}
+# Print the larger value anywhere
+max(th1, th2)
+```
+
+```{r}
+# 'Parallel maximum' print the larger of each pair
+pmax(th2, th1)
+```
+
+Loginac vectors can also be combined. The operator `|` for 'or' return TRUE if either element is TRUE; the `&` operator for 'and' return TRUE only if both elements are TRUE. This single version evaluate the condition for every pair of elements from both vectors, the double version ( `|| , &&`) evaluate multiple TRUE/FALSE conditions from left to right, stopping as soon as possible (are useful in `if()` statements).
+
+Recycling
+
+When a vector does not match with other vector to be operated, the shorter one starts again, recycling it's elements.
+
+```{r}
+# Two vector with the same length, 6
+5:10 + c(0, 10, 100, 1000, 10000, 100000)
+# The sum is element by element
+```
+
+```{r}
+# Two vectors, 6 and 3 elements
+5:10 + c(1, 10, 100)
+```
+
+```{r}
+# 6-vector and 5 vector. The second recycle it's first element (10 + 3)
+5:10 + c(3, 4, 5, 6, 7)
+
+```
+
+Recycling a vector of length 1 (`(5:10) + 4`) is very common, but the other lengths ir rarer. If we see the last warning, It's better to treat that as an error and try to resolve it.
+
+## Handling character vectors
+
+We can add names to a vector to identify individual entries. R accept letters, numbers, dots, and underscores:
+
+```{r}
+vec <- c(201, 202, 203)
+names(vec)
+```
+
+```{r}
+# It is a bad practice to have a vector's name invalid:
+names(vec) <- c("a", "b", "with space")
+names(vec)
+```
+
+```{r}
+# Also, we can assign names directly
+vec <- c(a = 201, b = 202, with.space = 203)
+vec
+```
+
+## Data Types
+
+The most common data types are numeric, logical and character. These are some less-common data types:
+
+-   integers: values between -(2^31^ -1) and 2^31^ -1. Values outside this range may be displayed as integers but will be stored as doubles. To regard an item as an integer you can add `L` on its end ( `246L` ), this only makes sense whether really is an integer.
+-   raw: refers to data kept in binary (hexadecimal) form. Is data from images, sound and video, R will stored as raw. It can be converted into character data with `rawToChar()` function. Reading raw data could be useful to handle the case of unexpected characters.
+-   complex number: R can manipulate complex numbers but almost never arise in data cleaning.
+
+We can see what data type is a vector with `typeof()` which differentiates between integer and double. Other function called `mode()` calls them both numeric. The `str()` function return the data type and the first few entries. And `class()` is more general operator for complex types.
+
+The functions: `is.logical(), is.integer(), is.numeric(), is.character()` returns a single logical value whether is TRUE or FALSE. A particularly useful function for more complicated or user-defined clases is `is()` which lets you specify the class as an argument: `is(pi, "numeric")`.
+
+```{r}
+typeof(vec)
+```
+
+```{r}
+mode(vec)
+```
+
+### Data Type conversion
+
+R modifies the entire vector to be of the more complicated type. If you create a numeric vector but you adds a character, the entire vector will be converted to character:
+
+```{r}
+vec <- c(1, 2, 3, 4, 5, 6, "7")
+vec
+```
+
+Types: logical \< raw \< numeric \< complex \< character.
+
+Other group of functios are `as.` to convert vectors:
+
+-   `as.numeric`: a character will be converted to a numeric if it has the syuntax of a number.
+
+    ```{r}
+    # The element which no fit as numeric will be NA values by coercion
+    as.numeric( c("123.4", "-1234e-2", "4,567", "45. 67", "$12", "45%"))
+    ```
+
+-   `as.logical`: Numeric values that are zero become FALSE, otherwise become TRUE. Sometimes numbers that you expect to be zero aren't because of floating-point error.
+
+    ```{r}
+    # The third is FALSE because it is outside the range of double precision.
+    # The last element 'should' be zero but aren't because floating-point error.
+    as.logical( c(123, 5-5, -1e-34, 1e-500, 1- 1/49 * 49) )
+    ```
+
+Numeric, non-missing values never produce NA when converted to logical.
+
+## Subsets of Vectors
+
+*subsetting* or *extracting* is to pull out a piece of a vector.
+
+### subscript: numeric
+
+```{r}
+# 5-vector
+(a <- 101:105)
+# extract element number 3
+a[3]
+```
+
+We can use a numeric expression to compute a subscript but only if we are sure that expression is an integer.
+
+```{r}
+# extract the fourth and second element
+a[c(4, 2)]
+# extract the element corresponding to 3+2 
+a[3+2]
+```
+
+Negative numbers omit this elements, but you cannot mix negative and positive numbers. Zeros are permited but they are ignored by R.
+
+```r
+a[-2]
+# Omit the first and second element
+a[- (1:2) ]
+# mix of positive and negative, result an error
+a[c(-1, 2)]
+```
+
+### Subscript: logical
+
+A logical subscript is a logical vector of the same length as the thing being extracted from. TRUE are returned, FALSE are not.
+
+```{r}
+# numeric vector with ages
+age <- c(21, 32, 43, 54, 65, 76)
+age > 60
+```
+
+We can use the last logical vector to extract elements of age, or combining it with other vectors.
+
+```{r}
+# Which ages are greater than 60
+age[age > 60]
+
+```
+
+```{r}
+people <- c("Yoshua", "Mery", "Alex", "John", "Lee", "Cindy")
+# To which people corresponds their age greater than 60
+people[age > 60]
+
+# Creating a new variable with the previous subscript
+age.gt.60 <- age > 60
+people[age.gt.60]
+```
+
+Errors to avoid:
+
+```{r}
+# R convert the logical subscript to numeric
+# the extraction produces the first element of the vector two times
+people[0 + age.gt.60]
+
+# With the negative sign, R convert again into numeric values
+# The extraction drops the first value and rest are returned
+people[-age.gt.60]
+
+# This is, probably, the intended form:
+# The operator ! to print which values are not greater than 60
+people[ !age.gt.60 ]
+```
+
+The `which()` function can be used to convert a logical vector into a numeric. It returns the indices of the element that are TRUE.
+
+To find the location of every minimum value in the variable 'y' we can use `which(y == min(y)`. The alternative are `which.min()` and `which.max()` but only select the first index with the minimum or maximum value.
+
+### subscript: names
+
+A name subscript will need to be a character.
+
+```{r}
+(vec <- c(a = 201, b = 202, with.space = 203) )
+
+vec["b"]
+
+# Names of 'vec' distinct to 'a'
+vec[names(vec) != "a"]
+```
+
+### Vector length 0
+
+This usually happens when all of the elements of a logical subscript are FALSE.
+
+```{r}
+a
+b <- a[a < 99]
+b
+```
+
+If a zero-length vector is used as the condition in an `if()` statement, an error results:
+
+```r
+# the sum of a numeric or logical vector of length 0 is itself zero
+sum( b + 12345)
+
+if (b < 2) cat("yes\n")
+```
+
+### Replacing elements of a vector
+
+If we extract elements, we can use the extraction operation on the left side of an assigment for replacing.
+
+```{r}
+a
+a[3] <- 203
+a
+a[a > 104] <- -999
+a
+```
+
+```{r}
+# Replacing using names
+names(vec) <- c("a", "b", "c")
+vec
+
+cat("\n")
+
+vec["b"] <- 302
+vec
+```
+
+It is possible too combine two vectors (if the vectors are different types, R convert them) and also assign elements of a vector out past its end.
+
+```{r}
+(a <- 101:103)
+(b <- -5:-1)
+cat("\n")
+
+a[4:8] <- b
+a
+cat("\n")
+
+# b[6] does not exists, will be filled with NA to add b[7]
+b[7] <- 3
+b
+```
+
+## Missing Data NA
+
+When we try to extract an item that was never present in a vector appears missing values. NA values rule: any computation with an NA itself becomes an NA. With mathematical computations we can use `na.rm = TRUE` argument to compute the result after omitting missing values.
+
+We can use `anyNA()` function to determine whether any of the values are missing (TRUE or FALSE). Also, `is.na()` fuction return TRUE or FALSE for every element in the vector. We can use `where(is.na(vector))`to find the numeric indices of the missing elements.
+
+```{r}
+# Creating a vector with missing values
+nax <- 101:106
+nax[ c(3, 5) ] <- NA
+nax
+cat("\n")
+
+is.na(nax)
+cat("\n")
+
+which(is.na(nax) )
+
+cat("\nMean 'nax' vector: ")
+mean(nax)
+mean(nax, na.rm=TRUE)
+
+```
+
+We can remove missing values with `vec[!is.na(vec)]` which return non-missing entries, but `na.omit()` function deletes the missing values but also keeps track of where in the vector they used to be. This information is stored in vector's 'attributes':
+
+```{r}
+# To return non-missing values:
+nax[!is.na(nax)]
+cat("\n")
+
+# Storing non missing values in a variable and keeping track of deleted ones
+(nay <- na.omit(nax))
+attr(nay, "na.action")
+attr(nay, "class")
+```
+
+We can have a vector 'b' with data and a vector 'a' as index which contain NA values. If we use 'a' as filter, it returns every coincident value and missing value, this behaviour can be changed with `b[!is.na(a) & a == 2]`
+
+```{r}
+(b <- 101:104)
+(a <- c(1, 2, NA, 4))
+cat("\n")
+
+b[a == 2]
+cat("\n")
+
+b[!is.na(a) & a == 2]
+
+```
+
+-   `NaN` : Special value, means "Not a Number". It si the result of specific computations such as 0/0. NaN is considered a missing value.
+-   `Inf` : Appears when a positive number is accidentally divided by zero. Inf values are not missing.
+
+Inf + NA = NA\
+NaN + NA = NaN
+
+We generally wanto to identify any of these values: the function `is.finite()` produces TRUE for numbers that are neither NA nor NaN nor Inf. It serves as a check on valid values. The command `all(is.finite(vector) )` is to see a numeric vector elements which are not special values.
+
+-   `NULL` : is an object with zero length, no contents, no class. It often arise trying to access an element which does not exist. The function `is.null()` is for testing NULL values. If you index using a NULL value the result will be a vector of length 0.
+
+## The `Table( )` function
+
+`Table()` produce a table returning for each unique value the number of times that value appears.
+
+```{r}
+vec <- rep ( c("red", "blue", NA, "green"), c(4, 2, 1, 3) )
+vec
+cat("\n")
+
+table(vec)
+```
+
+`table()` arguments:
+
+-   `useNA =`
+
+    -   `"no"` : default option. Exclude NA values.
+    -   `"ifany"` : show an entry for NA if there are any.
+    -   `"always"` : show an entry for NA whether there are any NA values or not.
+
+-   `exclude =`
+
+    -   `c(NA, NaN)` : default option.
+
+    -   We can add a value of the vector to exclude, also we can pass `NULL`.
+
+```{r}
+table(vec, useNA = "always")
+cat("\n")
+
+table(vec, exclude="green")
+```
+
+Also, we can pass to `table()` function two vectors to create a two-way table (cross-tabulation). in R a two-way table is treated the same as a matrix.
+
+```{r}
+vec2 <- rep ( c("north", "south", "east", "west"), c(2, 3, 2, 3) )
+table(vec,vec2, useNA="ifany")
+```
+
+A three and higher-way tables are produced when you pass three or more equal-length vectors.
+
+For very large vectors, the `data.table()` function in the `data.table` package may prove more efficient than `table()`.
+
+The `xtabs()` function is useful for creating more complex tables.
+
+### Operating on tables
+
+-   `prop.table()` : passing a variable with table assigned produces the proportions of the total counts in the table by cell (or row, or column). The second argument references 1 to rows, or 2 to columns.
+
+```{r}
+year <- rep (2015:2017, each=5)
+market <- c("a", "a", "b", "a", "b", "b", "b", "a", "b", 
+            "b", "a", "b", "a", "b", "a")
+cost <- c(64, 87, 71, 79, 79, 91, 86, 92, NA,
+          55, 37, 41, 60, 66, 82)
+
+# assign a table with the vectors we want to 'tab'
+tab <- table(market, year)
+tab
+cat("\n")
+
+# proportions along rows
+prop.table(tab)
+cat("\n")
+
+# proportions throwout columns
+prop.table(tab, 2)
+
+```
+
+-   `margin.table()` : produce the marginals totals from a table.
+
+-   `addmargins()` : to a given table incorporates those totals producing a new row and column by default. Passing as second argument 1 or 2, you can specified if only wants rows or columns.
+
+```{r}
+cat("margin.table function for columns:\n")
+margin.table(tab, 2)
+
+cat("\naddmargins function in the table: \n")
+addmargins(tab)
+```
+
+-   `tapply()` : the arguments are, first the vector where perform the computation, second the vector with the index to group, and then the function to apply. To group with more than one vector (index) we can use a `list()`.
+
+```{r}
+cat("There are NA in cost? ")
+anyNA(cost)
+cat("\n")
+
+tapply (cost, year, min, na.rm=TRUE)
+cat("\n")
+
+tapply (cost, list(market, year), mean, na.rm = TRUE)
+```
+
+It is posible to use with tapply() custom fuctions, as an example, for (x) return the sum of the squares of each entry of x:
+
+```{r}
+tapply (cost, list(market, year),
+        function (x) sum (x^2, na.rm = TRUE))
+```
+
+## Other Actions on Vectors
+
+### Rounding
+
+-   `round()` : to round a number with specific amount of decimals. Passing a negative number as second argument will round the nearest power of 10.
+
+-   `signif()` : retain a specific number of digits.
+
+-   `trunc()` : discards the decimal part returning an integer.
+
+-   `floor()` ; `ceiling()` : round to the next lower or higher integer respectively.
+
+```{r}
+(dec <- 123.4567)
+
+cat("\nRound function to 3 decimals: \n")
+round(dec, 3)
+
+cat("\nRound function (-1) to nearest power of 10: \n")
+round(dec, -1)
+
+cat("\nSignif function to 4 numbers: \n")
+signif(dec, 4)
+
+cat("\nTrunc function: \n")
+trunc(dec)
+
+cat("\nFloor function to round to the lower integer: \n")
+floor(dec)
+
+cat("\nRound function to round to the higher integer: \n")
+ceiling(dec)
+```
+
+### Sorting and Ordering
+
+-   `sort()` : sorting from smallest to largest. It will drop NA and NaN values by default.
+
+    -   `decreasing=TRUE` will reverse the order.
+    -   `na.last` will add NA values, TRUE at the end and FALSE at the beginning.
+
+-   `order()` : returns the indices which can be used to sort a vector.
+
+    -   `na.last` as TRUE by default. TRUE at the end and FALSE at the beginning.
+
+```{r}
+people
+(scores <- c(123, 456, 789, 456, 654, 987))
+
+cat("\nSorting 'people' by their scores (descending): \n")
+people[order(scores, decreasing=TRUE)]
+
+cat("\nOrdering people by their scores, and in case 
+    of a tie using their names alphabetically.: \n")
+people[order(scores, people[1:6])]
+```
+
+### Vector as Sets
+
+To find values that overlap between two vectors we can use `%in%` function. For example, we can use a command `a %in% b` which will return a vector the same length as 'a' with a logical indicator whether each element is found in 'b'. Witch `table(a %in% b)` we get the number of element in 'a' that were not found in 'b'.
+
+```{r}
+# Looking for which letter is in 'letters':
+c("g", "5", "b", "J", "!") %in% letters
+cat("\n")
+
+table (c("g", "5", "b", "J", "!") %in% letters)
+cat("\n")
+
+which(c("g", "5", "b", "J", "!") %in% letters)
+```
+
+-   `union()` : returns the elements in either passed vectors
+-   `intersect()` : returns the elements which are in both passed vectors
+-   `setdiff()` : returns the elements of 'a' not present in 'b'
+
+```{r}
+cat("Union 'a' and 'b':\n")
+union (c("g", "5", "b", "J", "!"), letters)
+cat("\n")
+
+cat("Intersect 'a' with 'b':\n")
+intersect (c("g", "5", "b", "J", "!"), letters) 
+cat("\n")
+
+cat("Defferent elemenets of 'a' in 'b':\n")
+setdiff (c("g", "5", "b", "J", "!"), letters) 
+```
+
+## Duplicates
+
+-   `anyDuplicated()` : returns the duplicated values in a vector
+
+-   `unique()` : returns the distinct values, including NA and NaN.
+
+-   `duplicated(`) : returns a logical vector with TRUE per duplicated value (not the first value).
+
+    -   `fromLast=TRUE` reads from the end to the beginning. Using union() you can combine `fromLast=TRUE` and `fromLast=FALSE` to identify all duplicates.
+
+```{r}
+let <- c(letters, c("j", "j", "x"))
+
+cat("Duplicates?\n")
+let[duplicated(let)]
+
+cat("\n")
+(tab <- table (let))
+
+cat("\n")
+tab[which (tab != 1)]
+
+cat("\n")
+names (tab)[tab != 1]
+
+cat("\n")
+table (table (let))
+```
+
+Matching is identify where in a vector we can find the values in another vector. The function `match()` is a more powerful version of `%in%`.
+
+-   `match()` : given two vectors returns where the element from 'a' is in 'b'. By default returns NA for no matches, we can change this with `nomatch=0` argument.
+
+```{r}
+names1 <- c("Jensen", "Chang", "Johnson", "Lopez", "McNamara", "Reese")
+names2 <- c("Lopez", "Ruth", "Nakagawa", "Jensen", "Mays")
+
+match(names1, names2)
+
+cat("\n")
+names2[match(names1, names2, nomatch=0)]
+```
+
+The 'Run length enconding' function is rle() which returns the number of repetitions and length.
+
+```{r}
+rle( c("a", "b", "b", "a", "c", "c", "c", "a", "a"))
+```
+
+The previous output show, with length 1 value 'a' followerd by 'b' with length 2, again 'a' length 1 and then 'c' with length 3, to finish with 'a' twice.
+
+## Summary
+
+### Conversions
+
+-   Converting character to numeric produces NA for things that aren’t numbers, like the character strings "TRUE" or "\$199.99".
+-   Converting character to logical produces NA for any string that isn’t "TRUE", "True", "true", "T", "FALSE", "False", "false" or "F".
+-   Converting numeric to logical produces FALSE for a zero and TRUE for any non-zero entry (and watch out for floating-point error here).
+
+### Subscripts
+
+-   A logical subscript returns the values that match up with its TRUE entries.
+-   A numeric subscript returns the values specified in the subscript.
+-   character subscript will extract, from a named vector, elements whose names are present in the subscript.
+
+# R Data: Other Structures
+
+## Matrices
+
+Essentially is a vector two-dimensional like a rectangle. Every element of a matrix needs to be of the same type (numeric, logical or character).
+
+A matrix is filled column by column.
+
+Using `length()` we get the total number of elements in the matrix, and using `dim()` we get the dimension as number of rows and columns.
+
+-   `cbind()` : combines a set of vectors into a matrix column by column.
+
+-   `rbind()` : combines a set of vectors into a matrix row by row.
+
+If the vectors to combine have unequal length, R will recycle.
+
+With matrix in the same way as vectors we can do arithmetic operations, that will be element by element. Also, `t(A)` transposes a matrix, and `solve()` inverts a matrix.
+
+To extract and assign new values to elements the process is similar to a vector but now we have to pass two coordinates:
+
+```{r}
+a <- matrix(101:115, nrow=5, ncol=3)
+a
+cat("\n")
+
+a[1,2]
+
+cat("\n")
+a[-2,]
+
+cat("\nObtaining row 4 and 2, and cols 3 and 1, in that order: \n")
+a[c(4,2), c(3,1)]
+```
+
+To create a vector from a matrix we can use `c()`, it will use the first column, then the second and so on. To extract data row by row, we can use `t()` to transpose the matrix first like `c(t(a))`.
+
+```{r}
+c(a)
+cat("\n")
+
+t(a)
+
+cat("\n")
+c(t(a))
+```
+
+If we ask to a matrix for one column we'll get a vector, because dimensions of length 1 are usually dropped by default. We can use drop=FALSE argument to prevent that.
+
+```{r}
+a[,2]
+
+cat("\n")
+a[,2, drop=FALSE]
+```
+
+### Row and Column Names
+
+With `dimnames()` we get rows and columns names. `rownames()` and `colnames()` to get rows and columns names respectively. As well as with `names()` and vectors, we can asign names to columns and rows with these functions.
+
+```{r}
+year <- rep (2015:2017, each = 5)
+market <- c(2, 2, 3, 2, 3, 3, 3, 2, 3, 3, 2, 3, 2, 3, 2)
+
+(tbl <- table (market, year))
+
+cat("\nCollaing to colnames(): \n")
+colnames(tbl)
+
+cat("\nAssigning new names to columns: \n")
+colnames(tbl) <- c("Y15", "Y16", "Y17")
+tbl
+```
+
+Just like before, we can call for the column name or row identifier to get them:
+
+```{r}
+tbl[,"Y15"]
+
+cat("\n")
+tbl["3",]
+```
+
+### Applying Functions
+
+Built in functions which works across columns or rows: `colSums(), rowSums(), colMeans(), rowMeans()`.
+
+-   `apply()` : Useful to apply a custom function.
+
+    -   first argument, the matrix to which apply the function.
+
+    -   The direction, 1 for across rows, 2 for down columns.
+
+    -   The function to be applied.
+
+```{r}
+a
+
+cat("\n")
+rowSums(a)
+
+cat("\n")
+apply(a, 1, sum, na.rm=TRUE)
+
+cat("\n")
+apply(a, 1, function (x) sum (x))
+```
+
+We can guet a matrix result for the `apply()` function. If we compute across rows, sometimes will change the shape, we can use `t()` to prevent that.
+
+```{r}
+apply(a, 2, range)
+
+cat("\n")
+t( apply(a, 1, range) )
+```
+
+When we are looking for specific values we can get vectors with different lengths, in that case R returns a list.
+
+```{r}
+cat("Getting elements location where the value is greater than 109:\n")
+apply(a, 2, function (x) which (x > 109))
+```
+
+### Missing Values
+
+The function apply() is very useful to count the number of missing values. Next, let's create a matrix using a semicolon to pass multiple commands in one line, also the multiple assigment operation to assign several things at once:
+
+```{r}
+a <- matrix(101:115, 5, 3); a[5, 3] <- a[3, 1] <- NA
+a
+
+cat("\nSum of NA in each column: \n")
+apply(a, 2, function (x) sum (is.na(x)))
+```
+
+Tracking NA values with `which()` to identify the position on the vector will return a number of the position for each NA. However, using `arr.ind=TRUE` argument we'll obtain the coordinates:
+
+```{r}
+which(is.na(a))
+
+cat("\n")
+which(is.na(a), arr.ind=TRUE)
+```
+
+### Matrix Subscripts
+
+With `which()` as a subscript we have the possibility to extract specific elements.
+
+```{r}
+b <- matrix (1:20, nrow=4, byrow=T)
+b <- cbind(b, c(3, 2, 0, 5))
+colnames(b) <- c("P1", "P2", "P3", "P4", "P5", "Use")
+rownames(b) <- c("Spring", "Summer", "Fall", "Winter")
+b
+```
+
+Given the previous matrix, the Use column specify which element of the row we want get. To generate this coordinates, we are going to generate a matrix, the first column will be the number of rows and the second column 'Use'. Then we can pass that matrix as a subscript to 'b' and extract the elements.
+
+```{r}
+(filt <- cbind(1:nrow(b), b[, "Use"]) )
+
+cat("\n")
+b[filt]
+
+```
+
+### Higher-way Arrays
+
+A matrix with three or more ways is called Array in R. We can encounter this while constructing a higher way `table()`:
+
+```{r}
+who <- rep( c("Mery", "Kelly"), c(2, 6))
+when <- rep( c("AM", "PM"), 4)
+worked <- c(T, T, F, T, F, T, F, T)
+sch <- table(who, when, worked)
+sch
+```
+
+The function `aperm()` is like `t()` but for higher-way arrays. Also we can use `c()` to produce a vector, and `apply()` or `prop.table()` works too.
+
+## Lists
+
+A list can have vector or diferent types and sizes, also might include matrices, lists or other R objects. Usually a list is returned by a modeling function in R but we can create a list with `list()`:
+
+```{r}
+ali <- list( alpha = 1:4, beta = "yes", delta = log, 69)
+ali
+```
+
+-   `split()` : divides a vector into pieces according to the value of another vector. Returns a list. Missing values in the second vector passed will be dropped.
+
+```{r}
+age <- c(31, 33, 42, 54, 65, 74, 24)
+gender <- c("F", "M", "F", "M", "M", "F", "F")
+
+cat("Split age by gender:\n")
+split(age, gender)
+
+cat("\nSplit ages when age is greater than 60\n")
+split(age, age > 60)
+```
+
+We can see with `length()` function the number of elements inside a list, and with `lengths()` function the length of each element.
+
+```{r}
+length( split(age, gender) )
+
+cat("\nLengths: \n")
+lengths( split(age, gender) )
+```
+
+The `str()` command gives a description of every element on the list:
+
+```{r}
+str(ali)
+
+cat("\n")
+class(ali)
+```
+
+### Excracting from list
+
+Working with a list, the rule says *single backets produce a list, while double backets and dollar signs extract contents.*
+
+```{r}
+cat("Extracting the content of element 4 as a vector: \n")
+ali[[4]]
+
+cat("\nExtracting the element 1 as a list: \n")
+ali[1]
+
+cat("\nExtracting inside alpha the elements 2 and 4: \n")
+ali$alpha[c(F, T, F, T)] 
+
+
+```
+
+The function `names()` also works with lists returning the names of each element and "" if the element no have name. We can assign names with it too.
+
+When we extract an element from a list with dollar sign, we do not need to know the complete name, it is enough if it's unambiguous:
+
+```{r}
+ali$a
+
+cat("\n")
+ali$de
+```
+
+To assign new values to an element we need the full name, otherwise will be creating a new ítem.
+
+```{r}
+ali$delta <- c(T, F, F, T)
+str(ali)
+```
+
+To remove an element from a list we can assign a NULL value:
+
+```{r}
+ali$beta <- NULL
+str(ali)
+```
+
+-   `unlist()` : try to turn the list into a vector:
+
+```{r}
+unlist(ali)
+```
+
+Using dimnames() function we can see the names from a matrix as list format and also we can asign names:
+
+```{r}
+b
+cat("\n")
+dimnames(b)
+
+dimnames(b)[[1]][3] <- "Autumn"
+cat("\n")
+b
+
+```
+
+An important list returned from a function is the list from `options()` which contain elements describing things like number of digits to be displayed, scientific notation, the editor... With `names(options())` we can see the names of the current options.
+
+```{r}
+names(options())[3:15]
+```
+
+## Data Frames
+
+A data.frame is a list of vector with the same length which can be arrayed in a matrix-like rectangle. Each vector in the list will be the columns. To construct a data frame we use `data.frame()` function.
+
+```{r}
+df <- data.frame (
+    Who = letters[1:5],
+    Cost = c(3, 2, 11, 4, 0),
+    Paid = c(F, T, F, T, T),
+    stringsAsFactors=FALSE
+)
+row.names(df) <- as.character (row.names(df))
+df
+```
+
+A data frame must have a column and row names, if they are not assigned R will create them. Also R ensure that column names are valid and not duplicated. For columns we can use `colnames()` or `dimnames()` to assign it, or `names()` with a list. For row names we have `row.names()` or `rownames()` functions.
+
+By default the `data.frame()` function turns character vectors into factors but rarely we want it in data cleaning. We can chage this with `stringAsFactors=FALSE` argument.
+
+-   `head()` : return the first six rows of a given dataframe. Second argument is n=6 to specify a number of rows. A negative number returns the last n rows.
+
+-   `tail()` : return the last six rows of a given dataframe. Second argument is n=6 to specify a number of rows.
+
+-   `str()` : compact representation of the data frame with data type per column.
+
+-   `dim()` : returns the dimension, number of rows and columns.
+
+-   `summary()` : returns a brief description of each column.
+
+### Missing Values
+
+Because a data frame can have differnt classes (data types) in its colums, the missing values can be of different classes too. A numeric vector will have numeric NA which is different to logical NA from a logical vector.
+
+-   `is.na()` : returns a logical matrix showing which elements are missing.
+
+-   `anyNA()` : returns TRUE or FALSE to the question There are missing values?
+
+-   `na.omit()` : omit the observations (rows) of the data frame in which one or more elements is missing. Also keeps a track, we can see the deleted observations with `attr(df, "na.action") ; attr(df, "class")`.
+
+Extract and Assignment
+
+With data frames we can use both matrix and list styles of subsetting operations. In data frames when we select a row returns a data frame because can store different types of data. Selecting a column will produce a vector.
+
+Using a doble bracket or a dollar sign will produce a vector. Using the name produce a data frame.
+
+```{r}
+df[4,]
+
+f <- df$Paid
+df[f,]
+
+df[(df["Paid"] == F),]
+
+df["Cost"]
+```
+
+To extract a vector from a dataframe's column:
+
+```{r}
+df[[2]]
+
+cat("\n")
+df[["Cost"]]
+
+cat("\n")
+df[["Co", exact=FALSE]]
+```
+
+Passing `drop=FALSE` argument we avoid to extract a vector:
+
+```{r}
+df[, c("Who", "Paid")]
+
+df[, "Who"]
+
+df[, "Who", drop=FALSE]
+```
+
+To delete a column we can asign NULL to that column: `df$Paid <- NULL`
+
+In a data frame or list if we pass a subscript for unexistance row wil produce one row with NA values. Sometimes happens when we delete a row and a program or ourselfs try to access to that row by name.
+
+## Operating on Lists and Data Frames
+
+If we try to use `apply()` in a data frame, the function will convert it to a matrix, and the whole matrix is of the same data type. Also, we cannot use `apply()` to a list because does not have dimensions.
+
+-   `lapply()` : returns a list
+-   `sapply()` : runs `lapply()` and tries to make the output into a vector or a matrix. But if the return have different lengths, it will need to return a list. If it try to return items with diferent types, will convert these to a common type, then its better in these case use `lapply()`.
+
+```{r}
+sapply (df, class)
+```
+
+### Spliy, Apply, Combine
+
+First the data is split, then a function is applied to each piece, and the results recombined. The function `tapply()` do exactly that, but also we can use `split()` and `sapply()` or `lapply()`.
+
+```{r}
+df2 <- data.frame (
+    Age = c(35, 24, 42, 63, 56, 66),
+    Spouse = c(31, 36, 40, 59, 60, 60),
+    Gender = c("F", "F", "M", "F", "M", "M")
+)
+split (df2$Age, df2$Gender)
+
+cat("\nUsing sapply() to obtain the mean by gender :\n")
+sapply (split (df2$Age, df2$Gender), mean)
+```
+
+Above, `split()` divides Gender with Age values, then `sapply()` use `mean()` function to each part and returns a vector with the results (is the recombine). Let's see `tapply()` :
+
+```{r}
+round( tapply(df2$Age, df2$Gender, mean), 3 )
+```
+
+We can use `split()` on a data frame unlike `tapply()`, doing that the data frame will be divided and then we can use `sapply()` or `lapply()` to each part.
+
+```{r}
+split (df2, df2$Gender)
+
+cat("\nSummary differencing Gender: \n")
+lapply ( split (df2, df2$Gender), summary )
+```
+
+```{r}
+cat("\nLet's see what happens with sapply: \n")
+sapply ( split (df2, df2$Gender), summary )
+```
+
+The previous `sapply()` will try to construct a vector or matrix converting everything to a common type.
+
+A function to produce the same result is `by()` but without letting you save the list. It will performs the `summary()` operation on each column, broken down by gender:
+
+```{r}
+by ( df2, df2$Gender, summary )
+```
+
+Sometimes the task split, apply and combine can be performed altogether, but but other times might require separate functions. Packages like `dplyr` for data frames or `plyr` for lists and arrays. Both are intended to be fast and efficient and to permit parallel computation.
+
+### All-Numeric Data Frames
+
+A data frame with all of its values are logical or numeric when is converted to a matrix the numeric type is preserved.
+
+To convert vectors to another class exists as.numeric() and the other as. functions, also there are as.matrix() and as.data.frame() to convert data frames to matrices and vice versa. It is useful for all-numeric data frames and older functions that require numeric matrices.
+
+### Convenience Functions
+
+It is recommended to users to use long names for data objects and columns for increases readability. But sometimes leads to use long line expression like:
+
+`CustPayment2016$JanDebt + CustPayment2016$FebPurch - CustPayment2016$FebPmt`
+
+These can be handled with the functions:
+
+-   `with()` : to perform operations on a data frame. First argument is the data frame, then the expression to be performed. Cannot be assigned to.\
+    `` with ( CustPayment2016, JanDebt `FebPurch - FebPmt ) ``
+
+-   `within()` : works in the same wey but unlike `with()`, this function can be assigned.\
+    `CustPayment2016 <- within ( CustPayment2016, FebDebt <- JanDebt + FebPurch - FebPmt )`
+
+For beginners and to use then interactively and not for programming there are functions to make the subsetting and transformation process easier ( but generally its avoided):
+
+-   `subset()` : To extract rows given a condition:
+
+    ```{r}
+    subset ( df, Paid == TRUE)
+
+    # Is the alternative to:
+    df[ df$Paid == TRUE, ]
+    ```
+
+-   `transform()` : To specify transformations to existing columns and returns the updated version.
+
+To change the way we write functions we can use a 'pipe' as `%>%` provided by `magrittr` package. The pipe allows a function's output to serve as input to another function. Not every function is suitable for piping, the pipes are particularly useful for nested functions.
+
+```{r}
+cat("Nested: \n")
+cos (log (sqrt (8 - 3) ) )
+
+library("magrittr")
+cat("\nUsing pipes: \n")
+(8 - 3) %>% sqrt %>% log %>% cos 
+
+```
+
+### Re-Ordering, De-Duplicating, Sampling
+
+We can create a vector with `order()` which contain indices sorted by the variables inside.
+
+``` r
+df
+new.order <- order( df$ID, df$Date )
+# convenient alternative:
+new.order <- with ( df, order (ID, Date) )
+
+# 'new.order' have a vector with the rows sort by increasing ID
+# To have the data frame with the new order:
+df[new.order, ]
+```
+
+For duplicated values, we can use unique() passing the data frame to get every non-duplicated row. Just the floating-point error might be a problem detecting identical rows.
+
+-   sample() : first argument is the number of total rows, the second argument is the size of the sample we want. By default the result is a random set of integers without replacement. The row number of sampled data frame will be the same that originals.
+
+    ``` r
+    # Sample of 200 rows:
+    # First, create a vector selecting the rows
+    s200 <- sample ( nrow(df), 200 ) 
+
+    # Using the sample vector to do the sampling:
+    df[s200, ]
+    ```
+
+## Date and Time Objects
+
+### Formatting Dates
+
+The class Date internally store an integer representing the number of days since a particular origin date.
+
+Dates can be represented in many shapes, american's form, rest-of-the-world form, etc. the `as.Date()` function converts text into Date class.
+
+```{r}
+# First '0' will be converted into origin date.
+dd <- as.Date ( c(0, 18252:18255), origin = "1970-01-01" )
+
+dd
+```
+
+Also can convert text based representations in Date class such as "7/4/2019". In this case we have to pass `format=` argument, and the format string had to contain the same pattern that the input text:
+
+-   `%b ; %B` : name of the month
+-   `%a ; %A` : name of the day of the week
+-   `%d` : day of the month
+-   `%m` : month in number
+-   `%y ; %Y` : for the yy or YYYY year.
+-   `%F` : Equivalent to %Y-%m-%d.
+-   `%x` : Date. Locale-specific on output, `"%y/%m/%d"` on input.
+
+```{r}
+as.Date ( c("Feb 29, 2016", "Feb 29, 2017", "September 30, 2017"), 
+          format = "%b %d, %Y" )
+
+# The second date will result NA because is not valid
+```
+
+The names of the days of the week and the months of the year are in computer's locale, to read other languages we can change locales R.
+
+```{r}
+sp.dt <- c("3 octubre 2016", "26 Marzo 2017")
+
+( dts <- as.Date (sp.dt, format = "%d %B %Y") )
+
+# Changing locales to spanish:
+Sys.setlocale ("LC_TIME", "Spanish")
+
+( dts <- as.Date (sp.dt, format = "%d %B %Y") )
+
+# Changing back:
+Sys.setlocale ("LC_TIME", "UK")
+```
+
+### Operations on Date Objects
+
+The functions `months()` and `weekdays()` returns the month name and weekday from passing Date object. It can be added the `abbreviate=TRUE` argument to abbreviate the output.
+
+To extract the numeric month, day or year it can be used the `format()` function and then using `as.numeric()` to convert the character output to numeric.
+
+```{r}
+dt1 <- as.Date ("2024/05/17")
+dt2 <- as.Date ("2024-07-03")
+
+# Extracting weekdays:
+weekdays( c(dt1, dt2) )
+cat("\n")
+# Extracting month name:
+months( c(dt1, dt2), abbreviate = T )
+cat("\n")
+# Identifying Quarters:
+quarters( c(dt1, dt2) )
+cat("\n")
+
+format ( c(dt1, dt2), "%y")
+format ( c(dt1, dt2), "%d")
+format ( c(dt1, dt2), "%A, %B %d, %Y")
+```
+
+The difference between dates is a period of time stored as `difftime` object. Functions such as `mean()` and `range()` works well but `hist()` or `summary()` fails producing the expected results.
+
+Usually we will convert `difftime` objects to numeric with `as.numeric()` function, for that will be a good habit to specify `units = "days"` argument (with the unit we want.
+
+```{r}
+cat("Date1 adding 30 days: \n")
+dt1 + 30
+
+cat("\nDifference between date1 and date2: \n")
+(dd <- dt2 - dt1)
+
+cat("\nDifference to numeric: \n")
+as.numeric (dd)
+units(dd)
+cat("\nTo numeric but in weeks: \n")
+as.numeric (dd, units="weeks")
+```
+
+### `POSIXt` Objects
+
+`POSIXlt` object is implemented as a list, meanwhile `POSIXct` object is like a number useful is will be stored in a column.
+
+```{r}
+(ready <- as.POSIXlt("2017-01-17 14:51:23"))
+
+cat("\n")
+unlist (ready)
+
+cat("\n")
+( mdayn <- as.numeric(unlist (ready)["mday"]) )
+```
+
+In this last example we can see January is month 0 then December is month 11. Weekday is 0 to 6 starting on Sunday.
+
+Here it can be used too the `weekdays()`, `months()` and `quarters()` functions, as well as `format()` function. This will be less efficient than the list-type extraction, and it is recommended use `POSIXct` objects where possible because changing time zones with `POSIXlt` can encounter unexpected behavior.
+
+When we convert a `Date` object to `POSIXt` the time will be 00:00 (midnight), and when it converted from `POSIXt` to Date, the time will be truncated.
+
+as.POSIXct() and as.POSIXlt() works like as.Date() but the date can be followed by 24-hour clock time (or 12h with AM/PM).
+
+```{r}
+( ct1 <- as.POSIXct ("Mar 30, 2017 12:26:08 am", 
+                     format = "%b %d, %Y %I:%M:%S %p") )
+cat("\n")
+(ct2 <- as.POSIXct ("2017-03-29 22:26:08", tz = "UTC"))
+
+cat("\nLooking for diferences: \n")
+as.numeric (ct1 - ct2, units = "secs")
+```
+
+All the objects in a vector of length \>1 including `weekdays()` and `months()` will be displayed with the local time zone. For a single object these functions refer to the time zone of the object:
+
+```{r}
+c(ct1, ct2)
+
+cat("\n")
+weekdays(c(ct1, ct2))
+cat("\n")
+weekdays(ct2)
+```
+
+The time zone can be converted changing `tzone` attribute:\
+`attr ( ct1, tzone = "UTC" )`
+
+The help of `Sys.timezone()` containing the names of the time zones. When a POSIXct object is converted to Date object is rendered in UTC time zone by default:
+
+```{r}
+as.Date(ct2)
+as.Date(ct1)
+```
+
+Example of `POSIXct` formatting flexibility:
+
+```{r}
+(crdt <- date() )
+cat("\n")
+
+(now <- as.POSIXct (crdt, format = "%A %B %d %H:%M:%S %Y" ) )
+
+cat("\n")
+as.Date (now)
+```
+
+Math Functions
+
+Date and `POSIXt` objects are numeric, then we can use some functions such as `range(), max(), min(), mean(), median()`, which will produce vectors of date objects.
+
+`diff()` : computes differences between adjacent elements in a vector.
+
+```{r}
+diff ( range( c(ct1, ct2) ) )
+```
+
+The function `table()` works too but does not work on `POSIXlt` (list) objects.
+
+We can also create sequences with `seq()` function, it can be specified `by="day"` argument:
+
+```{r}
+seq ( as.Date("2020-03-11"), by = 3, length = 5 )
+
+cat("\n")
+pdt <- as.POSIXct( ("2020-03-11 13:05:00") )
+seq ( pdt, by = 2, length = 3)
+
+cat("\nSequence by days:\n")
+seq (pdt, by = "day", length = 3)
+
+cat("\nBy day without altering the hour: \n")
+seq (pdt, by = "DSTday", length = 3)
+```
+
+With `POSIXt` object using `by="day"` the clock moves 24 hours, but `by="DSTday"` moves 1 day preserving the clock.
+
+We have to be more careful with `POSIXt` and `difftime` objects:
+
+```{r}
+d1 <- as.POSIXct ("2017-05-01 12:00:00")
+d2 <- as.POSIXct ("2017-05-01 12:00:06")
+d3 <- as.POSIXct ("2017-05-07 12:00:00")
+cat("Are equal (d2 - d1) and (d3 - d1) ? :\n")
+(d2 - d1) == (d3 - d1)
+
+cat("\nSame operation but using as.numeric() : \n")
+as.numeric(d2 - d1) == as.numeric(d3 - d1)
+
+cat("\nSame as.numeric but with units=days:\n")
+as.numeric(d2 - d1, units="days") == as.numeric(d3 - d1, units="days")
+```
+
+### Missing Values
+
+In a vector dates of different classes should not be combined, a good practice is to use a function to force all the elements to have the same class.
+
+```{r}
+c(d1, NA)
+
+cat("\n")
+c(NA, d1)
+
+cat("\n")
+c( as.Date(NA), d1)
+
+cat("\n")
+c( as.POSIXct(NA), d1)
+```
+
+The first `c(d1, NA)` knows what to do with the `NA` value because `d1` is first, but the second one do not, then convert the vector into numeric. That not happens in the third and fourth command when we specify which class is the `NA` value.
+
+### `Apply()` on Dates
+
+Often a data set will have a series of dates in each row, like with a data frame is better to use `lapply()` and `sapply()` functions:
+
+```{r}
+dt.df <- data.frame(
+    Start = c( seq (as.Date("2020-05-03"), by="months", length = 6) )
+)
+
+# Creating a new column
+dt.df$End <- c( seq (as.Date("2021-06-02"), by="months", length = 6) )
+
+dt.df
+```
+
+```{r}
+sapply ( 1:nrow(dt.df), 
+         function (i) as.numeric (dt.df[i,2] - dt.df[i,1], 
+                                  units = "days") ) 
+```
+
+## Actions with Data Frames
+
+### Combining by Rows or Columns
+
+The function `data.frame()` can be used with two data frames inside and will be joined. Also `cbind()` function is useful. Both can incorporate vectors and matrices as well. Remember that characters will be converted into Factors unless `stringAsFactors=FALSE`.
+
+It is a good idea to check duplicated column names before combining, with `intersection()` function for example. If there are duplicated names R will use `make.names()` to generate unique alternatives (adding .1 .2 .3 ...).
+
+```{r}
+names(df)
+names(df2)
+# Forcing 'intersect' to get a column names coincidence
+df2$Paid <- c(NA,NA,NA,NA,NA,NA)
+intersect( names(df), names(df2) )
+```
+
+With `rbind()` we can combine data frames vertically (by rows). The columns in both data frames have to be the same, number and name, but not the order. Also the columns it's recommended to have the same class or R will convert to the common class. Pass `stringAsFactor=FALSE` with `rbind()` to ensure the character columns.
+
+``` r
+# Checking column names on two data frames:
+nam1 <- names (df1)
+nam2 <- names (df2)
+
+all (sort (nam1) == sort (nam2) )
+```
+
+Above we sort the names of each data frame with a comparation expecting TRUE as result.
+
+``` r
+# Checking column classes
+cs1 <- sapply (df1, class)
+cs2 <- sapply (df2, class)
+
+isTRUE (all.equal (cs1, cs2[names (cs1) ] ) )
+```
+
+And now we compare both classes.
+
+-   `all.equal()` : compares two objects and returns TRUE if the match. Also returns a report if there are differences.
+-   `isTRUE()` : returns TRUE if its argument is a single TRUE (expected for `all.equal()` ) or FALSE if there are something else.
+
+When the rows have basic numeric names R will adjust the resulting rows. But with modified row names R will try to keep them and taking care of the matches.
+
+If we have a large number of data frames, for example in a list as the result of `lapply()` function, we can use `do.call()` to combine them. The function takes the name of a function to be run and a list of arguments and run the function with those arguments:
+
+``` r
+# Result of lapply() function:
+list.of.df
+
+do.call ( "rbind", list.of.df )
+```
+
+In the command above we are assuming that data frames meet the `rbind()` criteria. Other basic example can be: `do.call("log", list(x = 32, base = 2)` where the list are the argument of `log().`
+
+### Merging Data Frames
+
+To `merge()` usually the data frames to merge have a "key" field. Then `merge()` matches up the key and produces a data frame with one row per key with the columns of both data frames.
+
+-   `merge()` arguments:
+
+    -   `(all.x=FALSE, all.y=FALSE)` : default options. One row for each key that appears in bot x and y data frames (except when there are duplicated keys). Is an `'inner join'`.
+    -   `(all.x=TRUE, all.y=FALSE)` : One row for each key in x and columns of the corresponding keys that do not appear in y are filled with NA values. Is an `'left join'`.
+    -   `(all.x=FALSE, all.y=TRUE)` : Is the complementary one, an '`right join`'.
+    -   `(all.x=TRUE, all.y=TRUE)` : This id the '`outer join`', when the result has one row for every key in either x or y.
+
+When the keys are duplicated the function `merge()` does not care, it will do it. It is best to remove rows with duplicated keys or to create a new column with a unique key, before merging.
+
+If the key match approximately (people names) the functions `adist()` and `agrep()` help find keys that match approximately.
+
+### Comparing Data Frames
+
+-   `identical()` : test for every strict equivalence. Returns `TRUE` when the two items are equal. Should not be applied to `POSIXlt` or data frames with this object.
+
+-   `all.equal()` : compares two objects but with more room for difference. Returns `TRUE` when two items are equal. By default is a match between names and attributes of two data frames. Correct way to compare: `isTRUE(all.equal(df1, df2))`
+
+    -   `tolerance=` how different two numbers need to be to be declarated different.
+
+### View and Editing Data Frames
+
+-   `View()` : shows a dear-only representation of a data frame.
+-   `edit()` : allows change to be made. Can be saved to reflect the changes
+-   `data.entry()` : the changes are saved automatically.
+
+Is strongly recommended to use commented scripts and functions because in that way all the steps in the process will be reproducible.
+
+## Handling Big Data
+
+R store the data in main memory on the machine being used.
+
+Bash include tools to provide the ability to break the data into manageable pieces:
+
+-   `split` : breaks up a data set by rows.
+-   `cut` : extracts specific columns.
+-   `shuf` : which permits the lines in a file, which helps when taking random samples.
+
+The `data.table` package advertises very fast subsetting and tabulation.
+
+There are add-in packages to maintain "pointers" to data on disk, it is slower than memory but the storage can be expected to be huge:
+
+-   `bigmemory`
+-   `ff`
+-   `tm`
+
+## Data Handling Tools
+
+To account for columns with a vector of two or more classes we can extract the classes into a variable:
+
+```{r}
+df2
+```
+
+```{r}
+( col.cls <- sapply(df2, function (x) class (x)[1] ) )
+```
+
+-   table() to tabulate the columns classes.
+
+    ```{r}
+    table(col.cls)
+    ```
+
+-   To count missing values by column, or count negative or a number equal to 99 like other 'missing' values:
+
+    ```{r}
+    sapply( df2, function(x) sum(is.na(x) ) )
+    ```
+
+    -   If there are a large number of columns we can pass `sapply()` results to `table(`)
+
+    ```{r}
+    sapply( df2, function(x) sum(is.na(x) ) ) |> table()
+    ```
+
+    ```{r}
+    sapply( df2, function(x) sum (x < 0, na.rm = TRUE) )
+    ```
+
+-   To compute the ranges of numeric columns in a search of outliers or anomalies.
+
+    ```{r}
+    sapply (df2[, col.cls %in% c("numeric", "integer") ], range, na.rm=TRUE ) 
+    ```
+
+-   To count unique values by column:
+
+    ```{r}
+    sapply(df2, function(x) length(unique(na.omit(x) ) ) )
+    ```
+
+The `apply()` function converts the data frame to a matrix first, should be used if all the columns of a data frame are of the same type. The `sapply()` function tries to return a vector or a matrix if it can, so if the return elements are of different classes they will often be converted. It is better to use `lapply()` unless we know that one of the other functions will succeed.
+
+# R Data: Text and Factors
+
+Two ways to store test data, the vector of character strings and as a factor which is text entries as integers with character labels that match those integers.
+
+## Character Data
+
+### `length()` and `nchar()`
+
+On a vector using `length()` we extract how many elements are in it, and using `nchar()` we extract how many letters there are in each element. The argument `keepNA=FALSE` allow `nchar()` to count `NA` values returning 2 of length.
+
+```{r}
+writers <- c("asimov", "tolstoi", "wolf", "sanderson", "joyce")
+length(writers)
+nchar(writers)
+```
+
+### Escaped characters
+
+In character strings some characters are protected, we have to use backslash `( \ )` to use them.
+
+We have to escape the double quotation marks and the backslash:
+
+*She wrote, "To enter a 'new-line,' type "\\n" ."*
+
+```{r}
+( quo <- "She wrote, \"To enter a 'new-line,' type \"\\n\" .\"" )
+nchar (quo)
+cat(quo, "\n")
+```
+
+Empty String
+
+A vector length 0 corresponds to `character(0)`. An empty string is a vector in which an element have spaces or not, indicated by `""`. It will be length 1 and nchar 0. Spreadsheets will sometimes produce this empty strings or strings of spaces:
+
+```{r}
+blanks <- c (" ", " ", "", "   ", "", "2016", "", " 2016", "2016", "   ")
+length(blanks)
+table(blanks)
+names(table(blanks))
+nzchar(blanks)
+
+# Removing white spaces located in the start or end of a element:
+noblanks <- trimws(blanks)
+table(noblanks)
+names(table(noblanks))
+```
+
+The function `nzchar()` returns TRUE for strings that have non-zero length and FALSE for empty strings. And with `trimws()` we can remove blanks at the beginning and end of each element.
+
+### Substrings
+
+Frequently in data cleaning we have to extract a piece of string, like a year or Zip code. For this task the `substring()` function takes a piece of text:
+
+-   `substring()` : given a vector extract the selected text.
+
+    -   `first=` position of the first character to extract
+
+    -   `last=` position of the last character up to 1 Million. Can be omitted to get the end of the string.
+
+Also, `substring()` can be on the left side of an assignment, then we can add some text to each element of a vector.
+
+```{r}
+dt1 <- "2017-02-03"
+# Extracting the year
+substring(dt1, 1, 4)
+# Extracting day and month (last five characters)
+substring (dt1, nchar(dt1) - 4)
+
+```
+
+To break a string into its individual characters we can do it with `strsplit()` and also with `substring()`:
+
+```{r}
+substring(dt1, 1:nchar(dt1), 1:nchar(dt1) )
+strsplit(dt1, split = NULL)
+```
+
+To change the last letters of a character element with `substring()` :
+
+```{r}
+holid <- month.name
+substring (holid[6:8], nchar(holid[6:8]) - 0 ) <- "9"
+holid[5:9]
+```
+
+### Case and Substitutions
+
+We will need sometimes to manipulate the case of characters because R is case-sensitive.
+
+`tolower(), toupper(), casefold()` functions perfrom these convertions. Using `casefold()` have to be passed the argument `upper=` being `TRUE` or `FALSE` which change to upper or lower case respectively.
+
+The function `chartr()` is a general solution for substitutions. It takes two arguments that are vectors of characters and changes each character in the first argument into the corresponding character in the second argument.
+
+To capitalize the every first letter of a character string, from `help("casefold")`:
+
+```{r}
+.simpleCap <- function(x) {
+    s <- strsplit(x, " ")[[1]]
+    paste(toupper(substring(s, 1, 1)), substring(s, 2),
+          sep = "", collapse = " ")
+}
+.simpleCap("the quick red fox jumps over the lazy brown dog")
+```
+
+## Converting numbers into text
+
+### Formatting Numbers
+
+-   `format()` : is a way to format a set of numbers in a common way. E.g. lining up decimal points and commas.
+
+    -   `digits=` number of digits
+
+    -   `nsmall=` number of digits (minimum) in the 'small' part (the right of the decimal point).
+
+    -   `big.mark=` determine the comma in the 'big' part (the thousand mark).
+
+    -   `drop0trailing` , removes trailing zeros in the small part.
+
+    -   `zero.print=` , if TRUE, causes zeros to be printed with spaces.
+
+```{r}
+format ( c(12.23, 1234.45678, 0, 10.000) )
+format ( c(12.23, 1234.45678, 0, 10.000), big.mark="," )
+format ( c(12.23, 1234.45678, 0, 10.000),
+         digits = 6, nsmall = 2, zero.print = FALSE, width = 2)
+```
+
+Decimal part by default will be aligned. The last example shows a currency type format, which the `digits` and `nsmall` arguments have to be chosen carefully to produce two decimals.
+
+With `sprintf()` we can include text and add leading zeros. The function have a format string containing text and conversion strings, which describe how numbers and other variables should appear in that output. A conversion strings start with a percent sign and contain modifiers and then a conversion character.
+
+The conversion character `%i` or `%d` are for integer values, `%f` is for double-precision numerics, and `%s` is for character strings. This field can be formatted with two numbers separated by a period, the first one give the minimum width (total number of characters) and the second one is the number of digits to the right of the decimal points.
+
+```{r}
+# 8 characters, 2 decimals.
+sprintf ( "%9.2f", 1230.456789 )
+# 0 leading the character to fill with 0 until 8 characters.
+sprintf ( "%09.2f", 1230.456789 )
+# Like the previous one but with spaces
+sprintf ( "% 9.2f", 1230.456789 )
+# Always a simbol leading the number
+sprintf ( "%+9.2f", 1230.456789 )
+# Left Justified
+sprintf ( "%-9.2f", 1230.456789 )
+# exponential
+sprintf ( "%9.3g", 1230.456789 )
+```
+
+Also we can use `sprintf()` with more than one vectors:
+
+```{r}
+costs <- c(3, 22, 456.32, 89340.4235, 1230045605.959)
+sprintf ( "I spent $%.0f in %s", costs, month.name[2:6] )
+```
+
+In the conversion, the field width or precision can be passed as an argument if we specify an asterisk in the format:
+
+```{r}
+bigs <- max (nchar (sprintf ("%.2f", costs) ) )
+
+sprintf ("spent $%*.2f in %s",
+         bigs, costs, month.name[2:6] )
+
+```
+
+The function `sprintf()` can be very useful to generate labels:
+
+```{r}
+sprintf ("%03d", 1:15 )
+```
+
+### Scientific Notation
+
+When you represent a number by an optional sign, a number between 1 and 10 and a multiplier of a power of 10.
+
+In R we can use `options()` to change scipen option. If `scipen=999` the scientific notion will be disabled, and `scipen=-999` will force scientific notion. When you close and open R `scipen` is re-set to default values. It is a better option to use `format(x, scientific=FALSE)`.
+
+```{r}
+100000
+c( 1, 100000 )
+c( 1, 100000, 123456 )
+as.integer (1000000 + 1 )
+format ( 1000000, scientific=FALSE)
+```
+
+### Discretizing a Numeric Variable
+
+Discretizing is to construct a categorical version of a numeric vector with a few levels for exploration or modeling purposes, it is also called 'binning'.
+
+-   `cut()` : the arguments are the vector to be discretized and the breakpoints; optionally we can pass labels to be applied to the new levels. The result is a factor vector.
+
+    -   `include.lowest=` if `TRUE` will include the left endpoint to the binning. By default will not be included.
+
+    -   `right=` if `FALSE` makes intervals include their left end and exclude the right.
+
+    -   `breaks=` passing an `integer` will produce that number of bins with equal width.
+
+```{r}
+vec <- c(1, 5, 7, 2, 8, 9, 3, 4, 10)
+as.character (cut (vec, c(1, 4, 7, 10), include.lowest=TRUE, right=FALSE) )
+```
+
+```{r}
+# Generating random numbers
+set.seed(168)
+rand.vec <- rnorm(1000)
+
+# cut() with breaks=5 of equal width
+table (cut (rand.vec, breaks=5) )
+
+# Using quantile() to create bins with equal number of observations
+table (cut (rand.vec, quantile(rand.vec) ) )
+
+# quantile() with probs argument to create 5 bins instead of 2
+table (cut (rand.vec, 
+            quantile(rand.vec, probs=seq(0, 1, 0.2) ), 
+            include.lowest = TRUE ) )
+
+```
+
+## Character Strings
+
+-   `paste()` , `paste0()` : sticks together two character vectors, and if its necessary convert them into a `character` vector first. By default it will insert a space between them.
+
+    -   `sep=` to choose the separation, e.g. `sep="."` or `sep=""` .
+
+    -   `collapse=` combines all the strings of the vector into one long string. It will use the separator specified by the value of this argument. e.g. `collapse=""` or `="\t"` .
+
+```{r}
+paste("a", "b", "c")
+
+paste0( 1 == 2, 1 + 2)
+paste0("Arg", sep=".", LETTERS[3:7])
+paste(letters[1:5], LETTERS[5:1], collapse = ", ")
+```
+
+### Column Names
+
+When a data frame is constructed from data without header names, R construct names such as V1 and V2. Usually we will want to replace these names to others more meaningful.
+
+For example, we want column names for 36 months of balance data from 2021 to 2023, also 36 months of payment data for the same years.
+
+-   `outer()` : given two vectors, performs another function on each pair of elements producing a matrix.
+
+-   `expand.grid()` : given vectors of values produces a data frame containing all combinations of all the values.
+
+```{r}
+head (
+    outer (month.abb, 2021:2023, paste, sep = "." ), 5
+)
+# Creating the month sequence for each year
+monseq <- outer (month.abb, 2021:2023, paste, sep = "." )
+# Creating the column names
+newnam <- c("ID", 
+            paste0 ("Bal.", monseq), 
+            paste0 ("Pay.", monseq) )
+
+sample(newnam, 5)
+```
+
+```{r}
+# Alternative maybe more eficient but more tedious
+p1 <- rep (c("Bal", "Pay"), 12 * 3)
+# Each month 2 times for Bal and Pay, and then 3 times for the years
+p2 <- rep ( rep(month.abb, each = 2), 3 )
+# Each year two times, for Bal and Pay
+p3 <- rep (2021:2023, each = 24)
+
+newnam <- c("ID", paste(p1, p2, p3, sep=".") )
+sample(newnam, 5)
+```
+
+```{r}
+names.df <- expand.grid (c("Bal", "Pay"), 
+                         month.abb, 
+                         c(2021:2023) )
+
+newnam <- paste ( names.df[["Var1"]], 
+                  names.df[["Var2"]], 
+                  names.df[["Var3"]],
+                  sep = "." )
+
+sample(newnam, 5)
+```
+
+### Tabulating Dates
+
+To summarize vectors of dates:
+
+```{r}
+set.seed(168)
+rnd.dts <- as.Date (sample (0:730, size = 600), origin = "2021-01-01")
+
+table (quarters (rnd.dts) )
+
+# To combine year.month is also possible with substring() instead of format
+table ( paste0 (format (rnd.dts, "%Y"), ".", quarters(rnd.dts) ) )
+
+```
+
+If we want to use the month instead of the quarter, we can extract the moth name with `month()` function and use paste, or it is possible to use `format()` directly with the year and the month name.
+
+```{r}
+ym.order <- paste0 (2021:2023, ".", month.name )
+
+ym.tbl <- table (format(rnd.dts, "%Y.%B") )
+
+ym.tbl[ym.order][1:5]
+```
+
+### Unique Keys
+
+Often we need to construct a column with an unique identifier for each row. These previous methods are useful for that task. Maybe the year and month are not enough and we have to add a customer ID or something else to achieve this column with unique keys.
+
+### Files and Path names
+
+To create a vector with every file in the working directory and each one with it absolute path we can use `paste(getwd(), list.files(), sep="/")` . If we use `list.files(full.names=TRUE)` will return only the relative path.
+
+## Regular Expressions
+
+We use regular expressions to find strings that match a pattern. This patterns are case-sensitive but can be ignored. R can use POSIX regular expression and Perl-style re.
+
+For regular expresson in R there are three primary tools which are `grep()`, `regexpr()` and `sub()`, all tree with its variants.
+
+-   `grep()` : given a pattern and a vector of strings, returns a numeric vector with the indices of the string that match the pattern.
+
+    -   `value=` if `TRUE` returns the matching string themselves.
+
+    -   `ignore.case=` if `TRUE` will ignore whether letters are in upper or lower-case.
+
+    -   `invert=` if `TRUE` reverses the search, returning the elements that not match. It's not available with `grepl()`
+
+    -   `fixed=` if `TRUE` suspends the rules about patterns and simply searches for an exact text string.
+
+    -   `perl=` if `TRUE` indicate to grep() to use Perl-type regular expressions.
+
+    -   `useBytes=` if `TRUE` the matching should be done byte by byte.
+
+-   `grepl()` : returns a logical vector indicating the elements that match.
+
+Special Characters in POSIX regular expressions:
+
+![](images/clipboard-3145267093.png)
+
+It is common to see `.+` in regular expressions, that means *a sequence of one or more characters*. Also we can see `.*` for *zero or more characters*.
+
+Is is a mistake to add spaces to your pattern thinking 'it will be more readable', because the regular expression will then take the spaces literally and require that they appear.
+
+Looking in a character vector with dates:
+
+```{r}
+dt <- c(
+    "Balance due 16 Jun or earlier in 2017",
+    "26 Aug or any day in 3021",
+    "'76 Trombones' marched in a 1962 film",
+    "4 Apr 2018", "9Aug2006",
+    "99 Voters May Register in 20188"
+)
+
+```
+
+-   `.*` if we have leading text
+
+-   `[0-3]?[0-9]` matches a one digit number, the first digit is optional indicated by '?'
+
+-   `.*` again for additional text
+
+-   `(", or.mon, ")` will be the variable with the month names separated by pipes `"|"`. The parenthesis make this a single pattern. The abbreviations will match a full name.
+
+-   `.*` more additional text
+
+-   `[1-2][0-9[{3}` four digits that have to start with 1 or 2
+
+```{r}
+or.mon <- paste (month.abb, collapse = "|")
+or.mon
+re <- paste0 ( ".*[0-3]?[0-9].*(", or.mon, ").*[1-2][0-9]{3}")
+grep (re, dt, value = TRUE )
+```
+
+The line with '20188' match because the four digits with `[1-2][0-9]{3}` match. Also the '99' matches because `[0-3]` is optional and the first 9 matches in the `[0-9]` pattern and the second match with `.*` .
+
+#### Escape Sequences
+
+To write some special characters like the dollar sign \$, we have to pass a backslash to escape \$ from the engine which read regular expressions. To escape a character usually we should use `\$` but in R we need to escape also the backslash because R have special characters like `\n` to create a new-line. Then we will write double backslash and the simbol `\\$`. In some case, to look for the backslash itself we have to write four backslashes, two for the escape and other two for the search: `\\\\`. Using the argument fixed=TRUE can simplify the search of this patterns.
+
+```{r}
+pain <- c("c:\\temp", "/bin/u", "$5", "\n", "2 backs: \\\\")
+grep ("$", pain)
+grep ("\\$", pain, value=TRUE)
+grep ("\\\\", pain, value=TRUE)
+grep ("\\", pain, value=TRUE, fixed=TRUE)
+# Looking for any slashes:
+grep ("\\|/", pain, value=TRUE, fixed=FALSE)
+```
+
+#### Ranges
+
+Working with ranges like `[0-9]` meaning any number between 0 and 9 we also can negate a character, for example `[^0123]` means any character other than 0, 1, 2, 3, 4.
+
+The predefined character classes set include `[:lower:], [:upper:]` for lower- and upper-case; `[:alpha:]` for any letters; `[:alnum:]` for alphanumeric; `[:digit:]` for digits; `[:punct:]` for punctuation. There are more in `help("regex")` pages. Then, `[[:digit:]]` match one digit and `[^[:digit:]]` match any character that is not a digit.
+
+To finish, a word boundary is to search a word or string with a specific composition and can be identified by `\b` or `\< ... \>`. For example using `"\\<\\d{4}\\>"` we are specifying a word that must include exactly four digits.
+
+### `regexpr()`
+
+The function `regexpr()` is more precise than `grep()`, it will return the location of the first match within the string (number of the first character of the match). This information can be useful to extract the number itself and not only identify the string.
+
+```r
+dt
+# looking for a word with an integer:
+(regout <- regexpr( "\\<\\d+\\>", dt ) )
+attr(,"match.legth")
+```
+
+The first '13' returned by `regexpr()` vector indicate that the 13th character is a number referencing the 16. The number -1 indicate that string no contains an integer as a word.
+
+The attributes returned also give us information. `"match.length"` is the length of the match. Then, we could extract the `"match.length"` vector and use it with `substring()` to extract the number in the strings. Other method is with `regmatches()` given the character vector and the output of `regexpr()`:
+
+```r
+regmatches (dt, regout)
+```
+
+To extract all integers in the character vector we will use `gregexpr()` but the return is a list because some strings can contain more than one integer word. With `regmatches()` we can extract the numbers anyway.
+
+```r
+gout <- gregexpr ("\\<\\d+\\>", dt)
+regmatches (dt, gout)
+
+# Creating a matrix with the return of regmatches
+matrix (as.numeric (unlist (regmatches (dt, gout) ) ), ncol=2, byrow=T )
+```
+
+Bu default the matching look for the match that are as long as possible. If in the pattern we add a '?' it will stop that. for example with `\\d.*?\\d` will produce "4 Apr 3" although there are more numbers ("4 Apr 3021").
+
+### Replacement with Regular Expressions
+
+-   `sub()` : replaces the first matching pattern.
+
+-   `gsub()` : replaces all the matching patterns.
+
+The first argument for both a the pattern to search, the second is the characters to replace for, and the third argument is the character vector where to look for. Other option is to use backreferences, if the patters is composed by two patterns between parentheses we can use \\1 \\2 in the second argument to refer the matches:
+
+```{r}
+bros <- c("Isaac Asimov", "Leon Tolstoi", "Virginia Wolf", "Brandon Sanderson")
+
+# Changing the name order with backreferences:
+sub ("([[:alpha:]]+) ([[:alpha:]]+)", "\\2, \\1", bros)
+```
+
+### Splitting with Regular Expressions
+
+-   `strsplit()` : given a vector and a pattern splits the text producing a list with one entry for each string. Also has the fixed=TRUE argument to not use regular expressions.
+
+```{r}
+keys <- c("CA-2017-04-02-66J-44", 
+          "MI-2017-07-17-41H-72", 
+          "CA-2017-08-24-Missing-378")
+
+(key.list <- strsplit (keys, "-") )
+
+matrix ( unlist (key.list), ncol = 6, byrow = TRUE )
+```
+
+### Common Data Cleaning Task Using Regular Expressions
+
+#### Removing Leading and Trailing Spaces
+
+-   `"^ *"` : any string with leading spaces
+-   `" *$"` : any string with trailing spaces
+
+```{r}
+gsub ( "^ *| *$", "", c("  Text Spaces ", "Trailing    ", 
+                        "None", "     Leading" ) )
+```
+
+#### Format Currency to Numeric
+
+Taking into account $12,345.67 or 12,345.67€ we have to remove the symbol and the comma before converting into numeric.
+
+-   `"\\$"` : dollar symbol
+-   `"\\€"` : euro symbol
+-   `"^[^0-9.]"` : non-numeric leading character
+-   `"[^[:digit:].]$"` : non-numeric trailing character
+
+```{r}
+as.numeric ( gsub ("(^[^0-9.]|,)|(,|[^[:digit:].]$)",
+                   "", c("$12,345.67", "98,765.43€") ) )
+```
+
+#### Removing HTML Tags
+
+We are looking for <b>Bold</b> and other tags like that.
+
+-   `"<.*?>"` : Everything between < >
+
+```{r}
+html <- c('
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de HTML</title>
+</head>
+<body>
+    <h1>Bienvenido a mi página web</h1>
+    <p>Este es un <strong>ejemplo</strong> de un párrafo con <em>texto en cursiva</em> y <strong>texto en negrita</strong>.</p>
+    <ul>
+        <li>Elemento de lista 1</li>
+        <li>Elemento de lista 2</li>
+        <li>Elemento de lista 3</li>
+    </ul>
+    <a href="https://www.ejemplo.com">Visita nuestro sitio web</a>
+</body>
+</html>
+')
+
+no.html <- gsub ( "<.*?>", "", html)
+gsub ("\\n", "", no.html)
+```
+
+```{r}
+cat(no.html)
+```
+
+#### Linux Paths to Windows or R Paths
+
+```{r}
+# Linux to Windows
+gsub ("/", "\\\\", "/usr/local/bin")
+
+# Windows to Linux
+gsub("\\\\", "/", "\\usr\\local\\bin")
+gsub("\\", "/", "\\usr\\local\\bin", fixed = TRUE)
+```
+
+### Recomendations
+
+Because Regular Expressions are complicated be sure to document them well. For debugging there are online aids to diagnosing problems, be sure to specify regular expression type POSIX with GNI extensions or PCRE.
+
+## UTF-8 and Other Non-ASCII Characters
+
+Leading with symbols or letters with accent in Latin alphabet, each have their ASCII hexadecimal value, then we can use that after `"\x"` to use it as a pattern in `grep()`, `gsub()` or other similar function. For example, to look for `Ê` we can introduce `\xca` as `ca` represent the hexadecimal value for `Ê`. Also, Windows and Mac use different ASCII table with different some different values.
+
+Unicode symbols are intend to describe all the symbols in in all the world, and are shown in R by preceding them with `\U` . The word China in simplified Chinese are represented `"\U4E2D"` and `"\U56FD"` . The most popular is UTF-8 encoding which a character in Unicode is represented by one or more bytes. The display of UTF-8 characters can be inconsistent between machines.
+
+R assigns an encoding to every element in a character vector and different elements in a vector may have different encodings. 
+
+-   `Encoding()` : returns the encoding of the strings in a vector
+-   `iconv()` : to convert the encodings.
+
+In R ASCII strings are unencoded; latin1 characters are encoded as latin1; non-latin unicode are encoded as UTF-8.
+
+```{r}
+yogi.utf <- "It's d\Ue9j\Ue0 vu all over again."
+Encoding (yogi.utf)
+c( regexpr ("\\xe0", yogi.utf), regexpr ("\ue0", yogi.utf), regexpr ("à", yogi.utf) )
+```
+
+```{r}
+data.frame (a = "\U4e2d\U56fd", stringsAsFactors = FALSE)
+```
+
+## Factors
+
+A Factor vector looks like text but behaves like an integer. It can be created with `as.factor()` function which often is a final step; also are created when you add character vector into a data frame with `data.frame()` or `cbind()` functions.
+
+It is recommended to turn the character vectors into factor only when all the data cleaning is finished, before modeling. 
+
+A Factor vector the `class()` is `factor`, the `mode()` is `numeric` and the `typeof()` is `integer`. R will set the levels alphabetically.
+
+-   When you change a value of a factor vector, if that new value not corresponds to a level, will be NA.
+-   When you remove the elements with a specific value from the factor vector, that value is still one of the levels.
+
+```{r}
+cols.fac <- as.factor( c("red", "green", "blue", "red", "red", "red", "blue") )
+cols.fac
+table(cols.fac[cols.fac != "red"])
+```
+
+-   `levels()` : to check the levels in a factor vector and also to assign levels. This not change the underlying integer value corresponding that level.
+
+```{r}
+levels(cols.fac)
+levels(cols.fac)[2] <- "yellow"
+levels(cols.fac)
+```
+
+The levels can be reordered calling `factor()` function, this is useful for months and other levels that we want to have a custom order.
+
+```{r}
+factor (cols.fac, levels = c("red", "blue", "yellow") )
+```
+
+**Do not try** to change the order with `levels()` function. In this case will change the levels of the elements itself, will not change 'only' the order.
+
+To convert a factor vector into character, can be used `as.character()` function, but a more efficient way is to use `levels(fac)[fac]`. Also, to convert the factor vector with levels which look like integers into number, **do not** use `as.numeric()`, first has to be converted into character. Now, if we have a gender column with F and M as levels of the factor vector, we want to convert this vector into numeric, 0 for F and 1 for M. The function `as.numeric()` will convert F to 1 and M to 2, to solve this we can use: `as.numeric(factor(gender))-1` . 
+
+Finally, to combine two factor vectors, it is recommended to convert them first into characters, and then combine it. Later, if it's necessary, convert them again into factors. A exception can arise combining with `rbind()`, but other than this case, combining factor vector will usually end badly.
+
+```{r}
+ind <- factor ( c(33, 4, 66, 3, 6, 77) )
+src <- 101:199
+# as.numeric will convert the vector elements into its assigned integers, not the levels.
+as.numeric(ind)
+```
+
+```{r}
+# Correct way, looking for that indices into 'src' vector:
+src[as.numeric (as.character (ind) )]
+# This will extract correctly the numbers
+```
+
+```{r}
+gender <- as.factor(c("F", "F", "M", "F", "M", "F", "M") )
+gender
+as.numeric(gender) - 1
+```
+
+### Missing Values
+
+Missing values in factors are represented by `<NA>`. Actually, it is possible to have a level <NA> with NA values, but it is better no avoid that, as well is clever to avoid "NA" string value. The `levels()` function does not mention to `NA` values because they do not have level. 
+
+We can use the function `addNA()` to add a level which is a NA value, but will be better to replace NA values:
+
+```{r}
+mis.fac <- as.factor(c("F", NA, "M", "F", NA, "F", "M") )
+mis.fac
+mis.fac <- as.character(mis.fac)
+mis.fac[is.na (mis.fac)] <- "missing"
+( mis.fac <- as.factor(mis.fac) )
+```
+
+## R Objects and Commands
+
+-   `get()` : accepts a character string and returns the object with that name.
+-   `exists()` : can test to see whether an object exists
+-   `get0()` : allow a value to be specified in place of the error.
+-   `ls()` : returns the names of the objects.
+-   `assing()` : given a name and a value creates a new R object. The argument `pos=1` at the command line has no effect, but inside a function it creates a variable in the Workspace.
+
+```{r}
+for (i in 1:24)
+    assign (paste0 (LETTERS[i], c(month.abb,month.abb)[i] ), i, pos = 1 )
+
+let.mon <- ls (pattern = "^[A-Z]{2}?[a-z]{2}?")
+let.mon[3:6]
+sapply (let.mon, function(i) object.size(get(i)))
+remove (list = grep ("^[A-Z]{2}?[a-z]{2}?", ls(), value = T ) )
+```
+
+-   `parse()` : to create an R 'expression' object with `text` argument.
+-   `eval()` : executes the expression
+
+`eval(parse(text = "log.11 <- log(11)"))` : will create a variable called 'log.11'. The combination of `parse()` and `eval()` lets us construct R commands and execute them (allowing us to execute sequences of commands once we have created them with `paste()` and other tools).
+
+
+
