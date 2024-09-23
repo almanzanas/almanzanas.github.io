@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: ../../almanzanas.github.io
+  lib-dir: _web-lib-dir
+
+index:
+  file: portfolio.qmd
+
+website:
+  title: "Alvaro Manzanas"
+  navbar:
+    background: secondary
+    foreground: light
+    right:
+    - href: portfolio.qmd
+      text: Portfolio
+    - href: index.html
+      text: Annotations
+    - text: CV
+      menu:
+      - text: Spanish
+        href: "docs/Alvaro Manzanas-CV_es.pdf"
+        target: _blank
+      - text: English
+        href: "docs/Alvaro Manzanas-CV_en.pdf"
+        target: _blank
+    - icon: github
+      href: http://github.com/almanzanas
+      target: _blank
+      aria-label: GitHub
+    - icon: bi bi-envelope
+      href: "mailto:almanzanas@gmx.com"
+      aria-label: e-mail
+    - icon: linkedin
+      href: https://es.linkedin.com/in/alvaromanzanas 
+      target: _blank
+      aria-label: Linkedin
+    pinned: true
+
+format:
+  html:
+    tabset: true
+    theme:
+      light: [cosmo, style/style.scss]
+      dark: [cosmo, style/dark.scss]
+    toc: true
+
