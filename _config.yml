@@ -5,3 +5,6 @@ defaults:
       path: ""
     values:
       index: portfolio.html
+
+keep_files:
+  - index.html

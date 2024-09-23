@@ -3,6 +3,7 @@ title: Annotations
 date: "25/09/2024"
 format: html
 ---
+
 # Preface {.unnumbered}
 
 The documents in these pages are the notes, exercises and progress I have been making throughout my learning in R. They are in the same order in which I have practiced it and belong to the books:

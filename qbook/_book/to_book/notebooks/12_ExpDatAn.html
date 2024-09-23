@@ -132,12 +132,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../cv.html"> 
-<span class="menu-text">CV</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">CV</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
+ <span class="dropdown-text">Spanish</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
+ <span class="dropdown-text">English</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="http://github.com/almanzanas"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -147,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -2017,7 +2028,7 @@ W = 0.99, p-value = 0.5</code></pre>
     Shapiro-Wilk normality test
 
 data:  df.higher.samp$mu_Median
-W = 0.99, p-value = 0.2</code></pre>
+W = 0.99, p-value = 0.7</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df.lower.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2025,7 +2036,7 @@ W = 0.99, p-value = 0.2</code></pre>
     Shapiro-Wilk normality test
 
 data:  df.lower.samp$mu_Low_wage
-W = 0.99, p-value = 0.4</code></pre>
+W = 0.99, p-value = 0.7</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df.higher.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2033,7 +2044,7 @@ W = 0.99, p-value = 0.4</code></pre>
     Shapiro-Wilk normality test
 
 data:  df.higher.samp$mu_Low_wage
-W = 0.99, p-value = 0.2</code></pre>
+W = 0.99, p-value = 0.6</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2043,13 +2054,13 @@ W = 0.99, p-value = 0.2</code></pre>
     Welch Two Sample t-test
 
 data:  df.higher.samp$mu_Median and df.lower.samp$mu_Median
-t = -379, df = 298, p-value &lt;0.0000000000000002
+t = -426, df = 291, p-value &lt;0.0000000000000002
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -12457 -12328
+ -12416 -12302
 sample estimates:
 mean of x mean of y 
-    34585     46978 </code></pre>
+    34601     46960 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df.higher.samp<span class="sc">$</span>mu_Low_wage, df.lower.samp<span class="sc">$</span>mu_Low_wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2057,13 +2068,13 @@ mean of x mean of y
     Welch Two Sample t-test
 
 data:  df.higher.samp$mu_Low_wage and df.lower.samp$mu_Low_wage
-t = 86, df = 372, p-value &lt;0.0000000000000002
+t = 91, df = 373, p-value &lt;0.0000000000000002
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1795 1879
+ 1870 1952
 sample estimates:
 mean of x mean of y 
-     4688      2851 </code></pre>
+     4747      2836 </code></pre>
 </div>
 </div>
 <p>Both p-value are close to zero, thus we can reject the null hypothesis of t-test. Then we can say the groups mean are different with this sample.</p>

@@ -132,12 +132,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../cv.html"> 
-<span class="menu-text">CV</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">CV</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
+ <span class="dropdown-text">Spanish</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
+ <span class="dropdown-text">English</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="http://github.com/almanzanas"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -147,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -718,17 +729,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>s10 <span class="ot">&lt;-</span> <span class="fu">sample</span> (<span class="fu">nrow</span>(result), <span class="dv">10</span>)</span>
 <span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>result[s10,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        Year       V1 V2  V3
-14453   1952   Marise  F   9
-781319  1997    Ginny  F  22
-446527  1982 Agustine  M  10
-1009802 2004 Heraclio  M   7
-1052842 2006   Aubrea  F  19
-430576  1982    Alice  F 745
-1213176 2010   Yosmar  M   9
-789670  1997   Lyndzi  F   6
-72855   1957   Austin  M 241
-590397  1989    Keron  M  24</code></pre>
+<pre><code>       Year       V1 V2   V3
+900890 2001    Aziya  F    8
+357277 1978  Falisha  F   25
+555939 1988  Angelyn  F   16
+221981 1969    Chaun  M   11
+597544 1990   Tamika  F  404
+205981 1968    Darin  M 1953
+644025 1991    Joran  M    7
+610412 1990   Dalton  F    5
+480073 1984 Dashonna  F    5
+671134 1992   Devvon  M    5</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -738,17 +749,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(rem)</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>result[s10,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        Year     Name Sex Count
-14453   1952   Marise   F     9
-781319  1997    Ginny   F    22
-446527  1982 Agustine   M    10
-1009802 2004 Heraclio   M     7
-1052842 2006   Aubrea   F    19
-430576  1982    Alice   F   745
-1213176 2010   Yosmar   M     9
-789670  1997   Lyndzi   F     6
-72855   1957   Austin   M   241
-590397  1989    Keron   M    24</code></pre>
+<pre><code>       Year     Name Sex Count
+900890 2001    Aziya   F     8
+357277 1978  Falisha   F    25
+555939 1988  Angelyn   F    16
+221981 1969    Chaun   M    11
+597544 1990   Tamika   F   404
+205981 1968    Darin   M  1953
+644025 1991    Joran   M     7
+610412 1990   Dalton   F     5
+480073 1984 Dashonna   F     5
+671134 1992   Devvon   M     5</code></pre>
 </div>
 </div>
 </section>

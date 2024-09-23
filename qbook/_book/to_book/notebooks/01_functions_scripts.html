@@ -132,12 +132,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../cv.html"> 
-<span class="menu-text">CV</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">CV</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
+ <span class="dropdown-text">Spanish</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
+ <span class="dropdown-text">English</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="http://github.com/almanzanas"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -147,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -519,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (<span class="fu">what</span> (<span class="fl">6e9</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  41.22    0.01   43.05 </code></pre>
+  41.77    0.00   42.29 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compiling and testing again: </span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(compiler)</span>
@@ -527,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (<span class="fu">what.cmp</span> (<span class="fl">6e9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  41.23    0.03   42.98 </code></pre>
+  42.33    0.03   42.96 </code></pre>
 </div>
 </div>
 <p>The previous result with <code>system.time()</code> will depends on how fast the computer is. Another approach is <code>enableJIT()</code> (or ‘just-in-time’ compilation) which given a number to specify how the compilation should work. For example, <code>enableJIT(3)</code> performs as much compilation as possible. Once we make this call, functions are compiled before their first use and will remain compiled. To ‘uncompile’ a function we can edit it with <code>fix()</code>, also it is possible to convert it into text like <code>what.cmp &lt;- eval(parse(text=deparse(what.cmp, control="useSource")))</code>.</p>
@@ -550,14 +561,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-    0.0     0.0     5.1 </code></pre>
+      0       0       5 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span> (</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">parSapply</span>(clust, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span> (i) <span class="fu">what.cmp</span> (<span class="fl">6e9</span><span class="sc">/</span><span class="dv">10</span>))</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.00    0.00    5.06 </code></pre>
+   0.00    0.00    5.03 </code></pre>
 </div>
 </div>
 <p>Function inside <code>parSapply()</code> are not compiled when <code>enableJIT()</code> is enabled, have to been compiled explicitly (or run the function first and then export it).</p>

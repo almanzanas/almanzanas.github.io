@@ -131,12 +131,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../cv.html"> 
-<span class="menu-text">CV</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">CV</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
+ <span class="dropdown-text">Spanish</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
+ <span class="dropdown-text">English</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="http://github.com/almanzanas"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -146,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+    <a class="nav-link" href="https://es.linkedin.com/in/alvaromanzanas" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -2002,15 +2013,15 @@ r: 0.2027</code></pre>
 <pre><code># A tibble: 9 × 7
   spam_cat top_words_pct char_freq_exclam char_freq_paren char_freq_dollar
   &lt;fct&gt;            &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-1 no_spam           7.68            0.171           0                0    
-2 no_spam           0               0               0                0    
-3 no_spam           0               0               0                0    
-4 no_spam           0.84            0               0.262            0    
-5 is_spam           4.81            0.594           0.198            0    
-6 is_spam           8.28            0.287           0.233            0.107
-7 is_spam          15.2             0               0                0    
-8 no_spam           0               0               0.186            0    
-9 no_spam           8.32            0               0                0    
+1 is_spam           9.03            5.84            0.037             1.31
+2 no_spam           2.17            0               0.529             0   
+3 no_spam           0               0               0.353             0   
+4 no_spam           2.92            0.091           0.412             0   
+5 no_spam           6.53            0               0                 0   
+6 no_spam           4.07            0               0                 0   
+7 is_spam          11.2             0               0                 0   
+8 no_spam           3.63            0.153           0                 0   
+9 is_spam           5.25            0               0.178             0   
 # ℹ 2 more variables: capital_run_length_total &lt;int&gt;,
 #   capital_run_length_longest &lt;int&gt;</code></pre>
 </div>
@@ -2062,7 +2073,7 @@ r: 0.2027</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.3937  0.6062 </code></pre>
+ 0.3916  0.6084 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"=================="</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2076,7 +2087,7 @@ is_spam no_spam
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.3952  0.6048 </code></pre>
+ 0.4039  0.5961 </code></pre>
 </div>
 </div>
 <ul>
@@ -2139,29 +2150,29 @@ is_spam no_spam
 
           Reference
 Prediction is_spam no_spam
-   is_spam     318      32
-   no_spam      46     525
-                                             
-               Accuracy : 0.915              
-                 95% CI : (0.895, 0.932)     
-    No Information Rate : 0.605              
-    P-Value [Acc &gt; NIR] : &lt;0.0000000000000002
-                                             
-                  Kappa : 0.822              
-                                             
- Mcnemar's Test P-Value : 0.141              
-                                             
-            Sensitivity : 0.943              
-            Specificity : 0.874              
-         Pos Pred Value : 0.919              
-         Neg Pred Value : 0.909              
-             Prevalence : 0.605              
-         Detection Rate : 0.570              
-   Detection Prevalence : 0.620              
-      Balanced Accuracy : 0.908              
-                                             
-       'Positive' Class : no_spam            
-                                             </code></pre>
+   is_spam     321      26
+   no_spam      51     523
+                                              
+               Accuracy : 0.916               
+                 95% CI : (0.897, 0.933)      
+    No Information Rate : 0.596               
+    P-Value [Acc &gt; NIR] : &lt; 0.0000000000000002
+                                              
+                  Kappa : 0.824               
+                                              
+ Mcnemar's Test P-Value : 0.00624             
+                                              
+            Sensitivity : 0.953               
+            Specificity : 0.863               
+         Pos Pred Value : 0.911               
+         Neg Pred Value : 0.925               
+             Prevalence : 0.596               
+         Detection Rate : 0.568               
+   Detection Prevalence : 0.623               
+      Balanced Accuracy : 0.908               
+                                              
+       'Positive' Class : no_spam             
+                                              </code></pre>
 </div>
 </div>
 <p>The confusion matrix show how were the prediction. For ‘is_spam’ predicted value are 315 ‘is_spam’ as reference, then this 315 are True Positive. The next value is for the predicted ‘is_spam’ and ‘no_spam’ as reference with 38 matches, corresponding False Positive known as Type 1 Error. The next two values are False Negative (Type 2 Error) and True Negative with 52 and 516 matches respectively.</p>
@@ -2221,7 +2232,7 @@ Prediction is_spam no_spam
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.632   0.368</code></pre>
+1    0.62    0.38</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2230,7 +2241,7 @@ Prediction is_spam no_spam
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.608   0.392</code></pre>
+1   0.568   0.432</code></pre>
 </div>
 </div>
 <p>We can see in this case that spam email (text1) is with 70% probability spam, although text2 which is no spam the model tell us is with 0.51% no spam. Looking the text2 there are some uppercase letters which can fool the model a little bit.</p>

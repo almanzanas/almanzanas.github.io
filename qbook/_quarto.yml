@@ -25,21 +25,29 @@ book:
     background: secondary
     foreground: light
     right:
-      - href: portfolio.html
-        text: Portfolio
-      - href: index.qmd
-        text: Annotations
-      - href: cv.html
-        text: CV
-      - icon: github
-        href: http://github.com/almanzanas
-        aria-label: GitHub
-      - icon: bi bi-envelope
-        href: "mailto:almanzanas@gmx.com"
-        aria-label: e-mail
-      - icon: linkedin
-        href: https://es.linkedin.com/in/alvaromanzanas 
-        aria-label: Linkedin
+    - href: portfolio.html
+      text: Portfolio
+    - href: index.qmd
+      text: Annotations
+    - text: CV
+      menu:
+      - text: Spanish
+        href: "docs/Alvaro Manzanas-CV_es.pdf"
+        target: _blank
+      - text: English
+        href: "docs/Alvaro Manzanas-CV_en.pdf"
+        target: _blank
+    - icon: github
+      href: http://github.com/almanzanas
+      target: _blank
+      aria-label: GitHub
+    - icon: bi bi-envelope
+      href: "mailto:almanzanas@gmx.com"
+      aria-label: e-mail
+    - icon: linkedin
+      href: https://es.linkedin.com/in/alvaromanzanas 
+      target: _blank
+      aria-label: Linkedin
     pinned: true
   sidebar:
     tools:
