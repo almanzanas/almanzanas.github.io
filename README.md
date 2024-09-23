@@ -1,12 +1,6 @@
----
-homepage: portfolio.html
----
-# GitHub Documents
+# Alvaro Manzanas' Portfolio
 
 This is my personal Portfolio, where you can find my projects as well as
 some exercises I have done in order to keep learning and improving. You
 can access it by clicking on this link:
 <a href="https://almanzanas.github.io">almanzanas.github.io</a>
-
-<a href="porfolio/almanzanas.html">Portfolio</a>
->>>>>>> 933a815 (Changing structure)
