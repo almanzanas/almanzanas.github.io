@@ -1,6 +1,9 @@
 ---
 title: Alvaro Manzanas' Porfolio
-format: html
+format: 
+  html:
+    includes:
+      in_header: head.html
 ---
 
 # About Me
@@ -9,11 +12,12 @@ Let me introduce myself, my name is Álvaro Manzanas, I am a Junior Data Scienti
 
 I hope you'll take a look at what I've been working on, you might find it interesting. And if you like to connect with me, do not hesitate to do so, here I provide some buttons where you will find how to do it.
 
-::: {style="border-collapse: collapse; border: none; text-align: center; width: 75%;"}
-|                                 |                                    |                            |          |
-|--------------------------|-----------------------|-----------------------|---------|
-| [LinkedIn](https://es.linkedin.com/in/alvaromanzanas){target="_blank"} | [GitHub](http://github.com/almanzanas){target="_blank"} | [email](mailto:almanzanas@gmx.com) | [CV-english](docs/Alvaro Manzanas-CV_en.pdf){target="_blank"} |
-:::
+<ul class="actions">
+<li><a href="https://es.linkedin.com/in/alvaromanzanas" class="button" target="_blank"><i class="bi bi-linkedin" role="img" aria-label="Linkedin"></i>&ensp;<span>LinkedIn</span></a>
+<li><a class="button" href="https://github.com/almanzanas" target="_blank"><i class="bi bi-github" role="img" aria-label="Github"></i>&ensp;<span>Github</span></a>
+<li><a href="mailto:almanzanas@gmx.com" class="button" target="_blank"><i class="bi bi-envelope" role="img" aria-label="email"></i>&ensp;<span>email</span></a>
+<li><a href="docs/Alvaro Manzanas-CV_en.pdf" class="button" target="_blank"><i class="bi bi-file" role="img" aria-label="Curriculum"></i>&ensp;<span>CV</span></a>
+</ul>
 
 # Data Science Projects
 
@@ -27,11 +31,11 @@ It involves data cleaning, data exploration, statistical analysis, and predictiv
 
 With this project we want to understand why there are teams with lower performance that fail to meet the target productivity, and also want to be able to predict the productivity that the work teams may have.
 
-::: {style="border-collapse: collapse; border: none; text-align: center; width: 75%;"}
-|                                                                        |                                                         |                                    |
-|--------------------------|-----------------------|-----------------------|
-| [Repository](https://github.com/almanzanas/ProductivityDataAnalysis){target="_blank"} | [Analysis Report](https://github.com/almanzanas/ProductivityDataAnalysis/blob/29c49c1e1dc7a7851b7de42621989ec1d40b7484/notebooks/00_Report.md){target="_blank"} | [Analysis Procedure](https://github.com/almanzanas/ProductivityDataAnalysis/blob/29c49c1e1dc7a7851b7de42621989ec1d40b7484/notebooks/01_Procedure.md){target="_blank"} |
-:::
+<ul class="actions">
+<li><a href="https://github.com/almanzanas/ProductivityDataAnalysis" class="button" target="_blank"><span>Repository</span></a>
+<li><a class="button" href="https://github.com/almanzanas/ProductivityDataAnalysis/blob/29c49c1e1dc7a7851b7de42621989ec1d40b7484/notebooks/00_Report.md" target="_blank"><span>Analysis Report</span></a>
+<li><a href="https://github.com/almanzanas/ProductivityDataAnalysis/blob/29c49c1e1dc7a7851b7de42621989ec1d40b7484/notebooks/01_Procedure.md" class="button" target="_blank"><span>Analysis Procedure</span></a>
+</ul>
 
 ### Overview
 
@@ -83,7 +87,9 @@ Two statistically significant Wilcoxon comparisons can be seen. The visualizatio
 
 This project focuses on a company in the food retail sector that aims to maximize their next marketing campaign and to do so, they are handing over their pilot study data. This will involve cleaning the data, analyzing it and proposing an approach to the marketing team to achieve this improvement for the next campaign. The second part focuses on getting a model that predicts customer behavior and thus selecting the most suitable customers for the next campaign.
 
-> [Repository](https://github.com/almanzanas/ifoodDataAnalystTest)
+<ul class="actions">
+<li><a href="https://github.com/almanzanas/ifoodDataAnalystTest" class="button" target="_blank"><span>Repository</span></a>
+</ul>
 
 ### Overview
 
@@ -123,13 +129,17 @@ This bar chart represents the importance of the features for the first decision 
 
 In this GitHub repository I progressively update my learning progress as a Data Analyst. I take care to maintain a scientific basis for the whole process, be it data cleaning, descriptive, inferential and predictive analysis. To learn the basics of different tools and languages, I have used, among others, the following books:
 
+-   Santos, G. R. (2023). *Data Wrangling with R: Load, Explore, Transform and Visualize Data for Modeling with Tidyverse Libraries*. Packt Publishing.
+-   Buttrey, S. E., & Whitaker, L. R. (2017). *A Data Scientist’s Guide to Acquiring, Cleaning, and Managing Data in R*. John Wiley & Sons.
 -   Matthes, E. (2023). *Python Crash Course, 3rd Edition*. No Starch Press.
 -   McKinney, W. (2022). *Python for Data Analysis: Data Wrangling with Pandas, NumPy, and Jupyter*. O’Reilly Media.
 -   Arnold, J. (2023). *Learning Microsoft Power Bi: Transforming Data Into Insights*. O’Reilly Media.
 
-Below I highlight some image with a small description so you can get the idea, but I encourage you to explore the repository, there is all the content I have gone through.
+Below I highlight some image with a small description so you can get the idea, but I encourage you to explore the repository, there is all the content I have gone through. By the way, my personal notes for R are in 'Annotations'.
 
-> [Repository](https://github.com/almanzanas/DataAnalystsJourney)
+<ul class="actions">
+<li><a href="https://github.com/almanzanas/DataAnalystsJourney" class="button" target="_blank"><span>Repository</span></a>
+</ul>
 
 ### Overview
 
