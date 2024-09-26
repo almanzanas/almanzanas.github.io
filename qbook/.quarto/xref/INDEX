@@ -1,0 +1,38 @@
+{
+  "index.qmd": {
+    "index.html": "bdaabb6a"
+  },
+  "to_book/notebooks/00_basics_ndata.qmd": {
+    "00_basics_ndata.html": "82407847"
+  },
+  "to_book/notebooks/01_functions_scripts.qmd": {
+    "01_functions_scripts.html": "a8c2f81e"
+  },
+  "to_book/notebooks/02_data_into_r.qmd": {
+    "02_data_into_r.html": "2024229e"
+  },
+  "to_book/notebooks/03_data_handling.qmd": {
+    "03_data_handling.html": "a6d5aad6"
+  },
+  "to_book/notebooks/99_summary.qmd": {
+    "99_summary.html": "69613a98"
+  },
+  "to_book/notebooks/11_transformations_tidyverse.qmd": {
+    "11_transformations_tidyverse.html": "3cb803c7"
+  },
+  "to_book/notebooks/12_ExpDatAn.qmd": {
+    "12_ExpDatAn.html": "e7a3497f"
+  },
+  "to_book/notebooks/13_enchanced_visualizations.qmd": {
+    "13_enchanced_visualizations.html": "3ffa7c7a"
+  },
+  "to_book/notebooks/14_modeling2deploy.qmd": {
+    "14_modeling2deploy.html": "52c83314"
+  },
+  "book.qmd": {
+    "book.html": "8265ba0b"
+  },
+  "prefacio.qmd": {
+    "prefacio.html": "8a4e17e3"
+  }
+}

@@ -1,0 +1,6 @@
+[1,"==> quarto preview --render all --no-watch-inputs --no-browse\n\n"]
+[1,"Rendering:\n\r[1/2] cv.qmd\n"]
+[1,"\r[2/2] portfolio.qmd\n"]
+[1,"\n"]
+[1,"Watching files for changes\nBrowse at http://localhost:7457/portfolio.html\n"]
+[1,"GET: /portfolio.html\n"]
