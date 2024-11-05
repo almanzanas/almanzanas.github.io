@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Alvaro Manzanas - 11&nbsp; Modeling to Deploy</title>
+<title>11&nbsp; Modeling to Deploy – Alvaro Manzanas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -131,21 +131,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../prefacio.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">CV</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
-        <li>
-    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
- <span class="dropdown-text">Spanish</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../docs/Alvaro Manzanas-CV_GH.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
- <span class="dropdown-text">English</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item compact">
     <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
@@ -163,18 +152,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/14_modeling2deploy.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeling to Deploy</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -204,9 +193,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Base R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -245,9 +234,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Wrangling and Model</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -2019,15 +2008,15 @@ r: 0.2027</code></pre>
 <pre><code># A tibble: 9 × 7
   spam_cat top_words_pct char_freq_exclam char_freq_paren char_freq_dollar
   &lt;fct&gt;            &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-1 no_spam           2.32            0.314           0                0    
-2 is_spam          13.0             0.659           0.085            0.114
-3 is_spam          12.0             0.487           0.081            0    
-4 no_spam           3.96            0               0.146            0    
-5 no_spam           3.2             0.072           0.108            0    
-6 no_spam           5.14            0               0.237            0    
-7 no_spam           4.18            0               0.371            0    
-8 is_spam          10.9             0.407           0                0    
-9 is_spam           3.78            0.926           0.411            0    
+1 is_spam           5.22            0.764           0.382            0    
+2 no_spam           1.62            0.087           0.087            0    
+3 no_spam           0               0               1.08             0    
+4 is_spam           7.27            0.297           0                0    
+5 is_spam           9.61            0.12            0.06             0.541
+6 no_spam           0               0.862           0.862            0    
+7 no_spam           3.33            0.302           0.06             0    
+8 is_spam          10.8             0.057           0                0.057
+9 no_spam           3.68            0               0                0    
 # ℹ 2 more variables: capital_run_length_total &lt;int&gt;,
 #   capital_run_length_longest &lt;int&gt;</code></pre>
 </div>
@@ -2079,7 +2068,7 @@ r: 0.2027</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.3894  0.6106 </code></pre>
+ 0.4019  0.5981 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"=================="</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2093,7 +2082,7 @@ is_spam no_spam
 <div class="cell-output cell-output-stdout">
 <pre><code>
 is_spam no_spam 
- 0.4126  0.5874 </code></pre>
+ 0.3626  0.6374 </code></pre>
 </div>
 </div>
 <ul>
@@ -2156,29 +2145,29 @@ is_spam no_spam
 
           Reference
 Prediction is_spam no_spam
-   is_spam     328      27
-   no_spam      52     514
-                                              
-               Accuracy : 0.914               
-                 95% CI : (0.894, 0.932)      
-    No Information Rate : 0.587               
-    P-Value [Acc &gt; NIR] : &lt; 0.0000000000000002
-                                              
-                  Kappa : 0.821               
-                                              
- Mcnemar's Test P-Value : 0.00693             
-                                              
-            Sensitivity : 0.950               
-            Specificity : 0.863               
-         Pos Pred Value : 0.908               
-         Neg Pred Value : 0.924               
-             Prevalence : 0.587               
-         Detection Rate : 0.558               
-   Detection Prevalence : 0.615               
-      Balanced Accuracy : 0.907               
-                                              
-       'Positive' Class : no_spam             
-                                              </code></pre>
+   is_spam     292      28
+   no_spam      42     559
+                                             
+               Accuracy : 0.924              
+                 95% CI : (0.905, 0.94)      
+    No Information Rate : 0.637              
+    P-Value [Acc &gt; NIR] : &lt;0.0000000000000002
+                                             
+                  Kappa : 0.834              
+                                             
+ Mcnemar's Test P-Value : 0.12               
+                                             
+            Sensitivity : 0.952              
+            Specificity : 0.874              
+         Pos Pred Value : 0.930              
+         Neg Pred Value : 0.912              
+             Prevalence : 0.637              
+         Detection Rate : 0.607              
+   Detection Prevalence : 0.653              
+      Balanced Accuracy : 0.913              
+                                             
+       'Positive' Class : no_spam            
+                                             </code></pre>
 </div>
 </div>
 <p>The confusion matrix show how were the prediction. For ‘is_spam’ predicted value are 315 ‘is_spam’ as reference, then this 315 are True Positive. The next value is for the predicted ‘is_spam’ and ‘no_spam’ as reference with 38 matches, corresponding False Positive known as Type 1 Error. The next two values are False Negative (Type 2 Error) and True Negative with 52 and 516 matches respectively.</p>
@@ -2238,7 +2227,7 @@ Prediction is_spam no_spam
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.668   0.332</code></pre>
+1   0.796   0.204</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2247,7 +2236,7 @@ Prediction is_spam no_spam
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>( <span class="fu">predict</span>(model.rf, input, <span class="at">type =</span> <span class="st">"prob"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  is_spam no_spam
-1   0.512   0.488</code></pre>
+1   0.668   0.332</code></pre>
 </div>
 </div>
 <p>We can see in this case that spam email (text1) is with 70% probability spam, although text2 which is no spam the model tell us is with 0.51% no spam. Looking the text2 there are some uppercase letters which can fool the model a little bit.</p>
@@ -2450,18 +2439,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2493,7 +2471,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2501,7 +2501,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

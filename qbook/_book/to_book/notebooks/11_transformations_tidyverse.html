@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Alvaro Manzanas - 8&nbsp; Transformations with Tidyverse</title>
+<title>8&nbsp; Transformations with Tidyverse – Alvaro Manzanas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -132,21 +132,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../../prefacio.html" aria-current="page"> 
 <span class="menu-text">Annotations</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">CV</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
-        <li>
-    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_es.pdf" target="_blank">
- <span class="dropdown-text">Spanish</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../docs/Alvaro Manzanas-CV_GH.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../docs/Alvaro Manzanas-CV_en.pdf" target="_blank">
- <span class="dropdown-text">English</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item compact">
     <a class="nav-link" href="http://github.com/almanzanas" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
@@ -164,18 +153,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html">Data Wrangling and Model</a></li><li class="breadcrumb-item"><a href="../../to_book/notebooks/11_transformations_tidyverse.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Transformations with Tidyverse</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -205,9 +194,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Base R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -246,9 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Wrangling and Model</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -427,18 +416,18 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> .[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-     age workclass    fnlwgt education   
-   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       
- 1    44 Federal-gov  280362 Assoc-acdm  
- 2    27 Private      172009 Bachelors   
- 3    59 Private      157932 10th        
- 4    51 Federal-gov  217647 Some-college
- 5    32 Private      185027 Some-college
- 6    50 Private      237868 Masters     
- 7    33 Private      121488 Bachelors   
- 8    36 Private      127306 Bachelors   
- 9    19 Private      298891 11th        
-10    51 Self-emp-inc 100029 Doctorate   </code></pre>
+     age workclass        fnlwgt education   
+   &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;       
+ 1    55 Federal-gov      189985 Some-college
+ 2    32 Self-emp-not-inc 319280 Assoc-acdm  
+ 3    30 Local-gov        311913 HS-grad     
+ 4    22 Local-gov        289982 Bachelors   
+ 5    28 Private          183175 Some-college
+ 6    60 ?                386261 Bachelors   
+ 7    44 Private          755858 HS-grad     
+ 8    23 Private           70919 Bachelors   
+ 9    33 Private           35378 Bachelors   
+10    33 Private          201988 Masters     </code></pre>
 </div>
 </div>
 <section id="filtering" class="level2" data-number="9.1">
@@ -456,16 +445,16 @@ dbl (6): age, fnlwgt, education_num, capital_gain, capital_loss, hours_per_week
 <pre><code># A tibble: 10 × 3
    marital_status       age education   
    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;       
- 1 Never-married         29 HS-grad     
- 2 Never-married         25 HS-grad     
- 3 Never-married         21 9th         
- 4 Never-married         23 Bachelors   
- 5 Never-married         20 Some-college
- 6 Married-civ-spouse    28 HS-grad     
- 7 Never-married         19 HS-grad     
- 8 Never-married         21 Some-college
- 9 Divorced              29 HS-grad     
-10 Never-married         19 Some-college</code></pre>
+ 1 Never-married         25 Bachelors   
+ 2 Never-married         20 HS-grad     
+ 3 Never-married         20 Some-college
+ 4 Never-married         23 HS-grad     
+ 5 Never-married         17 10th        
+ 6 Never-married         20 Some-college
+ 7 Never-married         24 HS-grad     
+ 8 Never-married         25 HS-grad     
+ 9 Married-civ-spouse    29 HS-grad     
+10 Never-married         23 Some-college</code></pre>
 </div>
 </div>
 <ul>
@@ -652,16 +641,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    80 &lt;NA&gt;       91901 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
- 2    77 &lt;NA&gt;      152900 5th-6th                  3 Married-civ-spo… &lt;NA&gt;      
- 3    22 &lt;NA&gt;      306031 Some-college            10 Never-married    &lt;NA&gt;      
- 4    29 &lt;NA&gt;      168873 Some-college            10 Divorced         &lt;NA&gt;      
- 5    20 &lt;NA&gt;      114813 10th                     6 Separated        &lt;NA&gt;      
- 6    18 &lt;NA&gt;       30246 Some-college            10 Never-married    &lt;NA&gt;      
- 7    20 &lt;NA&gt;      149478 Some-college            10 Never-married    &lt;NA&gt;      
- 8    19 &lt;NA&gt;      220517 Some-college            10 Never-married    &lt;NA&gt;      
- 9    55 &lt;NA&gt;      106707 Assoc-acdm              12 Married-civ-spo… &lt;NA&gt;      
-10    35 &lt;NA&gt;      124836 Some-college            10 Divorced         &lt;NA&gt;      
+ 1    43 &lt;NA&gt;      218558 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
+ 2    79 &lt;NA&gt;      163140 HS-grad                  9 Married-civ-spo… &lt;NA&gt;      
+ 3    66 &lt;NA&gt;      260111 Some-college            10 Married-civ-spo… &lt;NA&gt;      
+ 4    83 &lt;NA&gt;      251951 HS-grad                  9 Widowed          &lt;NA&gt;      
+ 5    63 &lt;NA&gt;      331527 10th                     6 Married-civ-spo… &lt;NA&gt;      
+ 6    71 &lt;NA&gt;      177906 Bachelors               13 Married-civ-spo… &lt;NA&gt;      
+ 7    20 &lt;NA&gt;      121023 Some-college            10 Never-married    &lt;NA&gt;      
+ 8    37 &lt;NA&gt;      102541 Assoc-voc               11 Married-civ-spo… &lt;NA&gt;      
+ 9    42 &lt;NA&gt;      184018 Some-college            10 Divorced         &lt;NA&gt;      
+10    57 &lt;NA&gt;      300104 5th-6th                  3 Married-civ-spo… &lt;NA&gt;      
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -709,18 +698,18 @@ the `.groups` argument.</code></pre>
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 15
-     age workclass      fnlwgt education education_num marital_status occupation
-   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;     
- 1    22 Private        263970 Some-col…            10 Never-married  Other-ser…
- 2    82 Private        403910 HS-grad               9 Never-married  Machine-o…
- 3    19 Private        117201 HS-grad               9 Never-married  Craft-rep…
- 4    61 Private        116230 Bachelors            13 Married-civ-s… Craft-rep…
- 5    21 Self-emp-not-… 207988 HS-grad               9 Married-civ-s… Craft-rep…
- 6    79 Federal-gov    142171 7th-8th               4 Married-civ-s… Adm-cleri…
- 7    63 Local-gov      447079 HS-grad               9 Never-married  Prof-spec…
- 8    22 Private         88126 Some-col…            10 Never-married  Prof-spec…
- 9    71 Private        229424 HS-grad               9 Widowed        Handlers-…
-10    64 Self-emp-inc   338355 Assoc-voc            11 Married-civ-s… Sales     
+     age workclass fnlwgt education    education_num marital_status   occupation
+   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
+ 1    63 Private   247986 Prof-school             15 Married-civ-spo… Sales     
+ 2    31 Private    76198 HS-grad                  9 Separated        Exec-mana…
+ 3    75 Private   164849 9th                      5 Married-civ-spo… Craft-rep…
+ 4    64 Private   108082 Some-college            10 Married-civ-spo… Craft-rep…
+ 5    20 Private    37932 HS-grad                  9 Never-married    Other-ser…
+ 6    60 Private    88675 HS-grad                  9 Married-civ-spo… Exec-mana…
+ 7    18 Private   165532 12th                     8 Never-married    Exec-mana…
+ 8    40 Private    84232 HS-grad                  9 Never-married    Sales     
+ 9    73 Private   135601 Bachelors               13 Married-civ-spo… Tech-supp…
+10    19 Private   117201 Some-college            10 Never-married    Sales     
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -745,16 +734,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 15
      age workclass fnlwgt education    education_num marital_status   occupation
    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;     
- 1    76 Private    84755 Some-college            10 Widowed          Prof-spec…
- 2    58 Private   158506 11th                     7 Married-civ-spo… Prof-spec…
- 3    66 Private   182378 7th-8th                  4 Married-civ-spo… Prof-spec…
- 4    82 Private    42435 10th                     6 Widowed          Prof-spec…
- 5    62 Private   113234 Masters                 14 Married-civ-spo… Prof-spec…
- 6    60 Private    88675 HS-grad                  9 Married-civ-spo… Prof-spec…
- 7    19 Private   230874 Some-college            10 Never-married    Prof-spec…
- 8    69 Private   163595 HS-grad                  9 Widowed          Prof-spec…
- 9    33 Private   202498 7th-8th                  4 Separated        Prof-spec…
-10    60 Private    56248 HS-grad                  9 Married-civ-spo… Prof-spec…
+ 1    50 Private   194186 HS-grad                  9 Married-civ-spo… Prof-spec…
+ 2    48 Private   167381 HS-grad                  9 Widowed          Prof-spec…
+ 3    45 Private    98265 HS-grad                  9 Divorced         Prof-spec…
+ 4    48 Private   151584 Some-college            10 Never-married    Prof-spec…
+ 5    70 Private   207627 HS-grad                  9 Married-civ-spo… Prof-spec…
+ 6    55 Private   389479 Masters                 14 Married-civ-spo… Prof-spec…
+ 7    21 Private   145964 Some-college            10 Never-married    Prof-spec…
+ 8    71 Private   178295 Assoc-acdm              12 Married-civ-spo… Prof-spec…
+ 9    17 Private    86786 10th                     6 Never-married    Prof-spec…
+10    19 Private   128453 HS-grad                  9 Never-married    Prof-spec…
 # ℹ 8 more variables: relationship &lt;chr&gt;, race &lt;chr&gt;, sex &lt;chr&gt;,
 #   capital_gain &lt;dbl&gt;, capital_loss &lt;dbl&gt;, hours_per_week &lt;dbl&gt;,
 #   native_country &lt;chr&gt;, target &lt;chr&gt;</code></pre>
@@ -858,18 +847,18 @@ the `.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-     age workclass        sign  amount
-   &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; 
- 1    21 Private          &lt;=    50K   
- 2    25 Private          &lt;=    50K   
- 3    27 Private          &lt;=    50K   
- 4    34 Federal-gov      &gt;     50K   
- 5    39 Private          &lt;=    50K   
- 6    39 Private          &gt;     50K   
- 7    32 Local-gov        &lt;=    50K   
- 8    19 Private          &lt;=    50K   
- 9    24 Private          &lt;=    50K   
-10    39 Self-emp-not-inc &lt;=    50K   </code></pre>
+     age workclass sign  amount
+   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; 
+ 1    35 Private   &lt;=    50K   
+ 2    58 Private   &gt;     50K   
+ 3    36 Private   &lt;=    50K   
+ 4    38 Private   &gt;     50K   
+ 5    47 Private   &lt;=    50K   
+ 6    45 Local-gov &lt;=    50K   
+ 7    26 Private   &lt;=    50K   
+ 8    39 State-gov &lt;=    50K   
+ 9    18 Private   &lt;=    50K   
+10    40 Private   &lt;=    50K   </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -881,16 +870,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 5
    sex    race    age description     marital_status    
    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;             
- 1 Female White    38 Female_White_38 Divorced          
- 2 Female White    26 Female_White_26 Never-married     
- 3 Male   White    20 Male_White_20   Never-married     
- 4 Male   Black    56 Male_Black_56   Married-civ-spouse
- 5 Male   White    39 Male_White_39   Divorced          
- 6 Female White    23 Female_White_23 Never-married     
- 7 Male   White    47 Male_White_47   Married-civ-spouse
- 8 Male   White    46 Male_White_46   Married-civ-spouse
- 9 Male   White    55 Male_White_55   Married-civ-spouse
-10 Male   White    47 Male_White_47   Married-civ-spouse</code></pre>
+ 1 Male   White    27 Male_White_27   Married-civ-spouse
+ 2 Male   White    31 Male_White_31   Married-civ-spouse
+ 3 Female White    25 Female_White_25 Never-married     
+ 4 Male   White    34 Male_White_34   Married-civ-spouse
+ 5 Male   White    58 Male_White_58   Married-civ-spouse
+ 6 Male   White    40 Male_White_40   Married-civ-spouse
+ 7 Female White    34 Female_White_34 Never-married     
+ 8 Female White    25 Female_White_25 Separated         
+ 9 Female White    28 Female_White_28 Never-married     
+10 Male   White    45 Male_White_45   Married-civ-spouse</code></pre>
 </div>
 </div>
 <section id="the-mutate-function" class="level2" data-number="13.1">
@@ -912,16 +901,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 4
    total_gain   tax occupation          age
         &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
- 1       7688  769. Sales                37
- 2          0    0  Machine-op-inspct    45
- 3          0    0  Prof-specialty       37
- 4          0    0  Other-service        51
- 5          0    0  Machine-op-inspct    33
- 6          0    0  Sales                25
- 7          0    0  Prof-specialty       51
- 8          0    0  Other-service        28
- 9          0    0  Prof-specialty       39
-10          0    0  Prof-specialty       22</code></pre>
+ 1          0    0  Prof-specialty       20
+ 2          0    0  Prof-specialty       47
+ 3          0    0  Prof-specialty       34
+ 4          0    0  Exec-managerial      35
+ 5          0    0  Sales                35
+ 6          0    0  Tech-support         32
+ 7          0    0  Machine-op-inspct    33
+ 8          0    0  Sales                39
+ 9          0    0  Tech-support         22
+10      -1902 -190. Exec-managerial      54</code></pre>
 </div>
 </div>
 <p>Combining <code>mutate()</code> and <code>recode()</code> to transform values, useful for categories:</p>
@@ -935,14 +924,14 @@ the `.groups` argument.</code></pre>
    target over_under
    &lt;chr&gt;  &lt;chr&gt;     
  1 &lt;=50K  &lt;=50K     
- 2 &lt;=50K  &lt;=50K     
+ 2 &gt;50K   &gt;50K      
  3 &gt;50K   &gt;50K      
  4 &lt;=50K  &lt;=50K     
- 5 &lt;=50K  &lt;=50K     
+ 5 &gt;50K   &gt;50K      
  6 &lt;=50K  &lt;=50K     
  7 &lt;=50K  &lt;=50K     
  8 &lt;=50K  &lt;=50K     
- 9 &gt;50K   &gt;50K      
+ 9 &lt;=50K  &lt;=50K     
 10 &lt;=50K  &lt;=50K     </code></pre>
 </div>
 </div>
@@ -959,16 +948,16 @@ the `.groups` argument.</code></pre>
 <pre><code># A tibble: 10 × 3
      age age_avg over_under_age_avg
    &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;             
- 1    51    38.6 Above the avg     
- 2    33    38.6 Lower than avg    
- 3    28    38.6 Lower than avg    
- 4    21    38.6 Lower than avg    
- 5    49    38.6 Above the avg     
- 6    28    38.6 Lower than avg    
- 7    31    38.6 Lower than avg    
- 8    26    38.6 Lower than avg    
- 9    23    38.6 Lower than avg    
-10    59    38.6 Above the avg     </code></pre>
+ 1    54    38.6 Above the avg     
+ 2    26    38.6 Lower than avg    
+ 3    27    38.6 Lower than avg    
+ 4    31    38.6 Lower than avg    
+ 5    21    38.6 Lower than avg    
+ 6    19    38.6 Lower than avg    
+ 7    23    38.6 Lower than avg    
+ 8    21    38.6 Lower than avg    
+ 9    46    38.6 Above the avg     
+10    24    38.6 Lower than avg    </code></pre>
 </div>
 </div>
 </section>
@@ -1102,16 +1091,16 @@ the `.groups` argument.</code></pre>
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(cumpct_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    wt cumsum_weight cumpct_weight cummean_weight
+Lotus Europa     1.513        90.662       0.03125       3.237929
+Toyota Corolla   1.835        67.969       0.09375       3.398450
 Fiat X1-9        1.935        87.009       0.12500       3.346500
 Datsun 710       2.320         7.815       0.21875       2.605000
 Volvo 142E       2.780       102.952       0.34375       3.217250
-Mazda RX4 Wag    2.875         5.495       0.37500       2.747500
+Ford Pantera L   3.170        93.832       0.43750       3.235586
 Hornet 4 Drive   3.215        11.030       0.50000       2.757500
 AMC Javelin      3.435        77.389       0.53125       3.364739
 Dodge Challenger 3.520        73.954       0.68750       3.361545
-Duster 360       3.570        21.500       0.75000       3.071429
-Merc 450SLC      3.780        46.300       0.81250       3.307143
-Camaro Z28       3.840        81.229       0.84375       3.384542</code></pre>
+Merc 450SE       4.070        38.790       0.90625       3.232500</code></pre>
 </div>
 </div>
 <ul>
@@ -1127,17 +1116,17 @@ Camaro Z28       3.840        81.229       0.84375       3.384542</code></pre>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cyl, mpg, am, transmission_type) <span class="sc">%&gt;%</span></span>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   cyl  mpg am transmission_type
-Chrysler Imperial    8 14.7  0         automatic
-Merc 450SLC          8 15.2  0         automatic
-Fiat X1-9            4 27.3  1            manual
-Merc 280C            6 17.8  0         automatic
-Cadillac Fleetwood   8 10.4  0         automatic
-Valiant              6 18.1  0         automatic
-Datsun 710           4 22.8  1            manual
-Hornet Sportabout    8 18.7  0         automatic
-Honda Civic          4 30.4  1            manual
-Merc 450SL           8 17.3  0         automatic</code></pre>
+<pre><code>                  cyl  mpg am transmission_type
+Merc 280C           6 17.8  0         automatic
+Chrysler Imperial   8 14.7  0         automatic
+Hornet Sportabout   8 18.7  0         automatic
+Toyota Corolla      4 33.9  1            manual
+Merc 450SLC         8 15.2  0         automatic
+Maserati Bora       8 15.0  1            manual
+Valiant             6 18.1  0         automatic
+Merc 240D           4 24.4  0         automatic
+AMC Javelin         8 15.2  0         automatic
+Pontiac Firebird    8 19.2  0         automatic</code></pre>
 </div>
 </div>
 <section id="ggplot2" class="level2" data-number="16.1">
@@ -1343,18 +1332,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1386,7 +1364,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1394,7 +1394,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

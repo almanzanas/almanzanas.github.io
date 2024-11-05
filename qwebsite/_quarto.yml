@@ -16,14 +16,9 @@ website:
       text: Portfolio
     - href: prefacio.html
       text: Annotations
-    - text: CV
-      menu:
-      - text: Spanish
-        href: "docs/Alvaro Manzanas-CV_es.pdf"
-        target: _blank
-      - text: English
-        href: "docs/Alvaro Manzanas-CV_en.pdf"
-        target: _blank
+    - href: "docs/Alvaro Manzanas-CV_GH.pdf"
+      text: CV
+      target: _blank
     - icon: github
       href: http://github.com/almanzanas
       target: _blank
